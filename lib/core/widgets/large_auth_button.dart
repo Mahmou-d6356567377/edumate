@@ -1,3 +1,4 @@
+import 'package:edumate/core/consts/conts_colors.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class LargeButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPress,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF6C63FF),
+          backgroundColor: const Color(ConstsColors.klightblue),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),

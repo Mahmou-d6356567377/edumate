@@ -13,14 +13,12 @@ import 'package:go_router/go_router.dart';
 class Login extends StatelessWidget {
   const Login({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
-      double height = MediaQuery.of(context).size.height;
-  double width = MediaQuery.of(context).size.width;
-TextEditingController emailcontroller = TextEditingController();
-TextEditingController passwordcontroller = TextEditingController();
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    TextEditingController emailcontroller = TextEditingController();
+    TextEditingController passwordcontroller = TextEditingController();
 
     return MaterialApp(
       home: Scaffold(
@@ -38,26 +36,38 @@ TextEditingController passwordcontroller = TextEditingController();
               textAlign: TextAlign.center,
             ),
             SizedBox(height: height * 0.04),
-            CustomTextField(hintText: 'Email', prefixIcon: Constants.email, controller: emailcontroller),
-            CustomTextField(hintText: 'Password', prefixIcon: Constants.lockon, controller: passwordcontroller),
+            CustomTextField(
+              hintText: 'Email',
+              prefixIcon: Constants.email,
+              controller: emailcontroller,
+            ),
+            CustomTextField(
+              hintText: 'Password',
+              prefixIcon: Constants.lockon,
+              controller: passwordcontroller,
+            ),
             RememberMeWidget(),
             Spacer(),
-            LargeButton(width: width, height: height, title: 'Login', onPress: () {}),
+            LargeButton(
+              width: width,
+              height: height,
+              title: 'Login',
+              onPress: () {
+                GoRouter.of(context).pushNamed(
+                  GoRoutes.verification,
+                  extra: emailcontroller.text,
+                );
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Don’t have an account ? ',
-                  style: Fonts.normalgreystyle,
-                ),
+                Text('Don’t have an account ? ', style: Fonts.normalgreystyle),
                 TextButton(
                   onPressed: () {
-                    GoRouter.of(context).push(GoRoutes.signuppage);
+                    GoRouter.of(context).push(GoRoutes.signupPath);
                   },
-                  child: Text(
-                    'Sign Up',
-                    style: Fonts.underlinedstyle,
-                  ),
+                  child: Text('Sign Up', style: Fonts.underlinedstyle),
                 ),
               ],
             ),

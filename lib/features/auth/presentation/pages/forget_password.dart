@@ -34,7 +34,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               padding: EdgeInsets.all(8),
             ),
             onPressed: () {
-              GoRouter.of(context).pop();
+              context.pop();
             },
             child: Center(
               child: Icon(Icons.arrow_back_ios_rounded, color: Colors.black),

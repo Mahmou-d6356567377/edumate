@@ -1,3 +1,4 @@
+import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:edumate/core/widgets/custom_txt_field2.dart';
@@ -6,6 +7,7 @@ import 'package:edumate/core/widgets/large_auth_button.dart';
 import 'package:edumate/features/auth/presentation/widgets/remember_me_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -42,7 +44,12 @@ TextEditingController passwordcontroller = TextEditingController();
             RememberMeWidget(),
 
             Spacer(),
-            LargeButton(width: width, height: height, title: 'Sign Up', onPress: () {}),
+            LargeButton(width: width, height: height, title: 'Sign Up', onPress: () {
+              GoRouter.of(context).pushNamed(
+                GoRoutes.verification,
+                extra: emailcontroller.text,
+              );
+            }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

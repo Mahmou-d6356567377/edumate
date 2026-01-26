@@ -145,7 +145,7 @@ class _IntroPagesState extends State<IntroPages> {
         curve: Curves.easeInOut,
       );
     } else {
-      context.go(GoRoutes.loginpage);
+      context.go(GoRoutes.loginPath);
 
     }
   }
