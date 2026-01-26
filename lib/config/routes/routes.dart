@@ -1,5 +1,6 @@
 import 'package:edumate/features/auth/presentation/pages/forget_password.dart';
 import 'package:edumate/features/auth/presentation/pages/login.dart';
+import 'package:edumate/features/auth/presentation/pages/reset_password.dart';
 import 'package:edumate/features/auth/presentation/pages/signup.dart';
 import 'package:edumate/features/auth/presentation/pages/verification_page.dart';
 import 'package:edumate/features/in/presentation/pages/intro.dart';
@@ -12,6 +13,7 @@ class GoRoutes {
   static const String signupPath = '/signuppage';
   static const String forgetPasswordPath = '/forgetpasswordpage';
   static const String verificationPath = '/verificationpage';
+  static const String resetPasswordPath = '/resetpasswordpage';
 
   // names
   static const String intro = 'intro';
@@ -19,6 +21,7 @@ class GoRoutes {
   static const String signup = 'signup';
   static const String forgetPassword = 'forgetPassword';
   static const String verification = 'verification';
+  static const String resetPassword = 'resetPassword';
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
@@ -48,9 +51,12 @@ class GoRoutes {
         GoRoute(
           path: verificationPath,
           name: verification,
-          builder:
-              (context, state) =>
-                  VerificationPage(emailcontroller: state.extra as String),
+          builder: (context, state) => VerificationPage(emailcontroller: state.extra as String),
+        ),
+         GoRoute(
+          path: resetPasswordPath,
+          name: resetPassword,
+          builder: (context, state) => ResetPassword(),
         ),
       ],
     );

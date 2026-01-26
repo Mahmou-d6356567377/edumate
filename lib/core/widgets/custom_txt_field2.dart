@@ -3,11 +3,13 @@ import 'package:edumate/core/consts/conts_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final String hintText;
   final String prefixIcon;
   final TextEditingController controller;
   bool isEmail;
+  bool secure;
+  final Widget? suffixIcon;
 
   CustomTextField({
     super.key,
@@ -15,8 +17,15 @@ class CustomTextField extends StatelessWidget {
     required this.prefixIcon,
     required this.controller,
     this.isEmail = false,
+    this.secure = false,
+    this.suffixIcon,
   });
 
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +38,9 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(17),
         ),
         child: TextFormField(
-          controller: controller,
+          textAlign: TextAlign.left,
+          controller: widget.controller,
+          obscureText: widget.secure,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -37,20 +48,22 @@ class CustomTextField extends StatelessWidget {
             return null;
           },
           keyboardType:
-              isEmail ? TextInputType.emailAddress : TextInputType.name,
+              widget.isEmail ? TextInputType.emailAddress : TextInputType.name,
           textDirection: TextDirection.rtl,
-          textAlign: TextAlign.right,
           decoration: InputDecoration(
             prefixIcon: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: SvgPicture.asset(prefixIcon.toString(),
+              child: SvgPicture.asset(
+                widget.prefixIcon.toString(),
                 width: 24,
                 height: 24,
               ),
             ),
+            suffixIcon: widget.suffixIcon,
             filled: true,
+            
             fillColor: Color(ConstsColors.koffwhite),
-            hintText: hintText,
+            hintText: widget.hintText,
             // hintStyle: arabicstyle8.copyWith(fontSize: 15, fontWeight: FontWeight.w600),
             alignLabelWithHint: true,
             hintTextDirection: TextDirection.ltr,
@@ -58,7 +71,6 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(35),
               borderSide: BorderSide.none,
             ),
-           
           ),
         ),
       ),

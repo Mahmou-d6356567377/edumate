@@ -1,3 +1,4 @@
+import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:edumate/core/widgets/general_bottom_space.dart';
 import 'package:edumate/core/widgets/large_auth_button.dart';
@@ -112,7 +113,9 @@ class _VerificationPageState extends State<VerificationPage> {
                 title: 'Continue',
                 onPress: () {
                   focusNode.unfocus();
-                  formKey.currentState!.validate();
+                  if (formKey.currentState!.validate()) {
+                    GoRouter.of(context).pushNamed(GoRoutes.resetPassword);
+                  }
                 },
               ),
               GeneralBottomSpace(height: height),

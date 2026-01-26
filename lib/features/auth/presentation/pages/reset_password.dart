@@ -6,22 +6,27 @@ import 'package:edumate/core/widgets/large_auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({super.key});
 
   @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
-  TextEditingController newpasscontroller = TextEditingController();
-  TextEditingController confirmpasscontroller = TextEditingController();
+class _ResetPasswordState extends State<ResetPassword> {
+  TextEditingController passcontroller = TextEditingController();
+  TextEditingController confirmpassController = TextEditingController();
+
   bool _obscureText1 = true;
+  bool _obscureText2 = true;
+
   @override
   void initState() {
     _obscureText1 = true;
+    _obscureText2 = true;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -76,10 +81,33 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             CustomTextField(
               hintText: 'New Password',
               prefixIcon: Constants.lockon,
-              suffixIcon: IconButton(onPressed: () {setState(() {
-                _obscureText1 = !_obscureText1;
-              });}, icon: Icon( _obscureText1 ? Icons.visibility : Icons.visibility_off)),
-              controller: newpasscontroller,
+              controller: passcontroller,
+              secure: _obscureText1,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _obscureText1 = !_obscureText1;
+                  });
+                },
+                icon: Icon(_obscureText1 ? Icons.visibility_off : Icons.visibility),
+              ),
+            ),
+
+            SizedBox(height: height * 0.02),
+
+            CustomTextField(
+              hintText: 'Confirm Password',
+              prefixIcon: Constants.lockon,
+              controller: confirmpassController,
+              secure: _obscureText2,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _obscureText2 = !_obscureText2;
+                  });
+                },
+                icon: Icon(_obscureText2 ? Icons.visibility_off : Icons.visibility),
+              ),
             ),
 
             Spacer(),
