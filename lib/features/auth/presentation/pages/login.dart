@@ -2,6 +2,9 @@ import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:edumate/core/widgets/custom_txt_field2.dart';
+import 'package:edumate/core/widgets/forget_password_text.dart';
+import 'package:edumate/core/widgets/general_bottom_space.dart';
+import 'package:edumate/core/widgets/large_auth_button.dart';
 import 'package:edumate/features/auth/presentation/widgets/remember_me_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,23 +42,7 @@ TextEditingController passwordcontroller = TextEditingController();
             CustomTextField(hintText: 'Password', prefixIcon: Constants.lockon, controller: passwordcontroller),
             RememberMeWidget(),
             Spacer(),
-            SizedBox(
-              width: width * 0.9,
-              height: height * 0.06,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF6C63FF),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  'Login',
-                  style: Fonts.semiboldstyle,
-                ),
-              ),
-            ),
+            LargeButton(width: width, height: height, title: 'Login', onPress: () {}),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -74,8 +61,8 @@ TextEditingController passwordcontroller = TextEditingController();
                 ),
               ],
             ),
-            Text('Forget Password?', style: Fonts.underlinedstyle,textAlign: TextAlign.center,),
-            SizedBox(height: height * 0.07),
+            ForgetPasswordTxT(),
+            GeneralBottomSpace(height: height),
           ],
         ),
       ),
