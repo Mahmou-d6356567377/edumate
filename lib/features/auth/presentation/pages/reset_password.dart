@@ -1,3 +1,4 @@
+import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:edumate/core/widgets/custom_txt_field2.dart';
@@ -89,7 +90,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                     _obscureText1 = !_obscureText1;
                   });
                 },
-                icon: Icon(_obscureText1 ? Icons.visibility_off : Icons.visibility),
+                icon: Icon(
+                  _obscureText1 ? Icons.visibility_off : Icons.visibility,
+                ),
               ),
             ),
 
@@ -106,7 +109,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                     _obscureText2 = !_obscureText2;
                   });
                 },
-                icon: Icon(_obscureText2 ? Icons.visibility_off : Icons.visibility),
+                icon: Icon(
+                  _obscureText2 ? Icons.visibility_off : Icons.visibility,
+                ),
               ),
             ),
 
@@ -116,7 +121,9 @@ class _ResetPasswordState extends State<ResetPassword> {
               width: width,
               height: height,
               title: 'Continue',
-              onPress: () {},
+              onPress: () {
+                GoRouter.of(context).pushNamed(GoRoutes.homescreen);
+              },
             ),
             GeneralBottomSpace(height: height),
           ],

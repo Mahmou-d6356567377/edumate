@@ -1,3 +1,4 @@
+import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:edumate/core/widgets/custom_txt_field2.dart';
@@ -88,7 +89,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               width: width,
               height: height,
               title: 'Continue',
-              onPress: () {},
+              onPress: () {
+                GoRouter.of(context).push(GoRoutes.verificationPath, extra: newpasscontroller.text);
+              },
             ),
             GeneralBottomSpace(height: height),
           ],

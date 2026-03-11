@@ -12,10 +12,11 @@ class Fonts {
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle normalblackstyle = TextStyle(
+  static const TextStyle boldblackstyle18 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Colors.black,
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
   );
 
   static const TextStyle normalgreystyle = TextStyle(
@@ -36,5 +37,11 @@ class Fonts {
     color: Color(ConstsColors.klightblue),
     fontSize: 16,
     decoration: TextDecoration.underline,
+  );
+
+    static const TextStyle normalbluestyle14 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Color(ConstsColors.klightblue),
+    fontSize: 14,
   );
 }

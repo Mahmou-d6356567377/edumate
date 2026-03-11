@@ -5,7 +5,7 @@ class Constants {
   static const String appBuildNumber = '1';
 
   //fonts
-  static const String mainfont = 'Poppins';
+  static const String mainfont = 'Roboto';
 
 
 
@@ -22,4 +22,8 @@ class Constants {
   static const String camera = 'assets/imgs/camera.svg';
   static const String user = 'assets/imgs/user.svg';
   static const String doc = 'assets/imgs/doc.svg';
+  static const String moon = 'assets/imgs/moon.svg';
+  static const String notificationoff = 'assets/imgs/notification_off.svg';
+  static const String notificationon = 'assets/imgs/Notification_on.svg';
+  static const String classpic = 'assets/imgs/classpic.png';
 }
