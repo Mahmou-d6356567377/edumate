@@ -1,5 +1,9 @@
+import 'package:edumate/core/consts/constants.dart';
+import 'package:edumate/core/consts/conts_colors.dart';
+import 'package:edumate/features/courses/pages/courses_screen.dart';
+import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/svg.dart';
 
 class NavMainScreen extends StatefulWidget {
   const NavMainScreen({super.key});
@@ -13,7 +17,9 @@ class _NavMainScreenState extends State<NavMainScreen> {
 
   // List of widgets for each screen (AppBar + Body combined)
   final List<Widget> _screens = [
-
+    HomeScreen(),
+    CoursesScreen(),
+    Center(child: Text('Favorites Screen')),
   ];
 
   @override
@@ -27,18 +33,29 @@ class _NavMainScreenState extends State<NavMainScreen> {
           // Display the selected screen
           _screens[_selectedIndex],
 
+          Positioned(
+            bottom: 100,
+            right: 25,
+            child: GestureDetector(
+              onTap: () {
+                // Handle AI icon tap
+              },
+
+              child: SvgPicture.asset(Constants.ai, width: 70, height: 70),
+            ),
+          ),
           // Custom Bottom Navigation Bar
           Positioned(
-            bottom: 20,
+            bottom: 30,
             left: 0,
             right: 0,
             child: Center(
               child: Container(
                 width: deviceWidth * 0.9,
-                height: 60,
+                height: 70,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.8), // Fixed method
-                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,7 +63,10 @@ class _NavMainScreenState extends State<NavMainScreen> {
                     IconButton(
                       icon: Icon(
                         Icons.home,
-                        color: _selectedIndex == 0 ? Colors.white : Colors.grey,
+                        color:
+                            _selectedIndex == 0
+                                ? Color(ConstsColors.kblue)
+                                : Colors.grey,
                         size: _selectedIndex == 0 ? 35 : 25,
                       ),
                       onPressed: () {
@@ -56,10 +76,15 @@ class _NavMainScreenState extends State<NavMainScreen> {
                       },
                     ),
                     IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: _selectedIndex == 1 ? Colors.white : Colors.grey,
-                        size: _selectedIndex == 1 ? 35 : 25,
+                      icon: SvgPicture.asset(
+                        Constants.courses,
+                        colorFilter: ColorFilter.mode(
+                          _selectedIndex == 1
+                              ? Color(ConstsColors.kblue)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        width: _selectedIndex == 1 ? 35 : 25,
                       ),
                       onPressed: () {
                         setState(() {
@@ -68,10 +93,16 @@ class _NavMainScreenState extends State<NavMainScreen> {
                       },
                     ),
                     IconButton(
-                      icon: Icon(
-                        Icons.favorite,
-                        color: _selectedIndex == 2 ? Colors.white : Colors.grey,
-                        size: _selectedIndex == 2 ? 35 : 25,
+                      icon: SvgPicture.asset(
+                        Constants.attendence,
+                        colorFilter: ColorFilter.mode(
+                          _selectedIndex == 2
+                              ? Color(ConstsColors.kblue)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+
+                        width: _selectedIndex == 2 ? 35 : 25,
                       ),
                       onPressed: () {
                         setState(() {
@@ -80,14 +111,36 @@ class _NavMainScreenState extends State<NavMainScreen> {
                       },
                     ),
                     IconButton(
-                      icon: Icon(
-                        Icons.account_circle,
-                        color: _selectedIndex == 3 ? Colors.white : Colors.grey,
-                        size: _selectedIndex == 3 ? 35 : 25,
+                      icon: SvgPicture.asset(
+                        Constants.graduation,
+                        colorFilter: ColorFilter.mode(
+                          _selectedIndex == 3
+                              ? Color(ConstsColors.kblue)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        width: _selectedIndex == 3 ? 35 : 25,
                       ),
                       onPressed: () {
                         setState(() {
                           _selectedIndex = 3;
+                        });
+                      },
+                    ),
+                    IconButton(
+                      icon: SvgPicture.asset(
+                        Constants.profile,
+                        colorFilter: ColorFilter.mode(
+                          _selectedIndex == 4
+                              ? Color(ConstsColors.kblue)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        width: _selectedIndex == 4 ? 35 : 25,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _selectedIndex = 4;
                         });
                       },
                     ),

@@ -3,16 +3,16 @@ import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/fonts/fonts.dart';
 import 'package:flutter/material.dart';
 
-class DailyScheduleItem extends StatelessWidget {
-  const DailyScheduleItem({super.key});
+class NotificationItemWidget extends StatelessWidget {
+  const NotificationItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: 110,
+      height: 130,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      margin: const EdgeInsets.only( bottom: 10, left: 5, right: 5),
+      margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
       decoration: ConstContainerDecorations.kContainerDecorationShadow.copyWith(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -20,40 +20,42 @@ class DailyScheduleItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              Constants.classpic,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
+          CircleAvatar(
+            radius: 40,
+            backgroundImage: AssetImage(Constants.classpic),
           ),
           SizedBox(width: 15),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Cyber Security', style: Fonts.boldblackstyle18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('New announcement', style: Fonts.boldblackstyle18),
 
+                    Text('2 hrs ago', style: Fonts.normalgreystyle),
+                  ],
+                ),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Chapter 2: Intro to spark',
-                        style: Fonts.normalgreystyle,
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 12,
-                        color: Colors.grey,
+                        'Advanced Mathematics',
+                        style: Fonts.normalbluestyle14.copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 15,
+                        ),
                       ),
                     ],
                   ),
                 ),
 
-                Text('10:00 AM - 11:00 AM', style: Fonts.normalgreystyle),
+                Text(
+                  'Final project submission link is now live.',
+                  style: Fonts.normalgreystyle,
+                ),
               ],
             ),
           ),

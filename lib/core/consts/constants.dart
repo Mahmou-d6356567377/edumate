@@ -26,4 +26,11 @@ class Constants {
   static const String notificationoff = 'assets/imgs/notification_off.svg';
   static const String notificationon = 'assets/imgs/Notification_on.svg';
   static const String classpic = 'assets/imgs/classpic.png';
+  static const String courses = 'assets/imgs/courses.svg';
+  static const String attendence = 'assets/imgs/attendence.svg';
+  static const String graduation = 'assets/imgs/graduation.svg';
+  static const String ai = 'assets/imgs/AI.svg';
+
+  
+
 }
