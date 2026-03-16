@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/core/models/intro_page_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

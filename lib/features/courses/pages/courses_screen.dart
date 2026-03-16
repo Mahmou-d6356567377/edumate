@@ -1,8 +1,9 @@
 import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/consts/conts_colors.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/conts_colors.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/features/courses/widgets/lecture_mark.dart';
+import 'package:edumate/features/home/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class CoursesScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Courses')),
+      appBar: CustomAppBar(title: 'Courses'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
@@ -48,14 +49,22 @@ class _CoursesScreenState extends State<CoursesScreen> {
                 ),
               ),
             ),
-        
+
             Expanded(
               child: ListView.builder(
                 itemBuilder:
                     (context, index) => Container(
-                      decoration: ConstContainerDecorations.kContainerDecorationShadow,
+                      decoration:
+                          Theme.of(context).brightness == Brightness.light
+                              ? ConstContainerDecorations.whiteshadow(context)
+                              : ConstContainerDecorations.darkmodeshadow(
+                                context,
+                              ),
                       height: 70,
-                      margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 5.0,
+                        vertical: 5,
+                      ),
                       child: ListTile(
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
@@ -69,7 +78,10 @@ class _CoursesScreenState extends State<CoursesScreen> {
                         title: Row(
                           children: [
                             Text('Course ${index + 1}'),
-                            LectureMark(isLab: selected == 2, isLecture: selected == 1),
+                            LectureMark(
+                              isLab: selected == 2,
+                              isLecture: selected == 1,
+                            ),
                           ],
                         ),
                         titleTextStyle: Fonts.boldblackstyle18,

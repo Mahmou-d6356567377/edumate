@@ -1,5 +1,5 @@
 import 'package:edumate/config/routes/routes.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/core/widgets/general_bottom_space.dart';
 import 'package:edumate/core/widgets/large_auth_button.dart';
 import 'package:edumate/core/widgets/otp_pin_field.dart';

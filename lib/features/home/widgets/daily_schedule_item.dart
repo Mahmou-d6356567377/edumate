@@ -1,6 +1,6 @@
 import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
 
 class DailyScheduleItem extends StatelessWidget {
@@ -12,11 +12,11 @@ class DailyScheduleItem extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       height: 110,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      margin: const EdgeInsets.only( bottom: 10, left: 5, right: 5),
-      decoration: ConstContainerDecorations.kContainerDecorationShadow.copyWith(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
+      margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
+      decoration:
+          Theme.of(context).brightness == Brightness.light
+              ? ConstContainerDecorations.whiteshadow(context)
+              : ConstContainerDecorations.darkmodeshadow(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -34,7 +34,14 @@ class DailyScheduleItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Cyber Security', style: Fonts.boldblackstyle18),
+                Text(
+                  'Cyber Security',
+                  style:
+                      Theme.of(context).brightness == Brightness.light
+                          ? Fonts.boldblackstyle18
+                          : Fonts.boldwhitestyle18,
+
+                ),
 
                 Expanded(
                   child: Row(

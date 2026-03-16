@@ -1,6 +1,6 @@
 import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
 
 class NotificationItemWidget extends StatelessWidget {
@@ -13,10 +13,7 @@ class NotificationItemWidget extends StatelessWidget {
       height: 130,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
-      decoration: ConstContainerDecorations.kContainerDecorationShadow.copyWith(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
+      decoration: ConstContainerDecorations.darkmodeshadow(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

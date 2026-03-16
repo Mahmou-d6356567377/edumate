@@ -17,7 +17,7 @@ final void Function()? onTap;
          width: 40,
          height: 40,
          margin: const EdgeInsets.all(10),
-         decoration: ConstContainerDecorations.kContainerDecorationCircle,
+         decoration:Theme.of(context).brightness == Brightness.light ? ConstContainerDecorations.circle(context) : ConstContainerDecorations.circledarkmode(context),
          child: Center(
            child: SvgPicture.asset(imagePath, width: 24, height: 24),
          ),

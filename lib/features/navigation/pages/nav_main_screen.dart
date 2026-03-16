@@ -1,9 +1,11 @@
+import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/consts/conts_colors.dart';
+import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class NavMainScreen extends StatefulWidget {
   const NavMainScreen({super.key});
@@ -38,7 +40,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
             right: 25,
             child: GestureDetector(
               onTap: () {
-                // Handle AI icon tap
+                GoRouter.of(context).push(GoRoutes.aipagePath);
               },
 
               child: SvgPicture.asset(Constants.ai, width: 70, height: 70),
@@ -54,7 +56,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
                 width: deviceWidth * 0.9,
                 height: 70,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color:Theme.of(context).brightness == Brightness.light ? Colors.white : Color(ConstsColors.kdarkbluegray),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Row(

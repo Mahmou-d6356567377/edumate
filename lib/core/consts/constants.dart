@@ -7,9 +7,6 @@ class Constants {
   //fonts
   static const String mainfont = 'Roboto';
 
-
-
-
   //imgs
   static const String logoimgPath = 'assets/imgs/splashimg.png';
   static const String applogo = 'assets/imgs/logo.svg';
@@ -22,7 +19,7 @@ class Constants {
   static const String camera = 'assets/imgs/camera.svg';
   static const String user = 'assets/imgs/user.svg';
   static const String doc = 'assets/imgs/doc.svg';
-  static const String moon = 'assets/imgs/moon.svg';
+  static const String moon = 'assets/imgs/moon1.svg';
   static const String notificationoff = 'assets/imgs/notification_off.svg';
   static const String notificationon = 'assets/imgs/Notification_on.svg';
   static const String classpic = 'assets/imgs/classpic.png';
@@ -30,7 +27,6 @@ class Constants {
   static const String attendence = 'assets/imgs/attendence.svg';
   static const String graduation = 'assets/imgs/graduation.svg';
   static const String ai = 'assets/imgs/AI.svg';
-
-  
-
+  static const String botmsg = 'assets/imgs/botmsg.svg';
+  static const String viewsources = 'assets/imgs/viewsources.svg';
 }

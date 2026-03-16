@@ -1,6 +1,6 @@
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/core/widgets/custom_txt_field2.dart';
 import 'package:edumate/core/widgets/forget_password_text.dart';
 import 'package:edumate/core/widgets/general_bottom_space.dart';

@@ -1,5 +1,5 @@
 import 'package:edumate/core/consts/constants.dart';
-import 'package:edumate/core/consts/conts_colors.dart';
+import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -17,6 +17,25 @@ class Fonts {
     color: Colors.black,
     fontSize: 18,
     fontWeight: FontWeight.bold,
+  );
+
+    static const TextStyle boldwhitestyle18 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Colors.white,
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+
+    static const TextStyle normalblackstyle18 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Colors.black,
+    fontSize: 18,
+  );
+
+      static const TextStyle normalwhitestyle18 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Colors.white,
+    fontSize: 18,
   );
 
   static const TextStyle normalgreystyle = TextStyle(
@@ -41,7 +60,7 @@ class Fonts {
 
     static const TextStyle normalbluestyle14 = TextStyle(
     fontFamily: Constants.mainfont,
-    color: Color(ConstsColors.klightblue),
+    color: Color(ConstsColors.kblue),
     fontSize: 14,
   );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 
 void showTopSnackBar(BuildContext context, String message , Color color) {
   final overlay = Overlay.of(context);

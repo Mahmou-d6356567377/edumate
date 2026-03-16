@@ -8,7 +8,8 @@ import 'package:edumate/features/home/pages/daily_schedule_page.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:edumate/features/home/pages/notification_page.dart';
 import 'package:edumate/features/in/presentation/pages/intro.dart';
-import 'package:edumate/features/navigation/nav_main_screen.dart';
+import 'package:edumate/features/navigation/pages/ai_page.dart';
+import 'package:edumate/features/navigation/pages/nav_main_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class GoRoutes {
@@ -24,6 +25,7 @@ class GoRoutes {
   static const String notificationpagePath = '/notificationpagepath';
   static const String coursesscreenPath = '/coursesscreenpath';
   static const String navimainscreenpath = '/navimainscreenpath';
+  static const String aipagePath = '/aipagepath';
 
   // names
   static const String intro = 'intro';
@@ -37,10 +39,13 @@ class GoRoutes {
   static const String notificationpage = 'notificationpage';
   static const String coursesscreenpage = 'coursesscreenpage';
   static const String navimainscreen = 'navimainscreen';
+    static const String aipage = 'aipage';
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
-      initialLocation: navimainscreenpath,
+      initialLocation: 
+      // navimainscreenpath,
+      aipagePath,
       debugLogDiagnostics: true,
       routes: [
         GoRoute(
@@ -99,6 +104,13 @@ class GoRoutes {
           path: coursesscreenPath,
           name: coursesscreenpage,
           builder: (context, state) => CoursesScreen(),
+          
+        ),
+                 GoRoute(
+          path: aipagePath,
+          name: aipage,
+          builder: (context, state) => AIPage(),
+          
         ),
       ],
     );

@@ -1,5 +1,5 @@
 
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
 
 class RememberMeWidget extends StatefulWidget {

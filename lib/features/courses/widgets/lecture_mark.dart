@@ -1,4 +1,4 @@
-import 'package:edumate/core/consts/conts_colors.dart';
+import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:flutter/material.dart';
 
 class LectureMark extends StatelessWidget {

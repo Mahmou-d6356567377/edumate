@@ -1,4 +1,4 @@
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/features/home/custom_app_bar.dart';
 import 'package:edumate/features/home/widgets/notification_item_widget.dart';
 import 'package:flutter/material.dart';

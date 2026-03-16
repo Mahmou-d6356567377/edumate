@@ -1,6 +1,6 @@
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/const_container_decorations.dart';
-import 'package:edumate/core/fonts/fonts.dart';
+import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/features/home/widgets/daily_schedule_item.dart';
 import 'package:edumate/features/home/widgets/home_calendar.dart';
 import 'package:edumate/features/home/widgets/home_screen_header.dart';
@@ -23,38 +23,58 @@ class HomeScreen extends StatelessWidget {
               child: CustomScrollView(
                 shrinkWrap: true,
                 slivers: [
-              
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Container(
                         decoration:
-                            ConstContainerDecorations.kContainerDecorationShadow,
+                            Theme.of(context).brightness == Brightness.light
+                                ? ConstContainerDecorations.whiteshadow(context)
+                                : ConstContainerDecorations.darkmodeshadow(
+                                  context,
+                                ),
                         child: HomeCalendar(),
                       ),
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                        horizontal: 5,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Daily Schedule', style: Fonts.boldblackstyle18),
+                          Text(
+                            'Daily Schedule',
+                            style:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? Fonts.boldblackstyle18
+                                    : Fonts.boldwhitestyle18,
+                          ),
                           GestureDetector(
                             onTap: () {
-                              GoRouter.of(context).push(GoRoutes.schedulescreenPath);
+                              GoRouter.of(
+                                context,
+                              ).push(GoRoutes.schedulescreenPath);
                             },
-                            child: Text('View all', style: Fonts.normalbluestyle14)),
+                            child: Text(
+                              'View all',
+                              style: Fonts.normalbluestyle14,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SliverList.builder(itemBuilder:   (context, index) => DailyScheduleItem(), itemCount: 10),
+                  SliverList.builder(
+                    itemBuilder: (context, index) => DailyScheduleItem(),
+                    itemCount: 10,
+                  ),
                 ],
               ),
             ),
-
           ],
         ),
       ),
