@@ -29,4 +29,6 @@ class Constants {
   static const String ai = 'assets/imgs/AI.svg';
   static const String botmsg = 'assets/imgs/botmsg.svg';
   static const String viewsources = 'assets/imgs/viewsources.svg';
+  static const String newchat = 'assets/imgs/newchat.svg';
+  static const String sourceicon = 'assets/imgs/sourceicon.svg';
 }
