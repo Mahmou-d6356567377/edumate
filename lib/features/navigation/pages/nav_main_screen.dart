@@ -1,11 +1,13 @@
-import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
+import 'package:edumate/features/attendence/pages/qr_scanner.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
+import 'package:edumate/features/courses/widgets/ai_floating_action_button.dart';
+import 'package:edumate/features/graduation/pages/graduation_screen.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
+import 'package:edumate/features/profile/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 class NavMainScreen extends StatefulWidget {
   const NavMainScreen({super.key});
@@ -21,7 +23,9 @@ class _NavMainScreenState extends State<NavMainScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     CoursesScreen(),
-    Center(child: Text('Favorites Screen')),
+    QRScannerScreen(),
+    GraduationScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -35,17 +39,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
           // Display the selected screen
           _screens[_selectedIndex],
 
-          Positioned(
-            bottom: 100,
-            right: 25,
-            child: GestureDetector(
-              onTap: () {
-                GoRouter.of(context).push(GoRoutes.aipagePath);
-              },
-
-              child: SvgPicture.asset(Constants.ai, width: 70, height: 70),
-            ),
-          ),
+          AIFloatingActionButton(),
           // Custom Bottom Navigation Bar
           Positioned(
             bottom: 30,
@@ -56,7 +50,10 @@ class _NavMainScreenState extends State<NavMainScreen> {
                 width: deviceWidth * 0.9,
                 height: 70,
                 decoration: BoxDecoration(
-                  color:Theme.of(context).brightness == Brightness.light ? Colors.white : Color(ConstsColors.kdarkbluegray),
+                  color:
+                      Theme.of(context).brightness == Brightness.light
+                          ? Colors.white
+                          : Color(ConstsColors.kdarkbluegray),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Row(

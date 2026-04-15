@@ -31,4 +31,22 @@ class Constants {
   static const String viewsources = 'assets/imgs/viewsources.svg';
   static const String newchat = 'assets/imgs/newchat.svg';
   static const String sourceicon = 'assets/imgs/sourceicon.svg';
+  static const String classpic1 = 'assets/imgs/classpic1.png';
+  static const String downloadicon = 'assets/imgs/download.svg';
+  static const String approvalmark = 'assets/imgs/approvalmark.svg';
+  static const String addsources = 'assets/imgs/addsources.svg';
+  static const String addfile = 'assets/imgs/addfile.svg';
+  static const String addpic = 'assets/imgs/addpic.svg';
+  static const String adddrive = 'assets/imgs/adddrive.svg';
+  static const String sendicon = 'assets/imgs/sendicon.svg';
+  static const String person = 'assets/imgs/person.png';
+  static const String stream = 'assets/imgs/stream.svg';
+  static const String classwork = 'assets/imgs/classwork.svg';
+  static const String users = 'assets/imgs/users.svg';
+  static const String material = 'assets/imgs/material.svg';
+  static const String asseignment = 'assets/imgs/assignment.svg';
+  static const String file = 'assets/imgs/file.svg';
+  static const String checkicon = 'assets/imgs/checkicon.svg';
+  static const String erroricon = 'assets/imgs/erroricon.svg';
+  
 }

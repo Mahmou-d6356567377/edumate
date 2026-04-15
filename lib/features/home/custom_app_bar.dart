@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-
-
-  const CustomAppBar({
-    super.key,
-    required this.title,
-
-  });
+  final bool isBack ;
+ final List<Widget>? actions;
+  const CustomAppBar({super.key, required this.title,  this.isBack = true, this.actions });
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +15,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 color: Color(0xff3572EF),
               ),
               onPressed: () {
-                Navigator.pop(context);
+               isBack ? Navigator.pop(context) : null;
               },
             ),
       title: Text(title),
+      actions: [],
     );
   }
 

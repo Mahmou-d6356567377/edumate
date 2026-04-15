@@ -13,8 +13,7 @@ class ViewSourcesWidget extends StatelessWidget {
       onTap: () {
         showAboutDialog(
           context: context,
-          applicationName: 'Sources',
-          applicationVersion: '1.0',
+
           children: [
             ListTile(
               leading: SvgPicture.asset(
@@ -24,6 +23,10 @@ class ViewSourcesWidget extends StatelessWidget {
               ),
               title: Text('Source 1', style: Fonts.normalblackstyle18),
               subtitle: Text('www.example.com', style: Fonts.normalgreystyle),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Color(ConstsColors.kblue),
+              ),
             ),
             ListTile(
               leading: SvgPicture.asset(
@@ -32,7 +35,11 @@ class ViewSourcesWidget extends StatelessWidget {
                 height: 30,
               ),
               title: Text('Source 2', style: Fonts.normalblackstyle18),
-              subtitle: Text('www.example.com', style: Fonts.normalgreystyle),
+              subtitle: Text('Page 4 • Definition', style: Fonts.normalgreystyle),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Color(ConstsColors.kblue),
+              ),
             ),
           ],
         );

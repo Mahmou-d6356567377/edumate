@@ -3,7 +3,10 @@ import 'package:edumate/features/auth/presentation/pages/login.dart';
 import 'package:edumate/features/auth/presentation/pages/reset_password.dart';
 import 'package:edumate/features/auth/presentation/pages/signup.dart';
 import 'package:edumate/features/auth/presentation/pages/verification_page.dart';
+import 'package:edumate/features/courses/pages/assignment_details_page.dart';
+import 'package:edumate/features/courses/pages/comments_page.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
+import 'package:edumate/features/courses/pages/subject_page.dart';
 import 'package:edumate/features/home/pages/daily_schedule_page.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:edumate/features/home/pages/notification_page.dart';
@@ -26,6 +29,9 @@ class GoRoutes {
   static const String coursesscreenPath = '/coursesscreenpath';
   static const String navimainscreenpath = '/navimainscreenpath';
   static const String aipagePath = '/aipagepath';
+  static const String subjectpagePath = '/subjectpagepath';
+  static const String commentpagePath = '/commentpagepath';
+  static const String assignmentdetailspagePath = '/assignmentdetailspagepath';
 
   // names
   static const String intro = 'intro';
@@ -39,13 +45,17 @@ class GoRoutes {
   static const String notificationpage = 'notificationpage';
   static const String coursesscreenpage = 'coursesscreenpage';
   static const String navimainscreen = 'navimainscreen';
-    static const String aipage = 'aipage';
+  static const String aipage = 'aipage';
+  static const String subjectpage = 'subjectpage';
+  static const String commentpage = 'commentpage';
+  static const String assignmentdetailspage = 'assignmentdetailspage';
+  
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
-      initialLocation: 
-      // navimainscreenpath,
-      aipagePath,
+      initialLocation: navimainscreenpath,
+      //subjectpagePath,
+      // aipagePath,
       debugLogDiagnostics: true,
       routes: [
         GoRoute(
@@ -80,7 +90,7 @@ class GoRoutes {
           name: resetPassword,
           builder: (context, state) => ResetPassword(),
         ),
-                GoRoute(
+        GoRoute(
           path: navimainscreenpath,
           name: navimainscreen,
           builder: (context, state) => NavMainScreen(),
@@ -95,22 +105,35 @@ class GoRoutes {
           name: schedulescreen,
           builder: (context, state) => DailySchedulePage(),
         ),
-         GoRoute(
+        GoRoute(
           path: notificationpagePath,
           name: notificationpage,
           builder: (context, state) => NotificationPage(),
         ),
-         GoRoute(
+        GoRoute(
           path: coursesscreenPath,
           name: coursesscreenpage,
           builder: (context, state) => CoursesScreen(),
-          
         ),
-                 GoRoute(
+        GoRoute(
           path: aipagePath,
           name: aipage,
           builder: (context, state) => AIPage(),
-          
+        ),
+         GoRoute(
+          path: subjectpagePath,
+          name: subjectpage,
+          builder: (context, state) => SubjectPage(),
+        ),
+                 GoRoute(
+          path: commentpagePath,
+          name: commentpage,
+          builder: (context, state) => CommentsPage(),
+        ),
+            GoRoute(
+          path: assignmentdetailspagePath,
+          name: assignmentdetailspage,
+          builder: (context, state) => AssignmentDetailsPage(),
         ),
       ],
     );
