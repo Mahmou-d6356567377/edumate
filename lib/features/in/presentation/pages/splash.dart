@@ -20,7 +20,7 @@ void initState() {
 }
 
 Future<void> _navigate() async {
-  await Future.delayed(const Duration(seconds: 1));
+  await Future.delayed(const Duration(seconds: 0));
 
   if (!mounted) return; // 🔥 prevents crash
 

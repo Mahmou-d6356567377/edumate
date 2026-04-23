@@ -42,13 +42,13 @@ class _NavMainScreenState extends State<NavMainScreen> {
           AIFloatingActionButton(),
           // Custom Bottom Navigation Bar
           Positioned(
-            bottom: 30,
+            bottom: 23,
             left: 0,
             right: 0,
             child: Center(
               child: Container(
                 width: deviceWidth * 0.9,
-                height: 70,
+                height: 72,
                 decoration: BoxDecoration(
                   color:
                       Theme.of(context).brightness == Brightness.light
@@ -59,89 +59,165 @@ class _NavMainScreenState extends State<NavMainScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.home,
-                        color:
-                            _selectedIndex == 0
-                                ? Color(ConstsColors.kblue)
-                                : Colors.grey,
-                        size: _selectedIndex == 0 ? 35 : 25,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 0;
-                        });
-                      },
-                    ),
-                    IconButton(
-                      icon: SvgPicture.asset(
-                        Constants.courses,
-                        colorFilter: ColorFilter.mode(
-                          _selectedIndex == 1
-                              ? Color(ConstsColors.kblue)
-                              : Colors.grey,
-                          BlendMode.srcIn,
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.home,
+                            color:
+                                _selectedIndex == 0
+                                    ? Color(ConstsColors.kblue)
+                                    : Colors.grey,
+                            size: _selectedIndex == 0 ? 34 : 24,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 0;
+                            });
+                          },
                         ),
-                        width: _selectedIndex == 1 ? 35 : 25,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 1;
-                        });
-                      },
+                        SizedBox(height: 4),
+                        Text(
+                          'Home',
+                          style: TextStyle(
+                            color:
+                                _selectedIndex == 0
+                                    ? Color(ConstsColors.kblue)
+                                    : Color(ConstsColors.kgray),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
-                    IconButton(
-                      icon: SvgPicture.asset(
-                        Constants.attendence,
-                        colorFilter: ColorFilter.mode(
-                          _selectedIndex == 2
-                              ? Color(ConstsColors.kblue)
-                              : Colors.grey,
-                          BlendMode.srcIn,
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            Constants.courses,
+                            colorFilter: ColorFilter.mode(
+                              _selectedIndex == 1
+                                  ? Color(ConstsColors.kblue)
+                                  : Colors.grey,
+                              BlendMode.srcIn,
+                            ),
+                            width: _selectedIndex == 1 ? 34 : 24,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 1;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Courses',
+                          style: TextStyle(
+                            color:
+                                _selectedIndex == 1
+                                    ? Color(ConstsColors.kblue)
+                                    : Color(ConstsColors.kgray),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            Constants.attendence,
+                            colorFilter: ColorFilter.mode(
+                              _selectedIndex == 2
+                                  ? Color(ConstsColors.kblue)
+                                  : Colors.grey,
+                              BlendMode.srcIn,
+                            ),
+                        
+                            width: _selectedIndex == 2 ? 34 : 24,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 2;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Attendence',
+                          style: TextStyle(
+                            color:
+                                _selectedIndex == 2
+                                    ? Color(ConstsColors.kblue)
+                                    : Color(ConstsColors.kgray),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            Constants.graduation,
+                            colorFilter: ColorFilter.mode(
+                              _selectedIndex == 3
+                                  ? Color(ConstsColors.kblue)
+                                  : Colors.grey,
+                              BlendMode.srcIn,
+                            ),
+                            width: _selectedIndex == 3 ? 34 : 24,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 3;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Graduation',
+                          style: TextStyle(
+                            color:
+                                _selectedIndex == 3
+                                    ? Color(ConstsColors.kblue)
+                                    : Color(ConstsColors.kgray),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            Constants.profile,
+                            colorFilter: ColorFilter.mode(
+                              _selectedIndex == 4
+                                  ? Color(ConstsColors.kblue)
+                                  : Colors.grey,
+                              BlendMode.srcIn,
+                            ),
+                            width: _selectedIndex == 4 ? 35 : 25,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _selectedIndex = 4;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Profile',
+                          style: TextStyle(
+                            color:
+                                _selectedIndex == 4
+                                    ? Color(ConstsColors.kblue)
+                                    : Color(ConstsColors.kgray),
+                            fontSize: 12,
+                          ),
                         ),
 
-                        width: _selectedIndex == 2 ? 35 : 25,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 2;
-                        });
-                      },
-                    ),
-                    IconButton(
-                      icon: SvgPicture.asset(
-                        Constants.graduation,
-                        colorFilter: ColorFilter.mode(
-                          _selectedIndex == 3
-                              ? Color(ConstsColors.kblue)
-                              : Colors.grey,
-                          BlendMode.srcIn,
-                        ),
-                        width: _selectedIndex == 3 ? 35 : 25,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 3;
-                        });
-                      },
-                    ),
-                    IconButton(
-                      icon: SvgPicture.asset(
-                        Constants.profile,
-                        colorFilter: ColorFilter.mode(
-                          _selectedIndex == 4
-                              ? Color(ConstsColors.kblue)
-                              : Colors.grey,
-                          BlendMode.srcIn,
-                        ),
-                        width: _selectedIndex == 4 ? 35 : 25,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _selectedIndex = 4;
-                        });
-                      },
+                      ],
                     ),
                   ],
                 ),
