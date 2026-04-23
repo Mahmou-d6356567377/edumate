@@ -46,7 +46,9 @@ class SubjectItemWidget extends StatelessWidget {
           ),
           title: Row(
             children: [
-              Text('Course 1'),
+              Text('Course 1', style: Theme.of(context).brightness == Brightness.light
+                  ? Fonts.boldblackstyle18
+                  : Fonts.boldwhitestyle18),
               LectureMark(
                 isLab: selected == 2,
                 isLecture: selected == 1,
@@ -55,7 +57,7 @@ class SubjectItemWidget extends StatelessWidget {
           ),
           titleTextStyle: Fonts.boldblackstyle18,
           subtitle: Text('Course description goes here'),
-          subtitleTextStyle: Fonts.normalgreystyle,
+          subtitleTextStyle: Fonts.normalgreystyle16,
           trailing: Icon(Icons.arrow_forward_ios, size: 16),
         ),
       ),

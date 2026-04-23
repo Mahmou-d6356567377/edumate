@@ -87,11 +87,11 @@ class _VerificationPageState extends State<VerificationPage> {
                     children: [
                       TextSpan(
                         text: 'We sent you a verification code to your email ',
-                        style: Fonts.normalgreystyle,
+                        style: Fonts.normalgreystyle16,
                       ),
                       TextSpan(
                         text: widget.emailcontroller,
-                        style: Fonts.normalgreystyle.copyWith(
+                        style: Fonts.normalgreystyle16.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

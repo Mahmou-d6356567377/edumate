@@ -2,6 +2,7 @@ import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DailyScheduleItem extends StatelessWidget {
   const DailyScheduleItem({super.key});
@@ -10,9 +11,9 @@ class DailyScheduleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: 110,
+      height: 90,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
+      margin: const EdgeInsets.only(bottom: 12, left: 5, right: 5),
       decoration:
           Theme.of(context).brightness == Brightness.light
               ? ConstContainerDecorations.whiteshadow(context)
@@ -21,15 +22,15 @@ class DailyScheduleItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(8),
             child: Image.asset(
               Constants.classpic,
-              width: 80,
-              height: 80,
+              width: 72,
+              height: 72,
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 15),
+          SizedBox(width: 8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,8 +39,8 @@ class DailyScheduleItem extends StatelessWidget {
                   'Cyber Security',
                   style:
                       Theme.of(context).brightness == Brightness.light
-                          ? Fonts.boldblackstyle18
-                          : Fonts.boldwhitestyle18,
+                          ? Fonts.boldblackstyle16
+                          : Fonts.boldwhitestyle16,
 
                 ),
 
@@ -49,7 +50,7 @@ class DailyScheduleItem extends StatelessWidget {
                     children: [
                       Text(
                         'Chapter 2: Intro to spark',
-                        style: Fonts.normalgreystyle,
+                        style: Fonts.normalgreystyle14,
                       ),
                       Icon(
                         Icons.arrow_forward_ios,
@@ -60,7 +61,14 @@ class DailyScheduleItem extends StatelessWidget {
                   ),
                 ),
 
-                Text('10:00 AM - 11:00 AM', style: Fonts.normalgreystyle),
+                Row(
+                  children: [
+                    SvgPicture.asset(Constants.clock),
+
+                    Text(' 10:00 AM - 11:00 AM ', style: Fonts.normalgreystyle12),
+                    Text('Amphitheatre2', style: Fonts.normalbluestyle12),
+                  ],
+                ),
               ],
             ),
           ),

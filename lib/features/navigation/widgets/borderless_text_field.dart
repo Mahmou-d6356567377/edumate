@@ -16,7 +16,7 @@ class CustomBorderlessTextField extends StatelessWidget {
       controller: _controller,
       decoration: InputDecoration(
         hintText: 'Ask about your lectures...',
-        hintStyle: Fonts.normalgreystyle,
+        hintStyle: Fonts.normalgreystyle16,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,

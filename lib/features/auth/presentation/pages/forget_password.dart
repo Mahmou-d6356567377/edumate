@@ -70,7 +70,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
               child: Text(
                 'Fill in your email and we’ll send a code to rest your password.',
-                style: Fonts.normalgreystyle,
+                style: Fonts.normalgreystyle16,
               ),
             ),
 

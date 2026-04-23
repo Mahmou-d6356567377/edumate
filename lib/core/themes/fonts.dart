@@ -8,8 +8,16 @@ class Fonts {
 
   static const TextStyle headingStyle = TextStyle(
     fontFamily: Constants.mainfont,
-    fontSize: 24,
+    fontSize: 18,
+    color: Color(ConstsColors.kbluefont),
     fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle headingStyleDark = TextStyle(
+    fontFamily: Constants.mainfont,
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Color(ConstsColors.kwhite),
   );
 
   static const TextStyle boldblackstyle18 = TextStyle(
@@ -19,18 +27,24 @@ class Fonts {
     fontWeight: FontWeight.bold,
   );
 
-    static const TextStyle boldblackstyle16 = TextStyle(
+  static const TextStyle boldblackstyle16 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Colors.black,
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
 
-
   static const TextStyle boldwhitestyle18 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Colors.white,
     fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+
+    static const TextStyle boldwhitestyle16 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Colors.white,
+    fontSize: 16,
     fontWeight: FontWeight.bold,
   );
 
@@ -40,7 +54,7 @@ class Fonts {
     fontSize: 18,
   );
 
-    static const TextStyle normalblackstyle14 = TextStyle(
+  static const TextStyle normalblackstyle14 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Colors.black,
     fontSize: 14,
@@ -52,21 +66,26 @@ class Fonts {
     fontSize: 18,
   );
 
-    static const TextStyle normalwhitestyle14 = TextStyle(
+  static const TextStyle normalwhitestyle14 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Colors.white,
     fontSize: 14,
   );
 
-    static const TextStyle normalgreystyle14 = TextStyle(
+  static const TextStyle normalgreystyle14 = TextStyle(
     fontFamily: Constants.mainfont,
-    color: Color(ConstsColors.kdarkgray),
+    color: Color(ConstsColors.kgray),
     fontSize: 14,
   );
-
-  static const TextStyle normalgreystyle = TextStyle(
+    static const TextStyle normalgreystyle12 = TextStyle(
     fontFamily: Constants.mainfont,
-    color: Color(ConstsColors.kdarkgray),
+    color: Color(ConstsColors.kgray),
+    fontSize: 12,
+  );
+
+  static const TextStyle normalgreystyle16 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Color(ConstsColors.kgray),
     fontSize: 16,
   );
 
@@ -88,6 +107,12 @@ class Fonts {
     fontFamily: Constants.mainfont,
     color: Color(ConstsColors.kblue),
     fontSize: 14,
+  );
+
+    static const TextStyle normalbluestyle12 = TextStyle(
+    fontFamily: Constants.mainfont,
+    color: Color(ConstsColors.kblue),
+    fontSize: 12,
   );
 
   static const TextStyle normalredstyle14 = TextStyle(

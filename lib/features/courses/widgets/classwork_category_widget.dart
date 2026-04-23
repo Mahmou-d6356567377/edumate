@@ -36,7 +36,7 @@ class ClassworkCategoryWidget extends StatelessWidget {
                         ? Fonts.normalblackstyle18
                         : Fonts.normalwhitestyle18,
               ),
-              Text('$itemno items', style: Fonts.normalgreystyle),
+              Text('$itemno items', style: Fonts.normalgreystyle16),
             ],
           ),
         ),

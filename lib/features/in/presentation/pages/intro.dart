@@ -77,7 +77,7 @@ class _IntroPagesState extends State<IntroPages> {
                     child: Text(
                       page.body,
                       textAlign: TextAlign.center,
-                      style: Fonts.normalgreystyle,
+                      style: Fonts.normalgreystyle16,
                     ),
                   ),
                 ],

@@ -28,7 +28,7 @@ class NotificationPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Recent', style: Fonts.normalgreystyle),
+                          Text('Recent', style: Fonts.normalgreystyle16),
                           GestureDetector(
                             onTap: () {},
                             child: Text(

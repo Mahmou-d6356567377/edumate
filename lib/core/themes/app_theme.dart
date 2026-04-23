@@ -1,7 +1,7 @@
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme {
+class AppTheme {//#F7F9FD
   // Light theme
   static final lightTheme = ThemeData(
     brightness: Brightness.light,

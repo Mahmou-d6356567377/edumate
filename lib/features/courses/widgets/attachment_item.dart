@@ -36,7 +36,7 @@ class AttachmentItem extends StatelessWidget {
                 Fonts.normalblackstyle14 : Fonts.normalwhitestyle14,
           ),
     
-          Text('PDF • 4.5 MB',style: Fonts.normalgreystyle,),
+          Text('PDF • 4.5 MB',style: Fonts.normalgreystyle16,),
           
           ElevatedButton(onPressed: (){}, 
           style: ElevatedButton.styleFrom(
@@ -46,7 +46,7 @@ class AttachmentItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
             Icon(Icons.download, color: Colors.grey,),
-            Text('Download', style: Fonts.normalgreystyle,),
+            Text('Download', style: Fonts.normalgreystyle16,),
           ],))
         ],
       ),

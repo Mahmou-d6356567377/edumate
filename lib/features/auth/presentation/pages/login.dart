@@ -32,7 +32,7 @@ class Login extends StatelessWidget {
             ),
             Text(
               'Please Login To continue Using Our App ',
-              style: Fonts.normalgreystyle,
+              style: Fonts.normalgreystyle16,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: height * 0.04),
@@ -62,7 +62,7 @@ class Login extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Don’t have an account ? ', style: Fonts.normalgreystyle),
+                Text('Don’t have an account ? ', style: Fonts.normalgreystyle16),
                 TextButton(
                   onPressed: () {
                     GoRouter.of(context).push(GoRoutes.signupPath);

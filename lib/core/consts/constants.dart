@@ -48,5 +48,6 @@ class Constants {
   static const String file = 'assets/imgs/file.svg';
   static const String checkicon = 'assets/imgs/checkicon.svg';
   static const String erroricon = 'assets/imgs/erroricon.svg';
+  static const String clock = 'assets/imgs/clock.svg';
   
 }

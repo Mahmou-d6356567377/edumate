@@ -31,7 +31,7 @@ class NotificationItemWidget extends StatelessWidget {
                   children: [
                     Text('New announcement', style: Fonts.boldblackstyle18),
 
-                    Text('2 hrs ago', style: Fonts.normalgreystyle),
+                    Text('2 hrs ago', style: Fonts.normalgreystyle16),
                   ],
                 ),
                 Expanded(
@@ -51,7 +51,7 @@ class NotificationItemWidget extends StatelessWidget {
 
                 Text(
                   'Final project submission link is now live.',
-                  style: Fonts.normalgreystyle,
+                  style: Fonts.normalgreystyle16,
                 ),
               ],
             ),

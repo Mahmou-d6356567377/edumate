@@ -14,12 +14,12 @@ final void Function()? onTap;
       onTap:onTap, 
 
       child: Container(
-         width: 40,
-         height: 40,
-         margin: const EdgeInsets.all(10),
+         width: 24,
+         height: 24,
+         margin: const EdgeInsets.all(8),
          decoration:Theme.of(context).brightness == Brightness.light ? ConstContainerDecorations.circle(context) : ConstContainerDecorations.circledarkmode(context),
          child: Center(
-           child: SvgPicture.asset(imagePath, width: 24, height: 24),
+           child: SvgPicture.asset(imagePath, width: 20, height: 20),
          ),
        ),
     );

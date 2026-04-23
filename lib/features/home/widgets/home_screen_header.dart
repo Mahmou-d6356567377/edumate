@@ -5,7 +5,6 @@ import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/features/home/widgets/custom_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreenHeader extends ConsumerWidget {
@@ -19,29 +18,36 @@ class HomeScreenHeader extends ConsumerWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Welcome', style: Fonts.normalgreystyle),
-            Text('${username}! 👋', style: Fonts.headingStyle),
+            Text('Welcome', style: Fonts.normalgreystyle16),
+            Text(
+              '${username}! 👋',
+              style:
+                  Theme.of(context).brightness == Brightness.light
+                      ? Fonts.headingStyle
+                      : Fonts.headingStyleDark,
+            ),
           ],
         ),
         Row(
           children: [
+             CustomCircleAvatar(
+              imagePath: Constants.moon,
+              onTap: () {
+                if (ThemeMode.dark == ref.watch(themeProvider)) {
+                  ref.read(themeProvider.notifier).toggleTheme(ThemeMode.light);
+                } else {
+                  ref.read(themeProvider.notifier).toggleTheme(ThemeMode.dark);
+                }
+              },
+            ),
             CustomCircleAvatar(
-              imagePath: Constants.notificationon,
+              imagePath: Constants.notificationoff,
               onTap: () {
                 GoRouter.of(context).push(GoRoutes.notificationpagePath);
               },
             ),
-
-            CustomCircleAvatar(
-              imagePath: Constants.moon,
-              onTap: () {
-                 if(ThemeMode.dark == ref.watch(themeProvider)){
-                  ref.read(themeProvider.notifier).toggleTheme(ThemeMode.light);
-                } else {
-                   ref.read(themeProvider.notifier).toggleTheme(ThemeMode.dark);
-                }
-              },
-            ),
+    
+           
           ],
         ),
       ],

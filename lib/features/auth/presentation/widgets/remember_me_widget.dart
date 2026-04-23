@@ -33,7 +33,7 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
         ),
         Text(
           'Forgot Password?',
-          style: Fonts.normalgreystyle,
+          style: Fonts.normalgreystyle16,
         ),
       ],
     );

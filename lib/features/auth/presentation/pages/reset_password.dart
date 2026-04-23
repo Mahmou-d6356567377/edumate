@@ -75,7 +75,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               ),
               child: Text(
                 'Fill in your email and we’ll send a code to rest your password.',
-                style: Fonts.normalgreystyle,
+                style: Fonts.normalgreystyle16,
               ),
             ),
 

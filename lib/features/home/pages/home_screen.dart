@@ -1,6 +1,5 @@
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/const_container_decorations.dart';
-import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/features/home/widgets/daily_schedule_item.dart';
 import 'package:edumate/features/home/widgets/double_texted_row_widget.dart';
 import 'package:edumate/features/home/widgets/home_calendar.dart';

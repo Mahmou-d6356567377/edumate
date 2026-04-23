@@ -9,7 +9,7 @@ class ConstContainerDecorations {
       color: Colors.white,
       boxShadow: [
         BoxShadow(
-          color: Colors.grey,
+          color: Color(ConstsColors.kwhiteshadow),
           spreadRadius: 1,
           blurRadius: 2,
           offset: Offset(0, 3),
@@ -37,11 +37,11 @@ class ConstContainerDecorations {
   static BoxDecoration whiteshadow(BuildContext context) {
     return BoxDecoration(
       shape: BoxShape.rectangle,
-      borderRadius: BorderRadius.circular(9),
+      borderRadius: BorderRadius.circular(25),
       color: Colors.white,
       boxShadow: [
         BoxShadow(
-          color: Colors.grey,
+          color: Color(ConstsColors.kwhiteshadow),
           spreadRadius: 1,
           blurRadius: 2,
           offset: Offset(0, 3),

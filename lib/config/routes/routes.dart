@@ -11,6 +11,7 @@ import 'package:edumate/features/home/pages/daily_schedule_page.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:edumate/features/home/pages/notification_page.dart';
 import 'package:edumate/features/in/presentation/pages/intro.dart';
+import 'package:edumate/features/in/presentation/pages/splash.dart';
 import 'package:edumate/features/navigation/pages/ai_page.dart';
 import 'package:edumate/features/navigation/pages/nav_main_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -32,6 +33,7 @@ class GoRoutes {
   static const String subjectpagePath = '/subjectpagepath';
   static const String commentpagePath = '/commentpagepath';
   static const String assignmentdetailspagePath = '/assignmentdetailspagepath';
+  static const String splashscreenPath = '/splashscreenpath';
 
   // names
   static const String intro = 'intro';
@@ -49,15 +51,21 @@ class GoRoutes {
   static const String subjectpage = 'subjectpage';
   static const String commentpage = 'commentpage';
   static const String assignmentdetailspage = 'assignmentdetailspage';
+  static const String splashscreen = 'splashscreen';
   
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
-      initialLocation: navimainscreenpath,
+      initialLocation: splashscreenPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
       routes: [
+          GoRoute(
+          path: splashscreenPath,
+          name: splashscreen,
+          builder: (context, state) => SplashScreen(),
+        ),
         GoRoute(
           path: introPath,
           name: intro,

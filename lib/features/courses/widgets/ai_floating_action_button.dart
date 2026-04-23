@@ -20,7 +20,7 @@ class AIFloatingActionButton extends StatelessWidget {
           GoRouter.of(context).push(GoRoutes.aipagePath);
         },
     
-        child: SvgPicture.asset(Constants.ai, width: 70, height: 70),
+        child: SvgPicture.asset(Constants.ai, width: 44, height: 44),
       ),
     );
   }

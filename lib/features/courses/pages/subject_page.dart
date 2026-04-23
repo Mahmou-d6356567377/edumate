@@ -83,7 +83,7 @@ class _SubjectPageState extends State<SubjectPage> {
                               style:
                                   _selectedIndex == 0
                                       ? Fonts.normalbluestyle14
-                                      : Fonts.normalgreystyle,
+                                      : Fonts.normalgreystyle16,
                             ),
                           ],
                         ),
@@ -113,7 +113,7 @@ class _SubjectPageState extends State<SubjectPage> {
                               style:
                                   _selectedIndex == 1
                                       ? Fonts.normalbluestyle14
-                                      : Fonts.normalgreystyle,
+                                      : Fonts.normalgreystyle16,
                             ),
                           ],
                         ),
@@ -143,7 +143,7 @@ class _SubjectPageState extends State<SubjectPage> {
                               style:
                                   _selectedIndex == 2
                                       ? Fonts.normalbluestyle14
-                                      : Fonts.normalgreystyle,
+                                      : Fonts.normalgreystyle16,
                             ),
                           ],
                         ),

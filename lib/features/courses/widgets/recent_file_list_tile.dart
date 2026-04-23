@@ -16,7 +16,7 @@ class RecentFileListTile extends StatelessWidget {
 
           child: SvgPicture.asset(Constants.sourceicon, width: 40, height: 40),
         ),
-        subtitle: Text('www.example.com', style: Fonts.normalgreystyle),
+        subtitle: Text('www.example.com', style: Fonts.normalgreystyle16),
         title: Text(
           'Source 1',
           style:

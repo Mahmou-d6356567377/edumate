@@ -34,7 +34,7 @@ TextEditingController passwordcontroller = TextEditingController();
             ),
             Text(
               'Please fill the details and create account  ',
-              style: Fonts.normalgreystyle,
+              style: Fonts.normalgreystyle16,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: height * 0.04),
@@ -55,7 +55,7 @@ TextEditingController passwordcontroller = TextEditingController();
               children: [
                 Text(
                   'Already have an account? ',
-                  style: Fonts.normalgreystyle,
+                  style: Fonts.normalgreystyle16,
                 ),
                 TextButton(
                   onPressed: () {

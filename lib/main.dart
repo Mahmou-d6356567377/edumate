@@ -3,14 +3,12 @@ import 'package:edumate/core/themes/app_theme.dart';
 import 'package:edumate/core/themes/controller/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // Initialize Hive
   await Hive.initFlutter();
@@ -36,15 +34,6 @@ class MyApp extends ConsumerStatefulWidget  {
 
 class _MyAppState extends ConsumerState<MyApp> {
 
-
-  @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      FlutterNativeSplash.remove();
-    });
-  }
 
   @override
   Widget build(BuildContext context,) {
