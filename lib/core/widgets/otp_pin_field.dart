@@ -6,9 +6,14 @@ import 'package:pinput/pinput.dart';
 import 'package:smart_auth/smart_auth.dart';
 
 class OtpPinPutField extends StatefulWidget {
-  const OtpPinPutField({super.key, required this.formKey, required this.pinController, required this.focusNode,});
-   final TextEditingController pinController;
-final FocusNode focusNode;
+  const OtpPinPutField({
+    super.key,
+    required this.formKey,
+    required this.pinController,
+    required this.focusNode,
+  });
+  final TextEditingController pinController;
+  final FocusNode focusNode;
   final GlobalKey<FormState> formKey;
   @override
   State<OtpPinPutField> createState() => _OtpPinPutFieldState();
@@ -16,7 +21,6 @@ final FocusNode focusNode;
 
 class _OtpPinPutFieldState extends State<OtpPinPutField> {
   late final SmsRetriever smsRetriever;
-
 
   @override
   void initState() {
@@ -26,7 +30,6 @@ class _OtpPinPutFieldState extends State<OtpPinPutField> {
     if (kIsWeb) {
       BrowserContextMenu.disableContextMenu();
     }
-
 
     /// In case you need an SMS autofill feature
     smsRetriever = SmsRetrieverImpl(SmartAuth.instance);
@@ -76,21 +79,13 @@ class _OtpPinPutFieldState extends State<OtpPinPutField> {
             focusNode: widget.focusNode,
             defaultPinTheme: defaultPinTheme,
             separatorBuilder: (index) => const SizedBox(width: 8),
-    
-    
-    
-    
-             //! Validation -> next move 
-            // Here we are checking if the pin is '222222' for example purpose
+
             validator: (value) {
-              return value == '222222' ? null : 'Pin is incorrect';
+              return (value != null && value.length == 6)
+                  ? null
+                  : 'Enter the 6-digit code';
             },
-    
-    
-    
-    
-    
-    
+
             hapticFeedbackType: HapticFeedbackType.lightImpact,
             onCompleted: (pin) {
               debugPrint('onCompleted: $pin');
@@ -127,7 +122,6 @@ class _OtpPinPutFieldState extends State<OtpPinPutField> {
             ),
           ),
         ),
-      
       ],
     );
   }

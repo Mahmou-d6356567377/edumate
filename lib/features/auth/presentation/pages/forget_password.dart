@@ -4,7 +4,9 @@ import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/core/widgets/custom_txt_field2.dart';
 import 'package:edumate/core/widgets/general_bottom_space.dart';
 import 'package:edumate/core/widgets/large_auth_button.dart';
+import 'package:edumate/features/auth/presentation/bloc/forgetpassword/forgetpassword_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -23,80 +25,110 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     _obscureText1 = true;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 4,
-              backgroundColor: Colors.white,
-              shadowColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(9),
+    return BlocConsumer<ForgetpasswordCubit, ForgetpasswordState>(
+      listener: (context, state) {
+        if (state is ForgetpasswordSuccess) {
+          GoRouter.of(
+            context,
+          ).push(GoRoutes.verificationPath, extra: newpasscontroller.text);
+        }
+        if (state is ForgetpasswordFailure) {
+          print('Error: ${state.errorMessage}, Status Code: ${state.statusCode}');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.errorMessage)),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 4,
+                  backgroundColor: Colors.white,
+                  shadowColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(9),
+                  ),
+                  padding: EdgeInsets.all(8),
+                ),
+                onPressed: () {
+                  context.pop();
+                },
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Colors.black,
+                  ),
+                ),
               ),
-              padding: EdgeInsets.all(8),
-            ),
-            onPressed: () {
-              context.pop();
-            },
-            child: Center(
-              child: Icon(Icons.arrow_back_ios_rounded, color: Colors.black),
             ),
           ),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: height * 0.05),
-            Text(
-              'Forget Password?',
-              style: Fonts.headingStyle,
-              textAlign: TextAlign.start,
-            ),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: height * 0.05),
+                Text(
+                  'Forget Password?',
+                  style: Fonts.headingStyle,
+                  textAlign: TextAlign.start,
+                ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10.0,
-                horizontal: 8,
-              ),
-              child: Text(
-                'Fill in your email and we’ll send a code to rest your password.',
-                style: Fonts.normalgreystyle16,
-              ),
-            ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 8,
+                  ),
+                  child: Text(
+                    'Fill in your email and we’ll send a code to rest your password.',
+                    style: Fonts.normalgreystyle16,
+                  ),
+                ),
 
-            CustomTextField(
-              hintText: 'New Password',
-              prefixIcon: Constants.lockon,
-              suffixIcon: IconButton(onPressed: () {setState(() {
-                _obscureText1 = !_obscureText1;
-              });}, icon: Icon( _obscureText1 ? Icons.visibility : Icons.visibility_off)),
-              controller: newpasscontroller,
-            ),
+                CustomTextField(
+                  hintText: 'Email Address',
+                  prefixIcon: Constants.lockon,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscureText1 = !_obscureText1;
+                      });
+                    },
+                    icon: Icon(
+                      _obscureText1 ? Icons.visibility : Icons.visibility_off,
+                    ),
+                  ),
+                  controller: newpasscontroller,
+                ),
 
-            Spacer(),
+                Spacer(),
 
-            LargeButton(
-              width: width,
-              height: height,
-              title: 'Continue',
-              onPress: () {
-                GoRouter.of(context).push(GoRoutes.verificationPath, extra: newpasscontroller.text);
-              },
+                LargeButton(
+                  width: width,
+                  height: height,
+                  title: state is ForgetpasswordLoading ? 'Loading...' : 'Continue',
+                  onPress: () {
+                    context.read<ForgetpasswordCubit>().forgetPassword(
+                          email: newpasscontroller.text,
+                        );
+                  },
+                ),
+                GeneralBottomSpace(height: height),
+              ],
             ),
-            GeneralBottomSpace(height: height),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

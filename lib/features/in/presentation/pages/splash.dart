@@ -1,6 +1,9 @@
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/constants.dart';
+import 'package:edumate/core/services/service_locator.dart';
+import 'package:edumate/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,20 +15,32 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-@override
-void initState() {
-  super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  _navigate();
-}
+    _navigate();
+  }
 
-Future<void> _navigate() async {
-  await Future.delayed(const Duration(seconds: 0));
+  Future<void> _navigate() async {
+    await Future.delayed(const Duration(seconds: 0));
 
-  if (!mounted) return; // 🔥 prevents crash
+    final isLoggedIn = await sl<AuthRepo>().isLoggedIn();
+    // final savedToken = await sl<FlutterSecureStorage>().read(key: 'access_token');
+    //   final savedRefresh = await sl<FlutterSecureStorage>().read(key: 'refresh_token');
+    //   final savedExpiration = await sl<FlutterSecureStorage>().read(key: 'token_expiration');
 
-  context.go(GoRoutes.navimainscreenpath);
-}
+    //   print('>>> SAVED ACCESS TOKEN: $savedToken');
+    //   print('>>> SAVED REFRESH TOKEN: $savedRefresh');
+    //   print('>>> SAVED EXPIRATION: $savedExpiration');
+    if (!mounted) return; // 🔥 prevents crash
+    if (isLoggedIn) {
+      GoRouter.of(context).pushReplacementNamed(GoRoutes.navimainscreen);
+    } else {
+      GoRouter.of(context).pushReplacementNamed(GoRoutes.login);
+    }
+    // context.go(GoRoutes.navimainscreenpath);
+  }
 
   @override
   Widget build(BuildContext context) {

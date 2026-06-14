@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height * 0.08,
+      height: height * 0.04,
       decoration:
           Theme.of(context).brightness == Brightness.light
               ? ConstContainerDecorations.whiteshadow(context)
@@ -31,6 +31,7 @@ import 'package:flutter/material.dart';
             child: Icon(
               Icons.search,
               color: Color(ConstsColors.kbluegray),
+            
             ),
           ),
           Expanded(

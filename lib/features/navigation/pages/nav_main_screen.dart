@@ -67,7 +67,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
                             color:
                                 _selectedIndex == 0
                                     ? Color(ConstsColors.kblue)
-                                    : Colors.grey,
+                                    : Color(ConstsColors.kgray),
                             size: _selectedIndex == 0 ? 34 : 24,
                           ),
                           onPressed: () {
@@ -76,7 +76,6 @@ class _NavMainScreenState extends State<NavMainScreen> {
                             });
                           },
                         ),
-                        SizedBox(height: 4),
                         Text(
                           'Home',
                           style: TextStyle(

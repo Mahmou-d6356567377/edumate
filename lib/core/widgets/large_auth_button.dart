@@ -18,7 +18,7 @@ class LargeButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPress,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(ConstsColors.klightblue),
+          backgroundColor: const Color(ConstsColors.kblue),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),

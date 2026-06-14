@@ -71,7 +71,7 @@ class _HomeCalendarState extends State<HomeCalendar> {
               ),
               child: Text(
                 text,
-                style: Fonts.boldblackstyle16
+                style: Fonts.boldblackstyle16,
               ),
             );
           },

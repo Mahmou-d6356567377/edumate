@@ -1,4 +1,5 @@
 import 'package:edumate/config/routes/routes.dart';
+import 'package:edumate/core/services/service_locator.dart';
 import 'package:edumate/core/themes/app_theme.dart';
 import 'package:edumate/core/themes/controller/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
 
   // Initialize Hive
   await Hive.initFlutter();
@@ -19,31 +21,26 @@ Future<void> main() async {
   // Initialize localization
   await initializeDateFormatting();
 
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends ConsumerStatefulWidget  {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
-  ConsumerState<MyApp> createState() => _MyAppState();}
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
 
 class _MyAppState extends ConsumerState<MyApp> {
-
-
   @override
-  Widget build(BuildContext context,) {
+  Widget build(BuildContext context) {
     final themeMode = ref.watch(themeProvider);
 
     return MaterialApp.router(
       title: 'Edumate',
-     themeMode: themeMode,
-       theme: AppTheme.lightTheme,
-    darkTheme: AppTheme.darkTheme,
+      themeMode: themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       routerConfig: GoRoutes.getRouter(false, ''),
     );
   }

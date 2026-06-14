@@ -1,3 +1,10 @@
+import 'package:edumate/core/services/service_locator.dart';
+import 'package:edumate/features/auth/data/models/email_code_model.dart';
+import 'package:edumate/features/auth/presentation/bloc/forgetpassword/forgetpassword_cubit.dart';
+import 'package:edumate/features/auth/presentation/bloc/login/login_cubit.dart';
+import 'package:edumate/features/auth/presentation/bloc/resetpassword/resetpassword_cubit.dart';
+import 'package:edumate/features/auth/presentation/bloc/signup/signup_cubit.dart';
+import 'package:edumate/features/auth/presentation/bloc/verify/verify_cubit.dart';
 import 'package:edumate/features/auth/presentation/pages/forget_password.dart';
 import 'package:edumate/features/auth/presentation/pages/login.dart';
 import 'package:edumate/features/auth/presentation/pages/reset_password.dart';
@@ -14,6 +21,7 @@ import 'package:edumate/features/in/presentation/pages/intro.dart';
 import 'package:edumate/features/in/presentation/pages/splash.dart';
 import 'package:edumate/features/navigation/pages/ai_page.dart';
 import 'package:edumate/features/navigation/pages/nav_main_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class GoRoutes {
@@ -52,16 +60,16 @@ class GoRoutes {
   static const String commentpage = 'commentpage';
   static const String assignmentdetailspage = 'assignmentdetailspage';
   static const String splashscreen = 'splashscreen';
-  
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
       initialLocation: splashscreenPath,
+      //loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
       routes: [
-          GoRoute(
+        GoRoute(
           path: splashscreenPath,
           name: splashscreen,
           builder: (context, state) => SplashScreen(),
@@ -74,29 +82,49 @@ class GoRoutes {
         GoRoute(
           path: loginPath,
           name: login,
-          builder: (context, state) => Login(),
+          builder:
+              (context, state) => BlocProvider(
+                create: (_) => sl<LoginCubit>(), // ← here
+                child: const Login(),
+              ),
         ),
         GoRoute(
           path: signupPath,
           name: signup,
-          builder: (context, state) => Signup(),
+          builder:
+              (context, state) => BlocProvider(
+                create: (_) => SignupCubit(authRepo: sl()), // ← here
+                child: Signup(),
+              ),
         ),
         GoRoute(
           path: forgetPasswordPath,
           name: forgetPassword,
-          builder: (context, state) => ForgetPassword(),
+          builder:
+              (context, state) => BlocProvider(
+                create: (_) => sl<ForgetpasswordCubit>(),
+                child: ForgetPassword(),
+              ),
         ),
         GoRoute(
           path: verificationPath,
           name: verification,
           builder:
-              (context, state) =>
-                  VerificationPage(emailcontroller: state.extra as String),
+              (context, state) => BlocProvider(
+                create: (_) => sl<VerifyCubit>(),
+                child: VerificationPage(emailcontroller: state.extra as String),
+              ),
         ),
         GoRoute(
           path: resetPasswordPath,
           name: resetPassword,
-          builder: (context, state) => ResetPassword(),
+          builder:
+              (context, state) => BlocProvider(
+                create: (context) => sl<ResetpasswordCubit>(),
+                child: ResetPassword(
+                  emailCodeModel: state.extra as EmailCodeModel,
+                ),
+              ),
         ),
         GoRoute(
           path: navimainscreenpath,
@@ -128,17 +156,17 @@ class GoRoutes {
           name: aipage,
           builder: (context, state) => AIPage(),
         ),
-         GoRoute(
+        GoRoute(
           path: subjectpagePath,
           name: subjectpage,
           builder: (context, state) => SubjectPage(),
         ),
-                 GoRoute(
+        GoRoute(
           path: commentpagePath,
           name: commentpage,
           builder: (context, state) => CommentsPage(),
         ),
-            GoRoute(
+        GoRoute(
           path: assignmentdetailspagePath,
           name: assignmentdetailspage,
           builder: (context, state) => AssignmentDetailsPage(),
