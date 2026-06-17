@@ -16,7 +16,6 @@ import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
 
-
 void setupServiceLocator() {
   final dio = Dio(
     BaseOptions(
@@ -32,12 +31,23 @@ void setupServiceLocator() {
 
   sl.registerLazySingleton<Dio>(() => dio);
   sl.registerLazySingleton<ApiService>(() => ApiService(sl()));
-  sl.registerLazySingleton<FlutterSecureStorage>(() => const FlutterSecureStorage());
+  sl.registerLazySingleton<FlutterSecureStorage>(
+    () => const FlutterSecureStorage(),
+  );
 
   // Auth
-  sl.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(apiService: sl<ApiService>(), secureStorage: sl<FlutterSecureStorage>()));
+  sl.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(
+      apiService: sl<ApiService>(),
+      secureStorage: sl<FlutterSecureStorage>(),
+    ),
+  );
   sl.registerFactory<LoginCubit>(() => LoginCubit(authRepo: sl()));
   sl.registerFactory<VerifyCubit>(() => VerifyCubit(authRepo: sl()));
-  sl.registerFactory<ForgetpasswordCubit>(() => ForgetpasswordCubit(authRepo: sl()));
-  sl.registerFactory<ResetpasswordCubit>(() => ResetpasswordCubit(authRepo: sl()));
+  sl.registerFactory<ForgetpasswordCubit>(
+    () => ForgetpasswordCubit(authRepo: sl()),
+  );
+  sl.registerFactory<ResetpasswordCubit>(
+    () => ResetpasswordCubit(authRepo: sl()),
+  );
 }

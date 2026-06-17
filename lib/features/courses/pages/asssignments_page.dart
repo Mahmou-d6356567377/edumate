@@ -11,7 +11,6 @@ class AssignmentsPage extends StatefulWidget {
 }
 
 class _AssignmentsPageState extends State<AssignmentsPage> {
-
   int selected = 0;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class _AssignmentsPageState extends State<AssignmentsPage> {
       slivers: [
         SliverToBoxAdapter(
           child: SizedBox(
-            height:70,
+            height: 70,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: ConstVariebles.choicechipsassignmentList.length,
@@ -28,7 +27,9 @@ class _AssignmentsPageState extends State<AssignmentsPage> {
                   (context, index) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ChoiceChip(
-                      label: Text(ConstVariebles.choicechipsassignmentList[index]),
+                      label: Text(
+                        ConstVariebles.choicechipsassignmentList[index],
+                      ),
                       selected: selected == index,
                       selectedColor: Color(ConstsColors.kblue),
                       labelStyle: TextStyle(

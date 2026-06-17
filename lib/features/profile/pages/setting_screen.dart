@@ -18,14 +18,26 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: const [
           SectionTitle('ACCOUNT & APP'),
-          SettingsTile(icon: Icons.dark_mode, title: 'Dark Mode', trailing: Switch(value: false, onChanged: null)),
+          SettingsTile(
+            icon: Icons.dark_mode,
+            title: 'Dark Mode',
+            trailing: Switch(value: false, onChanged: null),
+          ),
           SettingsTile(icon: Icons.notifications, title: 'Notifications'),
-          SettingsTile(icon: Icons.language, title: 'Language', trailingText: 'English'),
+          SettingsTile(
+            icon: Icons.language,
+            title: 'Language',
+            trailingText: 'English',
+          ),
           SettingsTile(icon: Icons.lock, title: 'Privacy'),
           SizedBox(height: 20),
           SectionTitle('ABOUT'),
           SettingsTile(icon: Icons.info, title: 'About EduMate'),
-          SettingsTile(icon: Icons.system_update, title: 'App Version', trailingText: 'v2.0.4'),
+          SettingsTile(
+            icon: Icons.system_update,
+            title: 'App Version',
+            trailingText: 'v2.0.4',
+          ),
           SettingsTile(icon: Icons.description, title: 'Terms & Conditions'),
           SizedBox(height: 20),
           SectionTitle('SUPPORT'),
@@ -48,7 +60,10 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Text(text, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.grey, fontSize: 12),
+      ),
     );
   }
 }
@@ -81,7 +96,11 @@ class SettingsTile extends StatelessWidget {
           child: Icon(icon, color: Colors.blue),
         ),
         title: Text(title),
-        trailing: trailing ?? (trailingText != null ? Text(trailingText!) : const Icon(Icons.arrow_forward_ios, size: 16)),
+        trailing:
+            trailing ??
+            (trailingText != null
+                ? Text(trailingText!)
+                : const Icon(Icons.arrow_forward_ios, size: 16)),
       ),
     );
   }
@@ -99,7 +118,10 @@ class LogoutButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: const Center(
-        child: Text('Logout', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+        child: Text(
+          'Logout',
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

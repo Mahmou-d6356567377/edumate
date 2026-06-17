@@ -26,9 +26,7 @@ class Login extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccess) {
           print('Login successful');
-          GoRouter.of(
-            context,
-          ).pushNamed(GoRoutes.navimainscreen, );
+          GoRouter.of(context).pushNamed(GoRoutes.navimainscreen);
         } else if (state is LoginFailure) {
           print(state.errorMessage);
           ScaffoldMessenger.of(context).showSnackBar(
@@ -37,7 +35,8 @@ class Login extends StatelessWidget {
               backgroundColor: Colors.red,
             ),
           );
-        };
+        }
+        ;
       },
       builder: (context, state) {
         return Scaffold(

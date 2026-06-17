@@ -32,7 +32,7 @@ class _SubjectPageState extends State<SubjectPage> {
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: CustomAppBar(title: 'Big Data'),
+      appBar: CustomAppBar(title: 'Big Data', isBack: true,),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
         child: Stack(

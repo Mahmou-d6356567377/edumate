@@ -16,7 +16,8 @@ class ResetpasswordCubit extends Cubit<ResetpasswordState> {
     emit(ResetpasswordLoading());
     final result = await authRepo.resetpassword(code, email, newpassword);
     result.fold(
-      (failure) => emit(ResetpasswordFailure(failure.message, failure.statusCode)),
+      (failure) =>
+          emit(ResetpasswordFailure(failure.message, failure.statusCode)),
       (message) => emit(ResetpasswordSuccess(message)),
     );
   }

@@ -4,11 +4,7 @@ class UploadOption extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const UploadOption({
-    super.key,
-    required this.icon,
-    required this.text,
-  });
+  const UploadOption({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +19,7 @@ class UploadOption extends StatelessWidget {
           children: [
             Icon(icon, color: Colors.grey[700]),
             const SizedBox(width: 16),
-            Text(
-              text,
-              style: const TextStyle(fontSize: 16),
-            ),
+            Text(text, style: const TextStyle(fontSize: 16)),
           ],
         ),
       ),

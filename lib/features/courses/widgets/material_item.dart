@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MaterialItem extends StatelessWidget {
-  const MaterialItem({super.key, required this.title, required this.pic, this.onTap});
+  const MaterialItem({
+    super.key,
+    required this.title,
+    required this.pic,
+    this.onTap,
+  });
   final String title;
   final String pic;
   final void Function()? onTap;
@@ -15,8 +20,9 @@ class MaterialItem extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
-        child:ThemedContainer(child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ThemedContainer(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox.fromSize(size: const Size.fromHeight(10)),
               Padding(

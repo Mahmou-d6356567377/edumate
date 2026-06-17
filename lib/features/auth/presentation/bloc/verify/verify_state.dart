@@ -4,11 +4,14 @@ part of 'verify_cubit.dart';
 abstract class VerifyState {}
 
 class VerifyInitial extends VerifyState {}
+
 class VerifyLoading extends VerifyState {}
+
 class VerifySuccess extends VerifyState {
   final String message;
   VerifySuccess(this.message);
 }
+
 class VerifyFailure extends VerifyState {
   final String errorMessage;
   final int? statusCode;

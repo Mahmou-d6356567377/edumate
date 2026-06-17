@@ -18,7 +18,6 @@ class AuthRepoImpl implements AuthRepo {
     final token = await secureStorage.read(key: 'access_token');
     return token != null && token.isNotEmpty;
   }
-   
 
   @override
   Future<Either<Failure, LoginResponseModel>> login(
@@ -47,13 +46,13 @@ class AuthRepoImpl implements AuthRepo {
         value: loginResponse.expiration,
       );
 
-      final savedToken = await secureStorage.read(key: 'access_token');
-      final savedRefresh = await secureStorage.read(key: 'refresh_token');
-      final savedExpiration = await secureStorage.read(key: 'token_expiration');
+      // final savedToken = await secureStorage.read(key: 'access_token');
+      // final savedRefresh = await secureStorage.read(key: 'refresh_token');
+      // final savedExpiration = await secureStorage.read(key: 'token_expiration');
 
-      print('>>> SAVED ACCESS TOKEN: $savedToken');
-      print('>>> SAVED REFRESH TOKEN: $savedRefresh');
-      print('>>> SAVED EXPIRATION: $savedExpiration');
+      // print('>>> SAVED ACCESS TOKEN: $savedToken');
+      // print('>>> SAVED REFRESH TOKEN: $savedRefresh');
+      // print('>>> SAVED EXPIRATION: $savedExpiration');
       return Right(loginResponse);
     } on DioException catch (e) {
       final responseData = e.response?.data;
@@ -69,7 +68,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failure, String>> verify(String email, String code) async {
     try {
       final response = await apiService.post(
-        url: '${VidConsts.apiBaseURL}/api/Auth/verify',
+        url: '${VidConsts.apiBaseURL}/api/Auth/validate-otp',
         body: {'email': email, 'code': code},
       );
       return Right(response.data.toString());
@@ -143,7 +142,7 @@ class AuthRepoImpl implements AuthRepo {
         url: '${VidConsts.apiBaseURL}/api/Auth/reset-password',
         body: {'code': code, 'email': email, 'newpassword': newpassword},
       );
-      return Right(response.data['message']);
+      return Right(response.data);
     } on DioException catch (e) {
       final responseData = e.response?.data;
       final detail = responseData is Map ? responseData['detail'] : null;

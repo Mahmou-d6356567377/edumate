@@ -1,13 +1,10 @@
-
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomNewChat extends StatelessWidget {
-  const CustomNewChat({
-    super.key,
-  });
+  const CustomNewChat({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +21,9 @@ class CustomNewChat extends StatelessWidget {
           ),
           Text(
             'NewChats',
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-              color: Color(ConstsColors.kblue),
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium!.copyWith(color: Color(ConstsColors.kblue)),
           ),
         ],
       ),

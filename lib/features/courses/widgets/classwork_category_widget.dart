@@ -5,7 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ClassworkCategoryWidget extends StatelessWidget {
-  const ClassworkCategoryWidget({super.key, required this.title, required this.pic, required this.itemno, this.onTap});
+  const ClassworkCategoryWidget({
+    super.key,
+    required this.title,
+    required this.pic,
+    required this.itemno,
+    this.onTap,
+  });
   final String title;
   final String pic;
   final String itemno;
@@ -19,8 +25,12 @@ class ClassworkCategoryWidget extends StatelessWidget {
           margin: ConstVariebles.iconborder,
           decoration:
               Theme.of(context).brightness == Brightness.light
-                  ? ConstContainerDecorations.whiteshadow(context)
-                  : ConstContainerDecorations.darkmodeshadow(context),
+                  ? ConstContainerDecorations.whiteshadow(context).copyWith(
+                      borderRadius: BorderRadius.circular(12),
+                  )
+                  : ConstContainerDecorations.darkmodeshadow(context).copyWith(
+                      borderRadius: BorderRadius.circular(12),
+                  ),
           child: Column(
             children: [
               SizedBox.fromSize(size: const Size.fromHeight(10)),

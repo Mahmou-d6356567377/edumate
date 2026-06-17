@@ -32,9 +32,7 @@ class CustomTextFieldAndSender extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(
-            child: CustomBorderlessTextField(controller: _controller),
-          ),
+          Expanded(child: CustomBorderlessTextField(controller: _controller)),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(

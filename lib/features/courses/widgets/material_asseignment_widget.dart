@@ -26,8 +26,7 @@ class MaterialAsseignmentwidgets extends StatelessWidget {
             onTap: () {
               showBottomSheet(
                 context: context,
-                builder:
-                    (context) => MaterialsPage(),
+                builder: (context) => MaterialsPage(),
               );
             },
           ),
@@ -35,13 +34,13 @@ class MaterialAsseignmentwidgets extends StatelessWidget {
             title: 'Assignments',
             pic: Constants.asseignment,
             itemno: '4',
-            onTap: () => {
-              showBottomSheet(
-                context: context,
-                builder:
-                    (context) => AssignmentsPage(),
-              ),
-            },
+            onTap:
+                () => {
+                  showBottomSheet(
+                    context: context,
+                    builder: (context) => AssignmentsPage(),
+                  ),
+                },
           ),
         ],
       ),

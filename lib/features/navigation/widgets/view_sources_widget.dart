@@ -35,7 +35,10 @@ class ViewSourcesWidget extends StatelessWidget {
                 height: 30,
               ),
               title: Text('Source 2', style: Fonts.normalblackstyle18),
-              subtitle: Text('Page 4 • Definition', style: Fonts.normalgreystyle16),
+              subtitle: Text(
+                'Page 4 • Definition',
+                style: Fonts.normalgreystyle16,
+              ),
               trailing: Icon(
                 Icons.arrow_forward_ios,
                 color: Color(ConstsColors.kblue),

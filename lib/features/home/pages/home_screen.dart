@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20),

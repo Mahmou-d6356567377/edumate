@@ -3,5 +3,9 @@ class IntroPageModel {
   final String title;
   final String body;
 
-  IntroPageModel({required this.image, required this.title, required this.body});
+  IntroPageModel({
+    required this.image,
+    required this.title,
+    required this.body,
+  });
 }

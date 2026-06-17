@@ -36,9 +36,10 @@ class MyMsgPromptWidget extends StatelessWidget {
           ),
           child: Text(
             title,
-           style:  Theme.of(context).brightness == Brightness.light
-                ? Fonts.normalblackstyle18
-                : Fonts.normalwhitestyle18,
+            style:
+                Theme.of(context).brightness == Brightness.light
+                    ? Fonts.normalblackstyle18
+                    : Fonts.normalwhitestyle18,
           ),
         ),
       ],

@@ -1,4 +1,3 @@
-
 import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
 

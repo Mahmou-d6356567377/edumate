@@ -5,10 +5,7 @@ class ApiService {
 
   ApiService(this.dio);
 
-  Future<Map<String, dynamic>> get({
-    required String url,
-    String? token,
-  }) async {
+  Future<Map<String, dynamic>> get({required String url, String? token}) async {
     final response = await dio.get(
       url,
       options: Options(
@@ -35,10 +32,7 @@ class ApiService {
     return response;
   }
 
-  Future<Map<String, dynamic>> del({
-    required String url,
-    String? token,
-  }) async {
+  Future<Map<String, dynamic>> del({required String url, String? token}) async {
     final response = await dio.delete(
       url,
       options: Options(

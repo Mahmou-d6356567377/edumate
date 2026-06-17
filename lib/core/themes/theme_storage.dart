@@ -21,7 +21,7 @@ class ThemeStorage {
     }
   }
 
-  Future<void>  saveTheme(ThemeMode mode) async {
+  Future<void> saveTheme(ThemeMode mode) async {
     await box.put(_themeKey, mode.name);
   }
 }

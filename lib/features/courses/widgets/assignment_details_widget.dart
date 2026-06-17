@@ -55,43 +55,45 @@ class AssignmentDetailsWidget extends StatelessWidget {
                   TextSpan(text: 'Instructions: '),
                   TextSpan(
                     text: ' Dr. Sarah Jenkins',
-                    style:Fonts.boldblackstyle16,
+                    style: Fonts.boldblackstyle16,
                   ),
                 ],
               ),
             ),
 
-             Row(
-               children: [
+            Row(
+              children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.calendar_month, size: 16, color: Color(ConstsColors.kdarkgray)),
+                  child: Icon(
+                    Icons.calendar_month,
+                    size: 16,
+                    color: Color(ConstsColors.kdarkgray),
+                  ),
                 ),
-                 Text.rich(
+                Text.rich(
                   TextSpan(
                     children: const [
                       TextSpan(text: 'Deadline: '),
                       TextSpan(
                         text: ' Oct 27, 2024',
-                        style:Fonts.normalbluestyle14,
+                        style: Fonts.normalbluestyle14,
                       ),
                     ],
                   ),
-                             ),
-               ],
-             ),
-
-            Divider(
-              thickness: 2,
-              color: Color(ConstsColors.koffwhite),
+                ),
+              ],
             ),
 
-              Text(
-                'This assignment introduces students to the fundamentals of big data, including its characteristics, challenges, and applications. Students will explore various big data technologies and tools, and learn how to analyze and visualize large datasets.',
-                style: Theme.of(context).brightness == Brightness.light
-                    ? Fonts.normalblackstyle14
-                    : Fonts.normalwhitestyle14,
-              ),
+            Divider(thickness: 2, color: Color(ConstsColors.koffwhite)),
+
+            Text(
+              'This assignment introduces students to the fundamentals of big data, including its characteristics, challenges, and applications. Students will explore various big data technologies and tools, and learn how to analyze and visualize large datasets.',
+              style:
+                  Theme.of(context).brightness == Brightness.light
+                      ? Fonts.normalblackstyle14
+                      : Fonts.normalwhitestyle14,
+            ),
           ],
         ),
       ),

@@ -102,7 +102,6 @@ class AssignmentDetailsPage extends StatelessWidget {
                     verticalpadidng: 12.0,
                     horizontalpadding: 35.0,
                     onPressed: () {
-                     
                       showSubmitAssignmentSheet(context);
                     },
                   ),
@@ -115,7 +114,6 @@ class AssignmentDetailsPage extends StatelessWidget {
     );
   }
 }
-
 
 void showSubmitAssignmentSheet(BuildContext context) {
   showModalBottomSheet(

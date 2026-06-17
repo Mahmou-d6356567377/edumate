@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AvatarStack extends StatelessWidget {
@@ -6,19 +5,17 @@ class AvatarStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
-  width: 80,
-  height: 30, // ✅ VERY IMPORTANT
-  child: Stack(
-    children: List.generate(4, (index) {
-      return Positioned(
-        left: index * 18,
-        child: const CircleAvatar(
-          radius: 12,
-        ),
-      );
-    }),
-  ),
-);
+    return SizedBox(
+      width: 80,
+      height: 30, // ✅ VERY IMPORTANT
+      child: Stack(
+        children: List.generate(4, (index) {
+          return Positioned(
+            left: index * 18,
+            child: const CircleAvatar(radius: 12),
+          );
+        }),
+      ),
+    );
   }
 }

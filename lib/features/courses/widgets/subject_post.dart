@@ -1,4 +1,3 @@
-
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
@@ -9,18 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SubjectPostWidget extends StatelessWidget {
-  const SubjectPostWidget({
-    super.key,
-  });
+  const SubjectPostWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 10,
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         decoration:
             Theme.of(context).brightness == Brightness.light
                 ? ConstContainerDecorations.whiteshadow(context)
@@ -49,7 +43,9 @@ class SubjectPostWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
-                onTap: () {GoRouter.of(context).push(GoRoutes.commentpagePath);},
+                onTap: () {
+                  GoRouter.of(context).push(GoRoutes.commentpagePath);
+                },
                 child: Text(
                   'comments',
                   style: Fonts.normalbluestyle14.copyWith(

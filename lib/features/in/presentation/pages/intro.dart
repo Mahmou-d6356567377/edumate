@@ -146,7 +146,6 @@ class _IntroPagesState extends State<IntroPages> {
       );
     } else {
       context.go(GoRoutes.loginPath);
-
     }
   }
 }

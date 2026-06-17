@@ -61,7 +61,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             suffixIcon: widget.suffixIcon,
             filled: true,
-            
+
             fillColor: Color(ConstsColors.koffwhite),
             hintText: widget.hintText,
             // hintStyle: arabicstyle8.copyWith(fontSize: 15, fontWeight: FontWeight.w600),

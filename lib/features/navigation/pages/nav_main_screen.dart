@@ -39,8 +39,8 @@ class _NavMainScreenState extends State<NavMainScreen> {
           // Display the selected screen
           _screens[_selectedIndex],
 
-          AIFloatingActionButton(),
-          // Custom Bottom Navigation Bar
+          // AIFloatingActionButton(),
+
           Positioned(
             bottom: 23,
             left: 0,
@@ -84,6 +84,11 @@ class _NavMainScreenState extends State<NavMainScreen> {
                                     ? Color(ConstsColors.kblue)
                                     : Color(ConstsColors.kgray),
                             fontSize: 12,
+                            decoration:
+                                _selectedIndex == 0
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                            decorationColor: Color(ConstsColors.kblue),
                           ),
                         ),
                       ],
@@ -107,7 +112,6 @@ class _NavMainScreenState extends State<NavMainScreen> {
                             });
                           },
                         ),
-                        SizedBox(height: 4),
                         Text(
                           'Courses',
                           style: TextStyle(
@@ -116,6 +120,11 @@ class _NavMainScreenState extends State<NavMainScreen> {
                                     ? Color(ConstsColors.kblue)
                                     : Color(ConstsColors.kgray),
                             fontSize: 12,
+                            decoration:
+                                _selectedIndex == 1
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                            decorationColor: Color(ConstsColors.kblue),
                           ),
                         ),
                       ],
@@ -131,7 +140,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
                                   : Colors.grey,
                               BlendMode.srcIn,
                             ),
-                        
+
                             width: _selectedIndex == 2 ? 34 : 24,
                           ),
                           onPressed: () {
@@ -140,7 +149,6 @@ class _NavMainScreenState extends State<NavMainScreen> {
                             });
                           },
                         ),
-                        SizedBox(height: 4),
                         Text(
                           'Attendence',
                           style: TextStyle(
@@ -149,6 +157,11 @@ class _NavMainScreenState extends State<NavMainScreen> {
                                     ? Color(ConstsColors.kblue)
                                     : Color(ConstsColors.kgray),
                             fontSize: 12,
+                            decoration:
+                                _selectedIndex == 2
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                            decorationColor: Color(ConstsColors.kblue),
                           ),
                         ),
                       ],
@@ -172,7 +185,6 @@ class _NavMainScreenState extends State<NavMainScreen> {
                             });
                           },
                         ),
-                        SizedBox(height: 4),
                         Text(
                           'Graduation',
                           style: TextStyle(
@@ -181,6 +193,11 @@ class _NavMainScreenState extends State<NavMainScreen> {
                                     ? Color(ConstsColors.kblue)
                                     : Color(ConstsColors.kgray),
                             fontSize: 12,
+                            decoration:
+                                _selectedIndex == 3
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                            decorationColor: Color(ConstsColors.kblue),
                           ),
                         ),
                       ],
@@ -204,7 +221,6 @@ class _NavMainScreenState extends State<NavMainScreen> {
                             });
                           },
                         ),
-                        SizedBox(height: 4),
                         Text(
                           'Profile',
                           style: TextStyle(
@@ -213,9 +229,13 @@ class _NavMainScreenState extends State<NavMainScreen> {
                                     ? Color(ConstsColors.kblue)
                                     : Color(ConstsColors.kgray),
                             fontSize: 12,
+                            decoration:
+                                _selectedIndex == 4
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                            decorationColor: Color(ConstsColors.kblue),
                           ),
                         ),
-
                       ],
                     ),
                   ],

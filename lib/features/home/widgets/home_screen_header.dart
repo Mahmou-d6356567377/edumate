@@ -30,7 +30,7 @@ class HomeScreenHeader extends ConsumerWidget {
         ),
         Row(
           children: [
-             CustomCircleAvatar(
+            CustomCircleAvatar(
               imagePath: Constants.moon,
               onTap: () {
                 if (ThemeMode.dark == ref.watch(themeProvider)) {
@@ -46,8 +46,6 @@ class HomeScreenHeader extends ConsumerWidget {
                 GoRouter.of(context).push(GoRoutes.notificationpagePath);
               },
             ),
-    
-           
           ],
         ),
       ],

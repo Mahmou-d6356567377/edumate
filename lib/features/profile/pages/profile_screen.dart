@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -12,11 +11,12 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: const Icon(Icons.arrow_back, color: Colors.black),
-        title: const Text('View Profile', style: TextStyle(color: Colors.black)),
+        title: const Text(
+          'View Profile',
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
-        actions: const [
-          Icon(Icons.more_vert, color: Colors.black)
-        ],
+        actions: const [Icon(Icons.more_vert, color: Colors.black)],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -24,10 +24,21 @@ class ProfileScreen extends StatelessWidget {
           children: const [
             ProfileHeader(),
             SizedBox(height: 20),
-            InfoSection(title: 'Personal Information', children: [
-              InfoTile(icon: Icons.email, title: 'Email Address', value: 'mohsen@edumate.edu'),
-              InfoTile(icon: Icons.phone, title: 'Phone Number', value: '+1 234 567 890'),
-            ]),
+            InfoSection(
+              title: 'Personal Information',
+              children: [
+                InfoTile(
+                  icon: Icons.email,
+                  title: 'Email Address',
+                  value: 'mohsen@edumate.edu',
+                ),
+                InfoTile(
+                  icon: Icons.phone,
+                  title: 'Phone Number',
+                  value: '+1 234 567 890',
+                ),
+              ],
+            ),
             SizedBox(height: 20),
             AcademicSection(),
           ],
@@ -61,11 +72,14 @@ class ProfileHeader extends StatelessWidget {
                 ),
                 child: const Icon(Icons.edit, size: 14, color: Colors.white),
               ),
-            )
+            ),
           ],
         ),
         const SizedBox(height: 10),
-        const Text('Mohamed Mohsen', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text(
+          'Mohamed Mohsen',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
         const SizedBox(height: 4),
         const Text('ID: #2024-88421', style: TextStyle(color: Colors.grey)),
         const SizedBox(height: 6),
@@ -75,8 +89,11 @@ class ProfileHeader extends StatelessWidget {
             color: Colors.green.withOpacity(0.1),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Text('3rd Student', style: TextStyle(color: Colors.green)),
-        )
+          child: const Text(
+            '3rd Student',
+            style: TextStyle(color: Colors.green),
+          ),
+        ),
       ],
     );
   }
@@ -101,7 +118,7 @@ class InfoSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(children: children),
-        )
+        ),
       ],
     );
   }
@@ -112,7 +129,12 @@ class InfoTile extends StatelessWidget {
   final String title;
   final String value;
 
-  const InfoTile({super.key, required this.icon, required this.title, required this.value});
+  const InfoTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -121,8 +143,14 @@ class InfoTile extends StatelessWidget {
         backgroundColor: Colors.blue.withOpacity(0.1),
         child: Icon(icon, color: Colors.blue),
       ),
-      title: Text(title, style: const TextStyle(fontSize: 12, color: Colors.grey)),
-      subtitle: Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
+      title: Text(
+        title,
+        style: const TextStyle(fontSize: 12, color: Colors.grey),
+      ),
+      subtitle: Text(
+        value,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
@@ -135,15 +163,30 @@ class AcademicSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Academic Information', style: TextStyle(fontWeight: FontWeight.bold)),
+        const Text(
+          'Academic Information',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 10),
         Row(
           children: const [
-            Expanded(child: StatCard(title: 'Current GPA', value: '3.8', subtitle: '+0.2 from last sem')),
+            Expanded(
+              child: StatCard(
+                title: 'Current GPA',
+                value: '3.8',
+                subtitle: '+0.2 from last sem',
+              ),
+            ),
             SizedBox(width: 10),
-            Expanded(child: StatCard(title: 'Credit Hours', value: '120', subtitle: 'Total registered')),
+            Expanded(
+              child: StatCard(
+                title: 'Credit Hours',
+                value: '120',
+                subtitle: 'Total registered',
+              ),
+            ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -152,7 +195,12 @@ class AcademicSection extends StatelessWidget {
 class StatCard extends StatelessWidget {
   final String title, value, subtitle;
 
-  const StatCard({super.key, required this.title, required this.value, required this.subtitle});
+  const StatCard({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.subtitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -167,9 +215,15 @@ class StatCard extends StatelessWidget {
         children: [
           Text(title, style: const TextStyle(color: Colors.grey)),
           const SizedBox(height: 6),
-          Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 4),
-          Text(subtitle, style: const TextStyle(color: Colors.green, fontSize: 12)),
+          Text(
+            subtitle,
+            style: const TextStyle(color: Colors.green, fontSize: 12),
+          ),
         ],
       ),
     );

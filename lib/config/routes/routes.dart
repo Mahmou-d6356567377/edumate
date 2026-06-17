@@ -14,6 +14,8 @@ import 'package:edumate/features/courses/pages/assignment_details_page.dart';
 import 'package:edumate/features/courses/pages/comments_page.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
 import 'package:edumate/features/courses/pages/subject_page.dart';
+import 'package:edumate/features/graduation/pages/create_team_screen.dart';
+import 'package:edumate/features/graduation/pages/team_details_screen.dart';
 import 'package:edumate/features/home/pages/daily_schedule_page.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:edumate/features/home/pages/notification_page.dart';
@@ -42,6 +44,8 @@ class GoRoutes {
   static const String commentpagePath = '/commentpagepath';
   static const String assignmentdetailspagePath = '/assignmentdetailspagepath';
   static const String splashscreenPath = '/splashscreenpath';
+  static const String teamDetailsPath = '/teamDetailspath';
+  static const String createteamscreenpath = '/createteamscreenpath';
 
   // names
   static const String intro = 'intro';
@@ -60,11 +64,15 @@ class GoRoutes {
   static const String commentpage = 'commentpage';
   static const String assignmentdetailspage = 'assignmentdetailspage';
   static const String splashscreen = 'splashscreen';
+  static const String teamDetails = 'teamDetails';
+  static const String createteamscreen = 'createteamscreen';
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
-      initialLocation: splashscreenPath,
-      //loginPath,
+      initialLocation: 
+      // createteamscreenpath,
+      // splashscreenPath,
+      loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
@@ -170,6 +178,16 @@ class GoRoutes {
           path: assignmentdetailspagePath,
           name: assignmentdetailspage,
           builder: (context, state) => AssignmentDetailsPage(),
+        ),
+        GoRoute(
+          path: teamDetailsPath,
+          name: teamDetails,
+          builder: (context, state) =>TeamDetailsScreen(),
+        ),
+         GoRoute(
+          path: createteamscreenpath,
+          name: createteamscreen,
+          builder: (context, state) =>CreateTeamScreen(),
         ),
       ],
     );

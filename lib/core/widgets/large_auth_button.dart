@@ -3,7 +3,13 @@ import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
 
 class LargeButton extends StatelessWidget {
-  const LargeButton({super.key, required this.width, required this.height, required this.title, this.onPress});
+  const LargeButton({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.title,
+    this.onPress,
+  });
 
   final double width;
   final double height;

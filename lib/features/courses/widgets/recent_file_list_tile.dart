@@ -10,9 +10,10 @@ class RecentFileListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemedContainer(
+      borderRadius: 10,
       child: ListTile(
         leading: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(10),
 
           child: SvgPicture.asset(Constants.sourceicon, width: 40, height: 40),
         ),

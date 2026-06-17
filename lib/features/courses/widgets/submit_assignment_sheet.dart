@@ -137,7 +137,9 @@ Widget _buttonsRow(BuildContext context) {
           onPressed: () {
             showAboutDialog(
               context: context,
-              children: [ SvgPicture.asset(Constants.checkicon, width: 50, height: 50) ],
+              children: [
+                SvgPicture.asset(Constants.checkicon, width: 50, height: 50),
+              ],
             );
           },
           child: const Text("Submit"),

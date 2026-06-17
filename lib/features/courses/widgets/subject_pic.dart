@@ -1,13 +1,10 @@
-
 import 'package:edumate/core/consts/const_variebles.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:flutter/material.dart';
 
 class ClassPic extends StatelessWidget {
-  const ClassPic({
-    super.key,
-  });
+  const ClassPic({super.key});
 
   @override
   Widget build(BuildContext context) {

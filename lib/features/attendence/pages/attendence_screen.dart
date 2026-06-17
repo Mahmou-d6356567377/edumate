@@ -3,7 +3,6 @@ import 'package:edumate/features/attendence/cubit/attendance_cubit_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class AttendanceScreen extends StatelessWidget {
   final String qrData;
 
@@ -30,13 +29,13 @@ class _AttendanceView extends StatelessWidget {
         child: BlocConsumer<AttendanceCubit, AttendanceState>(
           listener: (context, state) {
             if (state is AttendanceSuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Submitted ✅")),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text("Submitted ✅")));
             } else if (state is AttendanceError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           builder: (context, state) {
@@ -48,8 +47,7 @@ class _AttendanceView extends StatelessWidget {
 
             if (state is AttendanceReady) {
               isLocationValid = state.isLocationValid;
-              isReady = state.isLocationValid &&
-                  state.qrData != null;
+              isReady = state.isLocationValid && state.qrData != null;
             }
 
             return Column(
@@ -76,17 +74,16 @@ class _AttendanceView extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: isLocationValid
-                        ? Colors.green[100]
-                        : Colors.orange[100],
+                    color:
+                        isLocationValid
+                            ? Colors.green[100]
+                            : Colors.orange[100],
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
                     children: [
                       Icon(
-                        isLocationValid
-                            ? Icons.check_circle
-                            : Icons.warning,
+                        isLocationValid ? Icons.check_circle : Icons.warning,
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -98,10 +95,9 @@ class _AttendanceView extends StatelessWidget {
                       ),
                       if (!isLocationValid)
                         TextButton(
-                          onPressed: () =>
-                              cubit.checkLocation(),
+                          onPressed: () => cubit.checkLocation(),
                           child: const Text("Enable"),
-                        )
+                        ),
                     ],
                   ),
                 ),
@@ -112,12 +108,11 @@ class _AttendanceView extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: isReady
-                        ? () => cubit.submit()
-                        : null,
-                    child: isLoading
-                        ? const CircularProgressIndicator()
-                        : const Text("Submit"),
+                    onPressed: isReady ? () => cubit.submit() : null,
+                    child:
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : const Text("Submit"),
                   ),
                 ),
               ],

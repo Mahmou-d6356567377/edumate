@@ -1,15 +1,13 @@
-
 import 'package:edumate/core/themes/fonts.dart';
 import 'package:flutter/material.dart';
 
 class RememberMeWidget extends StatefulWidget {
-  const RememberMeWidget({
-    super.key,
-  });
+  const RememberMeWidget({super.key});
 
   @override
   State<RememberMeWidget> createState() => _RememberMeWidgetState();
 }
+
 bool isChecked = false;
 
 class _RememberMeWidgetState extends State<RememberMeWidget> {
@@ -18,6 +16,7 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
     isChecked = false;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,10 +30,7 @@ class _RememberMeWidgetState extends State<RememberMeWidget> {
             });
           },
         ),
-        Text(
-          'Forgot Password?',
-          style: Fonts.normalgreystyle16,
-        ),
+        Text('Forgot Password?', style: Fonts.normalgreystyle16),
       ],
     );
   }

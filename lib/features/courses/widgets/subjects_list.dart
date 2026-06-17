@@ -1,12 +1,8 @@
-
 import 'package:edumate/features/courses/widgets/subject_item.dart';
 import 'package:flutter/material.dart';
 
 class SubjectList extends StatelessWidget {
-  const SubjectList({
-    super.key,
-    required this.selected,
-  });
+  const SubjectList({super.key, required this.selected});
 
   final int selected;
 
@@ -14,8 +10,7 @@ class SubjectList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemBuilder:
-            (context, index) => SubjectItemWidget(selected: selected),
+        itemBuilder: (context, index) => SubjectItemWidget(selected: selected),
         itemCount: 20,
       ),
     );

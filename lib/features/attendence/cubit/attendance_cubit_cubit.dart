@@ -2,7 +2,6 @@ import 'package:edumate/features/attendence/cubit/attendance_cubit_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 
-
 class AttendanceCubit extends Cubit<AttendanceState> {
   AttendanceCubit() : super(AttendanceInitial());
 
@@ -22,16 +21,14 @@ class AttendanceCubit extends Cubit<AttendanceState> {
   /// Step 2: Check Location
   Future<void> checkLocation() async {
     try {
-      LocationPermission permission =
-          await Geolocator.requestPermission();
+      LocationPermission permission = await Geolocator.requestPermission();
 
       if (permission == LocationPermission.denied) {
         emit(AttendanceError("Location permission denied"));
         return;
       }
 
-      Position position =
-          await Geolocator.getCurrentPosition();
+      Position position = await Geolocator.getCurrentPosition();
 
       double distance = Geolocator.distanceBetween(
         position.latitude,
@@ -42,10 +39,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
 
       isLocationValid = distance < 50;
 
-      emit(AttendanceReady(
-        isLocationValid: isLocationValid,
-        qrData: qrData,
-      ));
+      emit(AttendanceReady(isLocationValid: isLocationValid, qrData: qrData));
     } catch (e) {
       emit(AttendanceError("Location error"));
     }

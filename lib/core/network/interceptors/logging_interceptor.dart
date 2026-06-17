@@ -12,14 +12,18 @@ class LoggingInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    debugPrint('>>> RESPONSE: ${response.statusCode} ${response.requestOptions.uri}');
+    debugPrint(
+      '>>> RESPONSE: ${response.statusCode} ${response.requestOptions.uri}',
+    );
     debugPrint('>>> DATA: ${response.data}');
     handler.next(response);
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    debugPrint('>>> ERROR: ${err.response?.statusCode} ${err.requestOptions.uri}');
+    debugPrint(
+      '>>> ERROR: ${err.response?.statusCode} ${err.requestOptions.uri}',
+    );
     debugPrint('>>> ERROR BODY: ${err.response?.data}');
     handler.next(err);
   }

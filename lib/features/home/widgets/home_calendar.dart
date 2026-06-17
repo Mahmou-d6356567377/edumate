@@ -18,6 +18,8 @@ class _HomeCalendarState extends State<HomeCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: TableCalendar(
@@ -27,22 +29,44 @@ class _HomeCalendarState extends State<HomeCalendar> {
 
         // ✅ Header
         headerStyle: HeaderStyle(
-          titleTextStyle: Fonts.headingStyle,
+          titleTextStyle: Fonts.headingStyle.copyWith(
+            color: isDark ? Colors.white : Colors.black,
+          ),
           formatButtonVisible: true,
           formatButtonDecoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey, width: 2),
+            color: isDark ? Color(ConstsColors.kdarkbluegray) : Colors.white,
+            border: Border.all(
+              color: isDark ? Colors.grey.shade700 : Colors.grey,
+              width: 2,
+            ),
             borderRadius: BorderRadius.circular(8),
           ),
-          leftChevronIcon:
-              const Icon(Icons.arrow_back_ios_rounded, size: 15),
-          rightChevronIcon:
-              const Icon(Icons.arrow_forward_ios_rounded, size: 15),
+          formatButtonTextStyle: TextStyle(
+            color: isDark ? Colors.white : Colors.black,
+          ),
+          leftChevronIcon: Icon(
+            Icons.arrow_back_ios_rounded,
+            size: 15,
+            color: isDark ? Colors.white : Colors.black,
+          ),
+          rightChevronIcon: Icon(
+            Icons.arrow_forward_ios_rounded,
+            size: 15,
+            color: isDark ? Colors.white : Colors.black,
+          ),
         ),
 
         // ✅ Calendar style
         calendarStyle: CalendarStyle(
-          defaultTextStyle: Fonts.boldblackstyle16,
+          defaultTextStyle: Fonts.boldblackstyle16.copyWith(
+            color: isDark ? Colors.white : Colors.black,
+          ),
+          weekendTextStyle: Fonts.boldblackstyle16.copyWith(
+            color: isDark ? Colors.white : Colors.black,
+          ),
+          outsideTextStyle: TextStyle(
+            color: isDark ? Colors.white38 : Colors.grey.shade400,
+          ),
           todayDecoration: BoxDecoration(
             color: Color(ConstsColors.kblue),
             shape: BoxShape.circle,
@@ -53,31 +77,36 @@ class _HomeCalendarState extends State<HomeCalendar> {
           ),
         ),
 
-        // ✅ Fix spacing issue
         rowHeight: 55,
         daysOfWeekHeight: 35,
 
-        // ✅ FULL CONTROL over weekdays (padding + margin)
+        // ✅ Day-of-week row
         calendarBuilders: CalendarBuilders(
           dowBuilder: (context, day) {
-            final text = DateFormat.E().format(day); // Sun, Mon...
+            final text = DateFormat.E().format(day);
+
+            final referenceDay = _selectedDay ?? _focusedDay;
+            final isSelectedWeekday = day.weekday == referenceDay.weekday;
 
             return Container(
               margin: const EdgeInsets.symmetric(horizontal: 4),
               padding: const EdgeInsets.symmetric(vertical: 6),
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.white, // change if needed
-              ),
+              // 🔑 Removed white background — let the parent's
+              // dark surface show through instead
               child: Text(
                 text,
-                style: Fonts.boldblackstyle16,
+                style:
+                    isSelectedWeekday
+                        ? Fonts.normalbluestyle14
+                        : Fonts.normalgreystyle14.copyWith(
+                          color: isDark ? Colors.grey.shade400 : null,
+                        ),
               ),
             );
           },
         ),
 
-        // ✅ Selection logic
         selectedDayPredicate: (day) {
           return isSameDay(_selectedDay, day);
         },
@@ -89,7 +118,6 @@ class _HomeCalendarState extends State<HomeCalendar> {
           });
         },
 
-        // ✅ Format control
         calendarFormat: _calendarFormat,
         onFormatChanged: (format) {
           setState(() {

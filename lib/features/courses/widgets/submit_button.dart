@@ -19,7 +19,10 @@ class SubmitButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: Color(ConstsColors.kblue),
-          padding:  EdgeInsets.symmetric(vertical: verticalpadidng, horizontal: horizontalpadding),
+          padding: EdgeInsets.symmetric(
+            vertical: verticalpadidng,
+            horizontal: horizontalpadding,
+          ),
         ),
         onPressed: onPressed,
         child: Text(

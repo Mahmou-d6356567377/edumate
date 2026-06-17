@@ -38,10 +38,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           ).push(GoRoutes.verificationPath, extra: newpasscontroller.text);
         }
         if (state is ForgetpasswordFailure) {
-          print('Error: ${state.errorMessage}, Status Code: ${state.statusCode}');
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage)),
+          print(
+            'Error: ${state.errorMessage}, Status Code: ${state.statusCode}',
           );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
       },
       builder: (context, state) {
@@ -116,11 +118,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 LargeButton(
                   width: width,
                   height: height,
-                  title: state is ForgetpasswordLoading ? 'Loading...' : 'Continue',
+                  title:
+                      state is ForgetpasswordLoading
+                          ? 'Loading...'
+                          : 'Continue',
                   onPress: () {
                     context.read<ForgetpasswordCubit>().forgetPassword(
-                          email: newpasscontroller.text,
-                        );
+                      email: newpasscontroller.text,
+                    );
                   },
                 ),
                 GeneralBottomSpace(height: height),

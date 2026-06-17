@@ -16,7 +16,9 @@ class ClassWorkPage extends StatelessWidget {
       padding: ConstVariebles.edgeInsets,
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(child: CustomSearchBar(height: height, controller: controller)),
+          SliverToBoxAdapter(
+            child: CustomSearchBar(height: height, controller: controller),
+          ),
           SliverToBoxAdapter(child: MaterialAsseignmentwidgets(height: height)),
           SliverToBoxAdapter(
             child: DoubleTextedRowWidget(

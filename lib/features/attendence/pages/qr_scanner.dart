@@ -13,16 +13,14 @@ class QRScannerScreen extends StatelessWidget {
         onDetect: (result) {
           final code = result.barcodes.first.rawValue;
           print(code);
-           if (code != null) {
+          if (code != null) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                builder: (_) => AttendanceScreen(qrData: code),
-              ),
+              MaterialPageRoute(builder: (_) => AttendanceScreen(qrData: code)),
             );
           }
         },
       ),
     );
   }
-}         
+}

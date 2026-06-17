@@ -8,10 +8,7 @@ class AttendanceReady extends AttendanceState {
   final bool isLocationValid;
   final String? qrData;
 
-  AttendanceReady({
-    required this.isLocationValid,
-    required this.qrData,
-  });
+  AttendanceReady({required this.isLocationValid, required this.qrData});
 }
 
 class AttendanceSuccess extends AttendanceState {}

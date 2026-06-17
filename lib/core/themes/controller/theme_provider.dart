@@ -8,7 +8,7 @@ final themeProvider = NotifierProvider<ThemeNotifier, ThemeMode>(
 
 class ThemeNotifier extends Notifier<ThemeMode> {
   final themestorage = ThemeStorage();
-  
+
   @override
   ThemeMode build() {
     return themestorage.loadTheme();
@@ -18,5 +18,4 @@ class ThemeNotifier extends Notifier<ThemeMode> {
     state = mode;
     themestorage.saveTheme(mode);
   }
-  
 }

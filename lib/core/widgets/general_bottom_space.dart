@@ -1,11 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 class GeneralBottomSpace extends StatelessWidget {
-  const GeneralBottomSpace({
-    super.key,
-    required this.height,
-  });
+  const GeneralBottomSpace({super.key, required this.height});
 
   final double height;
 

@@ -1,7 +1,8 @@
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme {//#F7F9FD
+class AppTheme {
+  //#F7F9FD
   // Light theme
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
@@ -9,7 +10,7 @@ class AppTheme {//#F7F9FD
     scaffoldBackgroundColor: const Color(0xFFF5F5F5),
 
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(ConstsColors.koffwhite) ,
+      backgroundColor: Color(ConstsColors.koffwhite),
       foregroundColor: Colors.black, // icons & title color
       elevation: 0, // optional: flat modern look
     ),
@@ -69,4 +70,5 @@ class AppTheme {//#F7F9FD
     ),
   );
 }
+
 // Theme.of(context).brightness == Brightness.light

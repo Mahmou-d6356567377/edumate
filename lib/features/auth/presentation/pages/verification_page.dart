@@ -44,10 +44,16 @@ class _VerificationPageState extends State<VerificationPage> {
     return BlocConsumer<VerifyCubit, VerifyState>(
       listener: (context, state) {
         if (state is VerifySuccess) {
-          print('....................................Verification successful for email: ${widget.emailcontroller} with code: ${pinController.text}');
-          GoRouter.of(
-            context,
-          ).pushNamed(GoRoutes.resetPassword, extra: EmailCodeModel(email: widget.emailcontroller, code: pinController.text));
+          print(
+            '....................................Verification successful for email: ${widget.emailcontroller} with code: ${pinController.text}',
+          );
+          GoRouter.of(context).pushNamed(
+            GoRoutes.resetPassword,
+            extra: EmailCodeModel(
+              email: widget.emailcontroller,
+              code: pinController.text,
+            ),
+          );
         }
         if (state is VerifyFailure) {
           ScaffoldMessenger.of(
@@ -142,9 +148,9 @@ class _VerificationPageState extends State<VerificationPage> {
                       focusNode.unfocus();
                       if (formKey.currentState!.validate()) {
                         context.read<VerifyCubit>().verify(
-                              email: widget.emailcontroller,
-                              code: pinController.text,
-                            );
+                          email: widget.emailcontroller,
+                          code: pinController.text,
+                        );
                       }
                     },
                   ),

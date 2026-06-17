@@ -5,7 +5,8 @@ import 'package:meta/meta.dart';
 part 'forgetpassword_state.dart';
 
 class ForgetpasswordCubit extends Cubit<ForgetpasswordState> {
-  ForgetpasswordCubit({required this.authRepo}) : super(ForgetpasswordInitial());
+  ForgetpasswordCubit({required this.authRepo})
+    : super(ForgetpasswordInitial());
 
   AuthRepo authRepo;
 
@@ -13,7 +14,8 @@ class ForgetpasswordCubit extends Cubit<ForgetpasswordState> {
     emit(ForgetpasswordLoading());
     final result = await authRepo.forgetPassword(email);
     result.fold(
-      (failure) => emit(ForgetpasswordFailure(failure.message, failure.statusCode)),
+      (failure) =>
+          emit(ForgetpasswordFailure(failure.message, failure.statusCode)),
       (data) => emit(ForgetpasswordSuccess(data)),
     );
   }

@@ -1,4 +1,3 @@
-
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
@@ -8,10 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SubjectItemWidget extends StatelessWidget {
-  const SubjectItemWidget({
-    super.key,
-    required this.selected,
-  });
+  const SubjectItemWidget({super.key, required this.selected});
 
   final int selected;
 
@@ -26,14 +22,9 @@ class SubjectItemWidget extends StatelessWidget {
         decoration:
             Theme.of(context).brightness == Brightness.light
                 ? ConstContainerDecorations.whiteshadow(context)
-                : ConstContainerDecorations.darkmodeshadow(
-                  context,
-                ),
+                : ConstContainerDecorations.darkmodeshadow(context),
         height: 70,
-        margin: const EdgeInsets.symmetric(
-          horizontal: 5.0,
-          vertical: 5,
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
         child: ListTile(
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(12),
@@ -46,13 +37,14 @@ class SubjectItemWidget extends StatelessWidget {
           ),
           title: Row(
             children: [
-              Text('Course 1', style: Theme.of(context).brightness == Brightness.light
-                  ? Fonts.boldblackstyle18
-                  : Fonts.boldwhitestyle18),
-              LectureMark(
-                isLab: selected == 2,
-                isLecture: selected == 1,
+              Text(
+                'Course 1',
+                style:
+                    Theme.of(context).brightness == Brightness.light
+                        ? Fonts.boldblackstyle18
+                        : Fonts.boldwhitestyle18,
               ),
+              LectureMark(isLab: selected == 2, isLecture: selected == 1),
             ],
           ),
           titleTextStyle: Fonts.boldblackstyle18,

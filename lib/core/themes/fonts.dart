@@ -41,7 +41,7 @@ class Fonts {
     fontWeight: FontWeight.bold,
   );
 
-    static const TextStyle boldwhitestyle16 = TextStyle(
+  static const TextStyle boldwhitestyle16 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Colors.white,
     fontSize: 16,
@@ -77,7 +77,7 @@ class Fonts {
     color: Color(ConstsColors.kgray),
     fontSize: 14,
   );
-    static const TextStyle normalgreystyle12 = TextStyle(
+  static const TextStyle normalgreystyle12 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Color(ConstsColors.kgray),
     fontSize: 12,
@@ -109,7 +109,7 @@ class Fonts {
     fontSize: 14,
   );
 
-    static const TextStyle normalbluestyle12 = TextStyle(
+  static const TextStyle normalbluestyle12 = TextStyle(
     fontFamily: Constants.mainfont,
     color: Color(ConstsColors.kblue),
     fontSize: 12,

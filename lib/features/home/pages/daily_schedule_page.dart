@@ -1,5 +1,6 @@
 import 'package:edumate/core/consts/const_container_decorations.dart';
-import 'package:edumate/features/home/widgets/daily_schedule_item.dart' show DailyScheduleItem;
+import 'package:edumate/features/home/widgets/daily_schedule_item.dart'
+    show DailyScheduleItem;
 import 'package:flutter/material.dart';
 
 class DailySchedulePage extends StatelessWidget {
@@ -11,7 +12,7 @@ class DailySchedulePage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           focusColor: Colors.black,
-          icon: Icon(Icons.arrow_back_ios, color: Color(0xff3572EF),),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xff3572EF)),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -20,9 +21,11 @@ class DailySchedulePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-        child: ListView.builder(itemBuilder: (context, index) => DailyScheduleItem(),itemCount: 10,),
+        child: ListView.builder(
+          itemBuilder: (context, index) => DailyScheduleItem(),
+          itemCount: 10,
+        ),
       ),
-
     );
   }
 }

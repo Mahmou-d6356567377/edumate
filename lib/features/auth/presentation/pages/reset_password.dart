@@ -68,7 +68,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(SnackBar(content: Text(state.message)));
-            GoRouter.of(context).pushNamed(GoRoutes.homescreen);
+            GoRouter.of(context).pushNamed(GoRoutes.navimainscreen);
           }
         },
         builder: (context, state) {

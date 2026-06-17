@@ -32,7 +32,6 @@ class UnauthorizedException extends AppException {
   ]);
 }
 
-
 class DioExceptionMapper {
   static AppException map(DioException e) {
     switch (e.type) {
