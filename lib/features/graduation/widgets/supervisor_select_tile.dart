@@ -34,7 +34,9 @@ class SupervisorSelectTile extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               foregroundColor: const Color(ConstsColors.kblue),
               side: const BorderSide(color: Color(ConstsColors.kgray)),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8,)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             ),
             child: Text(isSelected ? 'Selected' : 'Select'),

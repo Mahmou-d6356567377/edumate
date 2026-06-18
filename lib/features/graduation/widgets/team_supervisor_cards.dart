@@ -24,30 +24,42 @@ class TeamSupervisorCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            child: Image.network(imageUrl, width: 56, height: 56, fit: BoxFit.cover),
+            child: Image.network(
+              imageUrl,
+              width: 56,
+              height: 56,
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87)),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text('Specialization: $specialization',
-                    style: TextStyle(color: Colors.grey[500], fontSize: 13)),
+                Text(
+                  'Specialization: $specialization',
+                  style: TextStyle(color: Colors.grey[500], fontSize: 13),
+                ),
               ],
             ),
           ),
           if (onChatTap != null)
-             Padding(
-            padding: const EdgeInsets.only(right :8.0),
-            child: GestureDetector(
-              onTap: onChatTap,
-              child: SvgPicture.asset(Constants.msgpicon),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: GestureDetector(
+                onTap: onChatTap,
+                child: SvgPicture.asset(Constants.msgpicon),
+              ),
             ),
-          ),
         ],
       ),
     );

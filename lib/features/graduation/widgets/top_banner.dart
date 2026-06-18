@@ -5,10 +5,11 @@ class TopBanner {
     final overlay = Overlay.of(context);
     late OverlayEntry entry;
     entry = OverlayEntry(
-      builder: (_) => _TopBannerWidget(
-        message: message,
-        onDismissed: () => entry.remove(),
-      ),
+      builder:
+          (_) => _TopBannerWidget(
+            message: message,
+            onDismissed: () => entry.remove(),
+          ),
     );
     overlay.insert(entry);
   }
@@ -32,10 +33,14 @@ class _TopBannerWidgetState extends State<_TopBannerWidget>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
-    _offset = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    _offset = Tween<Offset>(
+      begin: const Offset(0, -1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
     _controller.forward();
 
     Future.delayed(const Duration(seconds: 2), () async {
@@ -71,7 +76,10 @@ class _TopBannerWidgetState extends State<_TopBannerWidget>
             child: Text(
               widget.message,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),

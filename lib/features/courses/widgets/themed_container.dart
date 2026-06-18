@@ -7,7 +7,9 @@ class ThemedContainer extends StatelessWidget {
     super.key,
     required this.child,
     this.height,
-    this.borderRadius = 25, this.padding, this.margin,
+    this.borderRadius = 25,
+    this.padding,
+    this.margin,
   });
   final Widget child;
   final double? height;
@@ -18,8 +20,14 @@ class ThemedContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      margin: margin != null ? EdgeInsets.all(margin!) : ConstVariebles.fullpadding10,
-      padding: padding != null ? EdgeInsets.all(padding!) : ConstVariebles.fullpadding10,
+      margin:
+          margin != null
+              ? EdgeInsets.all(margin!)
+              : ConstVariebles.fullpadding10,
+      padding:
+          padding != null
+              ? EdgeInsets.all(padding!)
+              : ConstVariebles.fullpadding10,
       decoration:
           Theme.of(context).brightness == Brightness.light
               ? ConstContainerDecorations.whiteshadow(

@@ -71,7 +71,10 @@ class _GraduationScreenState extends State<GraduationScreen> {
             Expanded(
               child: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 250),
-                child: _selectedTab == 0 ? const TeamsList() : const SuperviserList(),
+                child:
+                    _selectedTab == 0
+                        ? const TeamsList()
+                        : const SuperviserList(),
               ),
             ),
           ],
@@ -79,8 +82,4 @@ class _GraduationScreenState extends State<GraduationScreen> {
       ),
     );
   }
-
-
-
-  
 }

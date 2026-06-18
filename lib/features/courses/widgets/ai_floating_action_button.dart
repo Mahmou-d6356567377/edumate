@@ -10,8 +10,7 @@ class AIFloatingActionButton extends StatefulWidget {
   const AIFloatingActionButton({super.key});
 
   @override
-  State<AIFloatingActionButton> createState() =>
-      _AIFloatingActionButtonState();
+  State<AIFloatingActionButton> createState() => _AIFloatingActionButtonState();
 }
 
 class _AIFloatingActionButtonState extends State<AIFloatingActionButton>
@@ -102,14 +101,17 @@ class _AIFloatingActionButtonState extends State<AIFloatingActionButton>
         },
         onTapCancel: () => _tapController.reverse(),
         child: AnimatedBuilder(
-          animation: Listenable.merge(
-            [_pulseController, _tapController, _expandController],
-          ),
+          animation: Listenable.merge([
+            _pulseController,
+            _tapController,
+            _expandController,
+          ]),
           builder: (context, child) {
             final pulseScale =
                 _pulseScale.value - (_tapController.value * 0.12);
 
-            final width = _collapsedSize +
+            final width =
+                _collapsedSize +
                 (_expandedWidth - _collapsedSize) * _expandAnim.value;
 
             final bgColor = Color.lerp(
@@ -168,11 +170,7 @@ class _AIFloatingActionButtonState extends State<AIFloatingActionButton>
                           ),
                         ),
                       ),
-                    SvgPicture.asset(
-                      Constants.ai,
-                      width: 36,
-                      height: 36,
-                    ),
+                    SvgPicture.asset(Constants.ai, width: 36, height: 36),
                   ],
                 ),
               ),

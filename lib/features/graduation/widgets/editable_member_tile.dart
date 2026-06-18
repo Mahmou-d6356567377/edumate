@@ -28,25 +28,52 @@ class EditableMemberTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text(role, style: TextStyle(color: isLeader ? const Color(0xFF3B82F6) : Colors.grey[500], fontSize: 12)),
+                Text(
+                  role,
+                  style: TextStyle(
+                    color:
+                        isLeader ? const Color(0xFF3B82F6) : Colors.grey[500],
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
           ),
           if (isLeader)
             Container(
               padding: const EdgeInsets.all(4),
-              decoration: const BoxDecoration(color: Color(0xFFE8F5E9), shape: BoxShape.circle),
-              child: const Icon(Icons.check, color: Color(0xFF22C55E), size: 14),
+              decoration: const BoxDecoration(
+                color: Color(0xFFE8F5E9),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.check,
+                color: Color(0xFF22C55E),
+                size: 14,
+              ),
             )
           else
             GestureDetector(
               onTap: onRemove,
               child: Container(
                 padding: const EdgeInsets.all(4),
-                decoration: const BoxDecoration(color: Color(0xFFFDEDED), shape: BoxShape.circle),
-                child: const Icon(Icons.person_remove_rounded, color: Color(0xFFE53935), size: 14),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFFDEDED),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.person_remove_rounded,
+                  color: Color(0xFFE53935),
+                  size: 14,
+                ),
               ),
             ),
         ],

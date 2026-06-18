@@ -24,7 +24,9 @@ class TabSwitcher extends StatelessWidget {
             duration: const Duration(milliseconds: 250),
             curve: Curves.easeOutCubic,
             alignment:
-                selectedIndex == 0 ? Alignment.centerLeft : Alignment.centerRight,
+                selectedIndex == 0
+                    ? Alignment.centerLeft
+                    : Alignment.centerRight,
             child: FractionallySizedBox(
               widthFactor: 0.5,
               child: Container(

@@ -10,10 +10,17 @@ class FilledBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-      decoration: BoxDecoration(color: const Color(0xFFE8F8F0), borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE8F8F0),
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Text(
         '$current/$total Filled',
-        style: const TextStyle(color: Color(0xFF22C55E), fontWeight: FontWeight.bold, fontSize: 12),
+        style: const TextStyle(
+          color: Color(0xFF22C55E),
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+        ),
       ),
     );
   }

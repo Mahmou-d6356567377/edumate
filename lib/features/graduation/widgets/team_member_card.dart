@@ -17,7 +17,7 @@ class TeamMemberCard extends StatelessWidget {
     required this.name,
     required this.role,
     this.isLeader = false,
-    this.isadmin= false,
+    this.isadmin = false,
     this.onChatTap,
   });
 
@@ -75,7 +75,9 @@ class TeamMemberCard extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0),
             child: GestureDetector(
               onTap: onChatTap,
-              child: SvgPicture.asset(isadmin?Constants.deletemember: Constants.msgpicon),
+              child: SvgPicture.asset(
+                isadmin ? Constants.deletemember : Constants.msgpicon,
+              ),
             ),
           ),
         ],

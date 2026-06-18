@@ -31,15 +31,18 @@ class ProjectInfoCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
-                  color:Color(ConstsColors.kgreenshadow),
+                  color: Color(ConstsColors.kgreenshadow),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   status,
                   style: const TextStyle(
-                    color:  Color(ConstsColors.kdarkgreen),
+                    color: Color(ConstsColors.kdarkgreen),
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
@@ -62,13 +65,12 @@ class ProjectInfoCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-           Text(
+          Text(
             'ABOUT THE PROJECT',
             style: Fonts.normalbluestyle12.copyWith(
               fontWeight: FontWeight.w500,
               letterSpacing: 0.6,
             ),
-
           ),
           const SizedBox(height: 8),
           Text(

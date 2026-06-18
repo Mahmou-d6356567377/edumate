@@ -4,14 +4,21 @@ class DashedInviteButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  const DashedInviteButton({super.key, required this.label, required this.onTap});
+  const DashedInviteButton({
+    super.key,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: CustomPaint(
-        painter: _DashedBorderPainter(color: const Color(0xFF3B82F6), radius: 12),
+        painter: _DashedBorderPainter(
+          color: const Color(0xFF3B82F6),
+          radius: 12,
+        ),
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -19,9 +26,19 @@ class DashedInviteButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.person_add_alt_1_rounded, color: Color(0xFF3B82F6), size: 18),
+              const Icon(
+                Icons.person_add_alt_1_rounded,
+                color: Color(0xFF3B82F6),
+                size: 18,
+              ),
               const SizedBox(width: 8),
-              Text(label, style: const TextStyle(color: Color(0xFF3B82F6), fontWeight: FontWeight.w600)),
+              Text(
+                label,
+                style: const TextStyle(
+                  color: Color(0xFF3B82F6),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ],
           ),
         ),
@@ -38,10 +55,11 @@ class _DashedBorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = 1.5
-      ..style = PaintingStyle.stroke;
+    final paint =
+        Paint()
+          ..color = color
+          ..strokeWidth = 1.5
+          ..style = PaintingStyle.stroke;
 
     final rrect = RRect.fromRectAndRadius(
       Rect.fromLTWH(0, 0, size.width, size.height),
@@ -57,7 +75,10 @@ class _DashedBorderPainter extends CustomPainter {
       double distance = 0;
       while (distance < metric.length) {
         final next = distance + dashWidth;
-        dashPath.addPath(metric.extractPath(distance, next.clamp(0, metric.length)), Offset.zero);
+        dashPath.addPath(
+          metric.extractPath(distance, next.clamp(0, metric.length)),
+          Offset.zero,
+        );
         distance = next + dashSpace;
       }
     }

@@ -10,6 +10,9 @@ import 'package:edumate/features/auth/presentation/bloc/forgetpassword/forgetpas
 import 'package:edumate/features/auth/presentation/bloc/login/login_cubit.dart';
 import 'package:edumate/features/auth/presentation/bloc/resetpassword/resetpassword_cubit.dart';
 import 'package:edumate/features/auth/presentation/bloc/verify/verify_cubit.dart';
+import 'package:edumate/features/profile/data/cubits/profile/profile_cubit.dart';
+import 'package:edumate/features/profile/data/repo/profile_repo.dart';
+import 'package:edumate/features/profile/data/repo/profile_repo_IMPL.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -50,4 +53,14 @@ void setupServiceLocator() {
   sl.registerFactory<ResetpasswordCubit>(
     () => ResetpasswordCubit(authRepo: sl()),
   );
+
+  sl.registerLazySingleton<ProfileRepo>(
+    () => UserProfileRepoImpl(
+      apiService: sl<ApiService>(),
+      secureStorage: sl<FlutterSecureStorage>(),
+    ),
+  );
+
+    sl.registerFactory<ProfileCubit>(() => ProfileCubit(profileRepo: sl()));
+
 }

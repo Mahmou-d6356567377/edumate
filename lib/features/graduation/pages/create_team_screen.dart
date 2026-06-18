@@ -45,12 +45,13 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
 
   List<_SupervisorOption> get _filteredSupervisors {
     if (_query.isEmpty) return _allSupervisors;
-    return _allSupervisors.where((s) => s.name.toLowerCase().contains(_query.toLowerCase())).toList();
+    return _allSupervisors
+        .where((s) => s.name.toLowerCase().contains(_query.toLowerCase()))
+        .toList();
   }
 
   void _handleSave() {
     // TODO: pass _nameController.text, _descController.text, _maxMembers,
-    
   }
 
   @override
@@ -63,7 +64,9 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(ConstsColors.kblue),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             onPressed: _handleSave,
             child: Text('Save', style: Fonts.boldwhitestyle16),
@@ -76,7 +79,11 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TeamFormField(label: 'Team Name', hint: 'e.g. AI Research Group', controller: _nameController),
+            TeamFormField(
+              label: 'Team Name',
+              hint: 'e.g. AI Research Group',
+              controller: _nameController,
+            ),
             const SizedBox(height: 18),
             TeamFormField(
               label: 'Project Description',
@@ -85,14 +92,25 @@ class _CreateTeamScreenState extends State<CreateTeamScreen> {
               maxLines: 4,
             ),
             const SizedBox(height: 18),
-            MaxMembersStepper(value: _maxMembers, onChanged: (v) => setState(() => _maxMembers = v)),
+            MaxMembersStepper(
+              value: _maxMembers,
+              onChanged: (v) => setState(() => _maxMembers = v),
+            ),
             const SizedBox(height: 24),
             const Text(
               'CHOOSE SUPERVISOR',
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey, letterSpacing: 0.5),
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+                letterSpacing: 0.5,
+              ),
             ),
             const SizedBox(height: 10),
-            SupervisorSearchField(controller: _searchController, onChanged: (v) => setState(() => _query = v)),
+            SupervisorSearchField(
+              controller: _searchController,
+              onChanged: (v) => setState(() => _query = v),
+            ),
             const SizedBox(height: 8),
             ..._filteredSupervisors.map(
               (s) => SupervisorSelectTile(

@@ -47,14 +47,20 @@ class TeamFormField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: islightmood ?  Color(ConstsColors.kgraystroke) : Colors.grey[600]!,
+                color:
+                    islightmood
+                        ? Color(ConstsColors.kgraystroke)
+                        : Colors.grey[600]!,
                 width: 2,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: islightmood ?  Color(ConstsColors.koffwhite) : Colors.grey[600]!,
+                color:
+                    islightmood
+                        ? Color(ConstsColors.koffwhite)
+                        : Colors.grey[600]!,
                 width: 2,
               ),
             ),
@@ -65,7 +71,10 @@ class TeamFormField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: islightmood ?  Color(ConstsColors.koffwhite) : Colors.grey[600]!,
+                color:
+                    islightmood
+                        ? Color(ConstsColors.koffwhite)
+                        : Colors.grey[600]!,
                 width: 2,
               ),
             ),

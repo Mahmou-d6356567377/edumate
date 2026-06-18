@@ -10,8 +10,7 @@ class TypingDots extends StatefulWidget {
   State<TypingDots> createState() => _TypingDotsState();
 }
 
-class _TypingDotsState extends State<TypingDots>
-    with TickerProviderStateMixin {
+class _TypingDotsState extends State<TypingDots> with TickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -40,8 +39,10 @@ class _TypingDotsState extends State<TypingDots>
             // Stagger each dot by 0.2 of the cycle
             final delay = index * 0.2;
             final t = (_controller.value + delay) % 1.0;
-            final opacity = (0.3 + 0.7 * (1 - (t - 0.5).abs() * 2))
-                .clamp(0.3, 1.0);
+            final opacity = (0.3 + 0.7 * (1 - (t - 0.5).abs() * 2)).clamp(
+              0.3,
+              1.0,
+            );
 
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2),

@@ -51,9 +51,9 @@ class Constants {
   static const String clock = 'assets/imgs/clock.svg';
   static const String search = 'assets/imgs/search.svg';
   static const String arrowback = 'assets/imgs/arrowback.svg';
-  static const String requesttojoinsuccess = 'assets/imgs/requesttojoinsuccess.svg';
+  static const String requesttojoinsuccess =
+      'assets/imgs/requesttojoinsuccess.svg';
   static const String msgpicon = 'assets/imgs/msgicon.svg';
   static const String leaveicon = 'assets/imgs/leaveicon.svg';
   static const String deletemember = 'assets/imgs/deletemember.svg';
-
 }

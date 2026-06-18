@@ -40,7 +40,6 @@ class _NavMainScreenState extends State<NavMainScreen> {
           _screens[_selectedIndex],
 
           // AIFloatingActionButton(),
-
           Positioned(
             bottom: 23,
             left: 0,

@@ -30,22 +30,40 @@ class SelectedSupervisorCard extends StatelessWidget {
               CircleAvatar(
                 radius: 22,
                 backgroundColor: const Color(0xFF3B82F6),
-                child: Text(initials, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                child: Text(
+                  initials,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
                     const SizedBox(height: 2),
-                    Text(role, style: TextStyle(color: Colors.grey[600], fontSize: 13)),
+                    Text(
+                      role,
+                      style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                    ),
                   ],
                 ),
               ),
               Container(
                 padding: const EdgeInsets.all(4),
-                decoration: const BoxDecoration(color: Color(0xFF3B82F6), shape: BoxShape.circle),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF3B82F6),
+                  shape: BoxShape.circle,
+                ),
                 child: const Icon(Icons.check, color: Colors.white, size: 14),
               ),
             ],
@@ -54,7 +72,13 @@ class SelectedSupervisorCard extends StatelessWidget {
         const SizedBox(height: 8),
         TextButton(
           onPressed: onChange,
-          child: const Text('Change Supervisor', style: TextStyle(color: Color(0xFF3B82F6), fontWeight: FontWeight.w600)),
+          child: const Text(
+            'Change Supervisor',
+            style: TextStyle(
+              color: Color(0xFF3B82F6),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ],
     );

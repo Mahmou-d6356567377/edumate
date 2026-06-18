@@ -16,7 +16,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Courses', isBack: false,),
+      appBar: CustomAppBar(title: 'Courses', isBack: false),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(

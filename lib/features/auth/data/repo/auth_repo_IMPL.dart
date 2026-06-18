@@ -15,7 +15,7 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<bool> isLoggedIn() async {
-    final token = await secureStorage.read(key: 'access_token');
+    final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
     return token != null && token.isNotEmpty;
   }
 
@@ -34,11 +34,11 @@ class AuthRepoImpl implements AuthRepo {
 
       // Persist auth data
       await secureStorage.write(
-        key: 'access_token',
+        key: VidConsts.tokenaccesskey,
         value: loginResponse.token,
       );
       await secureStorage.write(
-        key: 'refresh_token',
+        key: VidConsts.refrechtoken,
         value: loginResponse.refreshToken,
       );
       await secureStorage.write(

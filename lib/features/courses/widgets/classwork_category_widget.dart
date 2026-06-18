@@ -25,12 +25,12 @@ class ClassworkCategoryWidget extends StatelessWidget {
           margin: ConstVariebles.iconborder,
           decoration:
               Theme.of(context).brightness == Brightness.light
-                  ? ConstContainerDecorations.whiteshadow(context).copyWith(
-                      borderRadius: BorderRadius.circular(12),
-                  )
-                  : ConstContainerDecorations.darkmodeshadow(context).copyWith(
-                      borderRadius: BorderRadius.circular(12),
-                  ),
+                  ? ConstContainerDecorations.whiteshadow(
+                    context,
+                  ).copyWith(borderRadius: BorderRadius.circular(12))
+                  : ConstContainerDecorations.darkmodeshadow(
+                    context,
+                  ).copyWith(borderRadius: BorderRadius.circular(12)),
           child: Column(
             children: [
               SizedBox.fromSize(size: const Size.fromHeight(10)),

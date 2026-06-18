@@ -23,7 +23,11 @@ class MaxMembersStepper extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.04), blurRadius: 10, offset: const Offset(0, 3)),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
         ],
       ),
       child: Row(
@@ -34,7 +38,10 @@ class MaxMembersStepper extends StatelessWidget {
               children: [
                 const Text('Max Members', style: Fonts.boldblackstyle16),
                 const SizedBox(height: 2),
-                Text('Set the limit for your team size.', style: Fonts.normalgreystyle12,),
+                Text(
+                  'Set the limit for your team size.',
+                  style: Fonts.normalgreystyle12,
+                ),
               ],
             ),
           ),
@@ -46,7 +53,11 @@ class MaxMembersStepper extends StatelessWidget {
             child: Text(
               '$value',
               textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF3B82F6)),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF3B82F6),
+              ),
             ),
           ),
           _circleButton(Icons.add, () {
@@ -63,9 +74,12 @@ class MaxMembersStepper extends StatelessWidget {
       child: Container(
         width: 32,
         height: 32,
-        decoration: BoxDecoration(color: Colors.grey[100], shape: BoxShape.circle),
+        decoration: BoxDecoration(
+          color: Colors.grey[100],
+          shape: BoxShape.circle,
+        ),
         child: Icon(icon, size: 16, color: Colors.grey[700]),
       ),
     );
   }
-} 
+}

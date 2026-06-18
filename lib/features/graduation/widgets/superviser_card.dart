@@ -71,9 +71,10 @@ class SupervisorCard extends StatelessWidget {
                   width: 14,
                   height: 14,
                   decoration: BoxDecoration(
-                    color: status == SupervisorStatus.active
-                        ? const Color(0xFF22C55E)
-                        : Colors.grey,
+                    color:
+                        status == SupervisorStatus.active
+                            ? const Color(0xFF22C55E)
+                            : Colors.grey,
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white, width: 2),
                   ),
@@ -107,8 +108,10 @@ class SupervisorCard extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFEAF2FE),
                         borderRadius: BorderRadius.circular(8),
@@ -126,8 +129,10 @@ class SupervisorCard extends StatelessWidget {
                     Container(
                       width: 6,
                       height: 6,
-                      decoration:
-                          BoxDecoration(color: _statusColor, shape: BoxShape.circle),
+                      decoration: BoxDecoration(
+                        color: _statusColor,
+                        shape: BoxShape.circle,
+                      ),
                     ),
                     const SizedBox(width: 4),
                     Text(
@@ -152,8 +157,11 @@ class SupervisorCard extends StatelessWidget {
                 color: const Color(0xFF3B82F6),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Icon(Icons.chat_bubble_rounded,
-                  color: Colors.white, size: 18),
+              child: const Icon(
+                Icons.chat_bubble_rounded,
+                color: Colors.white,
+                size: 18,
+              ),
             ),
           ),
         ],

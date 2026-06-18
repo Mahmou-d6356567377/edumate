@@ -3,7 +3,6 @@ import 'package:edumate/features/courses/data/models/source_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class AddSourcesButton extends StatefulWidget {
   final String assetPath;
   final void Function(PickedSourceFile file) onPicked;
@@ -30,23 +29,24 @@ class _AddSourcesButtonState extends State<AddSourcesButton> {
   void _openMenu() {
     final overlay = Overlay.of(context);
     _overlayEntry = OverlayEntry(
-      builder: (context) => Stack(
-        children: [
-          Positioned.fill(
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: _closeMenu,
-              child: Container(color: Colors.transparent),
-            ),
+      builder:
+          (context) => Stack(
+            children: [
+              Positioned.fill(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: _closeMenu,
+                  child: Container(color: Colors.transparent),
+                ),
+              ),
+              CompositedTransformFollower(
+                link: _layerLink,
+                showWhenUnlinked: false,
+                offset: const Offset(0, 50),
+                child: _buildMenuCard(),
+              ),
+            ],
           ),
-          CompositedTransformFollower(
-            link: _layerLink,
-            showWhenUnlinked: false,
-            offset: const Offset(0, 50),
-            child: _buildMenuCard(),
-          ),
-        ],
-      ),
     );
     overlay.insert(_overlayEntry!);
   }
@@ -96,12 +96,20 @@ class _AddSourcesButtonState extends State<AddSourcesButton> {
                 border: Border.all(color: const Color(0xFFBFD9FE)),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(option.icon, color: const Color(0xFF3B82F6), size: 18),
+              child: Icon(
+                option.icon,
+                color: const Color(0xFF3B82F6),
+                size: 18,
+              ),
             ),
             const SizedBox(width: 12),
-            Text(option.label,
-                style: const TextStyle(
-                    color: Colors.black87, fontWeight: FontWeight.w500)),
+            Text(
+              option.label,
+              style: const TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),

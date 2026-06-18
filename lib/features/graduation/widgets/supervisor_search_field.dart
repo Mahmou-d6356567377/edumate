@@ -4,7 +4,11 @@ class SupervisorSearchField extends StatelessWidget {
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
 
-  const SupervisorSearchField({super.key, required this.controller, this.onChanged});
+  const SupervisorSearchField({
+    super.key,
+    required this.controller,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {

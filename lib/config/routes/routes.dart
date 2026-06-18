@@ -23,6 +23,7 @@ import 'package:edumate/features/in/presentation/pages/intro.dart';
 import 'package:edumate/features/in/presentation/pages/splash.dart';
 import 'package:edumate/features/navigation/pages/ai_page.dart';
 import 'package:edumate/features/navigation/pages/nav_main_screen.dart';
+import 'package:edumate/features/profile/data/cubits/profile/profile_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -69,10 +70,10 @@ class GoRoutes {
 
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
-      initialLocation: 
-      // createteamscreenpath,
-      // splashscreenPath,
-      loginPath,
+      initialLocation:
+          // createteamscreenpath,
+          splashscreenPath,
+          // loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
@@ -137,7 +138,15 @@ class GoRoutes {
         GoRoute(
           path: navimainscreenpath,
           name: navimainscreen,
-          builder: (context, state) => NavMainScreen(),
+          builder:
+              (context, state) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (_) => sl<ProfileCubit>()..fetchUserProfile(),
+                  ),
+                ],
+                child: NavMainScreen(),
+              ),
         ),
         GoRoute(
           path: homescreenPath,
@@ -182,12 +191,12 @@ class GoRoutes {
         GoRoute(
           path: teamDetailsPath,
           name: teamDetails,
-          builder: (context, state) =>TeamDetailsScreen(),
+          builder: (context, state) => TeamDetailsScreen(),
         ),
-         GoRoute(
+        GoRoute(
           path: createteamscreenpath,
           name: createteamscreen,
-          builder: (context, state) =>CreateTeamScreen(),
+          builder: (context, state) => CreateTeamScreen(),
         ),
       ],
     );
