@@ -1,5 +1,6 @@
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
+import 'package:edumate/features/attendence/pages/attendence_screen.dart';
 import 'package:edumate/features/attendence/pages/qr_scanner.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
 import 'package:edumate/features/courses/widgets/ai_floating_action_button.dart';
@@ -23,7 +24,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     CoursesScreen(),
-    QRScannerScreen(),
+    AttendanceScreen(),
     GraduationScreen(),
     ProfileScreen(),
   ];

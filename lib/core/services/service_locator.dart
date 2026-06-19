@@ -3,6 +3,9 @@
 import 'package:dio/dio.dart';
 import 'package:edumate/core/network/interceptors/logging_interceptor.dart';
 import 'package:edumate/core/services/api_service.dart';
+import 'package:edumate/features/attendence/cubit/attendance_cubit_cubit.dart';
+import 'package:edumate/features/attendence/data/repo/attendence_repo.dart';
+import 'package:edumate/features/attendence/data/repo/attendence_repo_IMPL.dart';
 import 'package:edumate/features/auth/data/repo/auth_repo.dart';
 import 'package:edumate/features/auth/data/repo/auth_repo_IMPL.dart';
 import 'package:edumate/features/auth/presentation/bloc/forgetpassword/forgetpassword_cubit.dart';
@@ -61,6 +64,12 @@ void setupServiceLocator() {
     ),
   );
 
+   sl.registerLazySingleton<AttendenceRepo>(
+    () => AttendenceRepoImpl( sl<ApiService>(), sl<FlutterSecureStorage>(),
+    ),
+  );
+
     sl.registerFactory<ProfileCubit>(() => ProfileCubit(profileRepo: sl()));
+    sl.registerFactory<AttendanceCubit>(() => AttendanceCubit(attendenceRepo: sl()));
 
 }

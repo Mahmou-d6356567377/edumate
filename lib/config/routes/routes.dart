@@ -1,4 +1,5 @@
 import 'package:edumate/core/services/service_locator.dart';
+import 'package:edumate/features/attendence/cubit/attendance_cubit_cubit.dart';
 import 'package:edumate/features/auth/data/models/email_code_model.dart';
 import 'package:edumate/features/auth/presentation/bloc/forgetpassword/forgetpassword_cubit.dart';
 import 'package:edumate/features/auth/presentation/bloc/login/login_cubit.dart';
@@ -73,7 +74,8 @@ class GoRoutes {
       initialLocation:
           // createteamscreenpath,
           splashscreenPath,
-          // loginPath,
+          // introPath,
+      // loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
@@ -143,6 +145,10 @@ class GoRoutes {
                 providers: [
                   BlocProvider(
                     create: (_) => sl<ProfileCubit>()..fetchUserProfile(),
+                  ),
+                  BlocProvider(
+                    create:
+                        (_) => sl<AttendanceCubit>(),
                   ),
                 ],
                 child: NavMainScreen(),

@@ -1,11 +1,9 @@
-import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:edumate/features/navigation/widgets/ai_response_msg.dart';
 import 'package:edumate/features/navigation/widgets/custom_text_field_sender.dart';
 import 'package:edumate/features/navigation/widgets/my_msg_prompt.dart';
 import 'package:edumate/features/navigation/widgets/new_chat_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class AIPage extends StatelessWidget {
   const AIPage({super.key});

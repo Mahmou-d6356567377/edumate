@@ -1,5 +1,7 @@
+import 'package:edumate/features/attendence/cubit/attendance_cubit_cubit.dart';
 import 'package:edumate/features/attendence/pages/attendence_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class QRScannerScreen extends StatelessWidget {
@@ -12,12 +14,8 @@ class QRScannerScreen extends StatelessWidget {
       body: MobileScanner(
         onDetect: (result) {
           final code = result.barcodes.first.rawValue;
-          print(code);
           if (code != null) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => AttendanceScreen(qrData: code)),
-            );
+            Navigator.pop(context, code); // ✅ return token to AttendanceScreen
           }
         },
       ),

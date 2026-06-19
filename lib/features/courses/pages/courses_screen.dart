@@ -12,7 +12,9 @@ class CoursesScreen extends StatefulWidget {
 
 class _CoursesScreenState extends State<CoursesScreen> {
   int selected = 0;
-  final List<String> categories = ['All', 'Lectures', 'Labs'];
+  final List<String> categories = ['All',
+   //'Lectures', 'Labs',
+   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,31 +23,31 @@ class _CoursesScreenState extends State<CoursesScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Column(
           children: [
-            Row(
-              children: List.generate(
-                categories.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: ChoiceChip(
-                    label: Text(categories[index]),
-                    selected: selected == index,
-                    selectedColor: Color(ConstsColors.kblue),
-                    labelStyle: TextStyle(
-                      color: selected == index ? Colors.white : Colors.grey,
-                    ),
-                    //  clipBehavior: Clip.antiAlias,
-                    elevation: 5,
-                    shadowColor: Colors.black,
-                    side: const BorderSide(color: Colors.transparent),
-                    onSelected: (value) {
-                      setState(() {
-                        selected = index;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ),
+            // Row(
+            //   children: List.generate(
+            //     categories.length,
+            //     (index) => Padding(
+            //       padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            //       child: ChoiceChip(
+            //         label: Text(categories[index]),
+            //         selected: selected == index,
+            //         selectedColor: Color(ConstsColors.kblue),
+            //         labelStyle: TextStyle(
+            //           color: selected == index ? Colors.white : Colors.grey,
+            //         ),
+            //         //  clipBehavior: Clip.antiAlias,
+            //         elevation: 5,
+            //         shadowColor: Colors.black,
+            //         side: const BorderSide(color: Colors.transparent),
+            //         onSelected: (value) {
+            //           setState(() {
+            //             selected = index;
+            //           });
+            //         },
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
             SubjectList(selected: selected),
           ],
