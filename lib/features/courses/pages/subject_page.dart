@@ -4,6 +4,7 @@ import 'package:edumate/core/services/service_locator.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:edumate/core/themes/fonts.dart';
 import 'package:edumate/features/courses/cubits/getsubmesseges/getsubmesseges_cubit.dart';
+import 'package:edumate/features/courses/cubits/streampeople/streampeople_cubit.dart';
 import 'package:edumate/features/courses/data/models/subItemtosubdetailModel.dart';
 import 'package:edumate/features/courses/data/repo/course_repo.dart';
 import 'package:edumate/features/courses/pages/class_work_page.dart';
@@ -36,16 +37,23 @@ class _SubjectPageState extends State<SubjectPage> {
     _screens = [
       BlocProvider(
         create:
-            (context) => GetstreammessegesCubit(courseRepo: sl<CourseRepo>())
-              ..getStreamMessages(
-                courseId: widget.subitemtosubdetailmodel.subId,
-              ),
+            (context) =>
+                sl<GetstreammessegesCubit>()..getStreamMessages(
+                  courseId: widget.subitemtosubdetailmodel.subId,
+                ),
         child: StreamPage(
           subitemtosubdetailmodel: widget.subitemtosubdetailmodel,
         ),
       ),
       ClassWorkPage(subjectid: widget.subitemtosubdetailmodel.subId),
-      PeaplePage(subjectid: widget.subitemtosubdetailmodel.subId),
+      BlocProvider(
+        create:
+            (context) =>
+                sl<StreampeopleCubit>()..getStreamPeople(
+                  courseId: widget.subitemtosubdetailmodel.subId,
+                ),
+        child: PeaplePage(subjectid: widget.subitemtosubdetailmodel.subId),
+      ),
     ];
   }
 

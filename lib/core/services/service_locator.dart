@@ -1,5 +1,3 @@
-// lib/core/di/service_locator.dart
-
 import 'package:dio/dio.dart';
 import 'package:edumate/core/network/interceptors/logging_interceptor.dart';
 import 'package:edumate/core/network/interceptors/refresh_token_interceptor.dart';
@@ -10,13 +8,14 @@ import 'package:edumate/features/attendence/data/repo/attendence_repo_IMPL.dart'
 import 'package:edumate/features/auth/data/repo/auth_repo.dart';
 import 'package:edumate/features/auth/data/repo/auth_repo_IMPL.dart';
 import 'package:edumate/features/auth/presentation/bloc/forgetpassword/forgetpassword_cubit.dart';
-
 import 'package:edumate/features/auth/presentation/bloc/login/login_cubit.dart';
 import 'package:edumate/features/auth/presentation/bloc/resetpassword/resetpassword_cubit.dart';
 import 'package:edumate/features/auth/presentation/bloc/verify/verify_cubit.dart';
 import 'package:edumate/features/courses/cubits/addcomment/addcomment_cubit.dart';
 import 'package:edumate/features/courses/cubits/getcomments/getcomments_cubit.dart';
 import 'package:edumate/features/courses/cubits/getcourses/getcourses_cubit.dart';
+import 'package:edumate/features/courses/cubits/getsubmesseges/getsubmesseges_cubit.dart';
+import 'package:edumate/features/courses/cubits/streampeople/streampeople_cubit.dart';
 import 'package:edumate/features/courses/data/repo/course_repo.dart';
 import 'package:edumate/features/courses/data/repo/course_repo_IMPL.dart';
 import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
@@ -124,4 +123,6 @@ void setupServiceLocator() {
     () => GetcommentsCubit(courseRepo: sl()),
   );
   sl.registerFactory<AddcommentCubit>(() => AddcommentCubit(courseRepo: sl()));
+  sl.registerFactory<GetstreammessegesCubit>(() => GetstreammessegesCubit(courseRepo: sl()));
+  sl.registerFactory<StreampeopleCubit>(() => StreampeopleCubit(courseRepo: sl()));
 }

@@ -19,30 +19,44 @@ class PostAttachment extends StatelessWidget {
   AttachmentType get _type {
     final url = fileurl.toLowerCase();
     if (url.contains('drive.google.com')) return AttachmentType.drive;
-    if (url.endsWith('.jpg') || url.endsWith('.jpeg') ||
-        url.endsWith('.png')  || url.endsWith('.gif'))  return AttachmentType.image;
-    if (url.endsWith('.pdf'))                           return AttachmentType.pdf;
-    if (url.endsWith('.doc') || url.endsWith('.docx'))  return AttachmentType.word;
+    if (url.endsWith('.jpg') ||
+        url.endsWith('.jpeg') ||
+        url.endsWith('.png') ||
+        url.endsWith('.gif'))
+      return AttachmentType.image;
+    if (url.endsWith('.pdf')) return AttachmentType.pdf;
+    if (url.endsWith('.doc') || url.endsWith('.docx'))
+      return AttachmentType.word;
     return AttachmentType.other;
   }
 
   IconData get _icon {
     switch (_type) {
-      case AttachmentType.image:  return Icons.image_outlined;
-      case AttachmentType.pdf:    return Icons.picture_as_pdf_outlined;
-      case AttachmentType.word:   return Icons.description_outlined;
-      case AttachmentType.drive:  return Icons.add_to_drive_outlined;
-      case AttachmentType.other:  return Icons.insert_drive_file_outlined;
+      case AttachmentType.image:
+        return Icons.image_outlined;
+      case AttachmentType.pdf:
+        return Icons.picture_as_pdf_outlined;
+      case AttachmentType.word:
+        return Icons.description_outlined;
+      case AttachmentType.drive:
+        return Icons.add_to_drive_outlined;
+      case AttachmentType.other:
+        return Icons.insert_drive_file_outlined;
     }
   }
 
   Color get _color {
     switch (_type) {
-      case AttachmentType.pdf:   return Colors.red;
-      case AttachmentType.word:  return Colors.blue;
-      case AttachmentType.drive: return Colors.green;
-      case AttachmentType.image: return Colors.purple;
-      case AttachmentType.other: return Colors.orange;
+      case AttachmentType.pdf:
+        return Colors.red;
+      case AttachmentType.word:
+        return Colors.blue;
+      case AttachmentType.drive:
+        return Colors.green;
+      case AttachmentType.image:
+        return Colors.purple;
+      case AttachmentType.other:
+        return Colors.orange;
     }
   }
 
@@ -51,27 +65,26 @@ class PostAttachment extends StatelessWidget {
     if (_type == AttachmentType.image) {
       showDialog(
         context: context,
-        builder: (_) => Dialog(
-          backgroundColor: Colors.black,
-          insetPadding: EdgeInsets.zero,
-          child: Stack(
-            children: [
-              Center(
-                child: InteractiveViewer(
-                  child: Image.network(fileurl),
-                ),
+        builder:
+            (_) => Dialog(
+              backgroundColor: Colors.black,
+              insetPadding: EdgeInsets.zero,
+              child: Stack(
+                children: [
+                  Center(
+                    child: InteractiveViewer(child: Image.network(fileurl)),
+                  ),
+                  Positioned(
+                    top: 10,
+                    right: 10,
+                    child: IconButton(
+                      icon: Icon(Icons.close, color: Colors.white),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ),
+                ],
               ),
-              Positioned(
-                top: 10,
-                right: 10,
-                child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.white),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ),
-            ],
-          ),
-        ),
+            ),
       );
     } else {
       _launchUrl();
@@ -91,19 +104,19 @@ class PostAttachment extends StatelessWidget {
       final fileName = fileurl.split('/').last;
       final savePath = '${dir.path}/$fileName';
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Downloading $fileName...')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Downloading $fileName...')));
 
       await Dio().download(fileurl, savePath);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Downloaded to $savePath')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Downloaded to $savePath')));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Download failed: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Download failed: $e')));
     }
   }
 
