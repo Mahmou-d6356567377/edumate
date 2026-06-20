@@ -11,6 +11,7 @@ class AttendenceRepoImpl implements AttendenceRepo {
   final FlutterSecureStorage secureStorage;
 
   AttendenceRepoImpl(this.apiService, this.secureStorage);
+  @override
   Future<Either<Failure, String>> confirmAttendance({
     required double latitude,
     required double longitude,

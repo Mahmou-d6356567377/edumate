@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class PostListTile extends StatelessWidget {
-  const PostListTile({super.key});
-
+  const PostListTile({super.key, required this.name, required this.date});
+  final String name;
+  final String date;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -22,7 +23,7 @@ class PostListTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            'Essam mossad',
+            name,
             style:
                 Theme.of(context).brightness == Brightness.light
                     ? Fonts.boldblackstyle18
@@ -33,7 +34,7 @@ class PostListTile extends StatelessWidget {
         ],
       ),
       subtitle: Text(
-        'Jan 15, 2025',
+        date,
         style: Theme.of(
           context,
         ).textTheme.bodyMedium!.copyWith(color: Color(ConstsColors.kdarkgray)),

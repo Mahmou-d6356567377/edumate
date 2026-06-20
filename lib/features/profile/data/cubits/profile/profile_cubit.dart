@@ -7,7 +7,7 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit({required this.profileRepo}) : super(ProfileInitial());
- ProfileRepo profileRepo;
+  ProfileRepo profileRepo;
 
   Future<void> fetchUserProfile() async {
     emit(ProfileLoading());
@@ -17,5 +17,4 @@ class ProfileCubit extends Cubit<ProfileState> {
       (userProfile) => emit(ProfileSuccess(userProfile)),
     );
   }
-  
 }

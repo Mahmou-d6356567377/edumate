@@ -39,7 +39,6 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       }
 
       if (permission == LocationPermission.denied) {
-
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied ||
             permission == LocationPermission.deniedForever) {
@@ -66,11 +65,7 @@ class AttendanceCubit extends Cubit<AttendanceState> {
       );
 
       isLocationValid = distance < 50;
-      emit(
-        AttendanceReady(
-          qrData: qrData,
-        ),
-      );
+      emit(AttendanceReady(qrData: qrData));
       print("Location is valid: $isLocationValid");
 
       if (!isLocationValid) {

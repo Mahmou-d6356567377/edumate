@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class InfoTile extends StatelessWidget {
@@ -31,4 +30,3 @@ class InfoTile extends StatelessWidget {
     );
   }
 }
-

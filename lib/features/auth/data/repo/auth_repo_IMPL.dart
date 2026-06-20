@@ -45,13 +45,11 @@ class AuthRepoImpl implements AuthRepo {
         key: 'token_expiration',
         value: loginResponse.expiration,
       );
-
+      await secureStorage.write(key: VidConsts.email, value: email);
       // final savedToken = await secureStorage.read(key: 'access_token');
       // final savedRefresh = await secureStorage.read(key: 'refresh_token');
       // final savedExpiration = await secureStorage.read(key: 'token_expiration');
 
-      // print('>>> SAVED ACCESS TOKEN: $savedToken');
-      // print('>>> SAVED REFRESH TOKEN: $savedRefresh');
       // print('>>> SAVED EXPIRATION: $savedExpiration');
       return Right(loginResponse);
     } on DioException catch (e) {

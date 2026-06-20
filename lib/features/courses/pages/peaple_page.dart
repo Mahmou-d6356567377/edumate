@@ -4,7 +4,8 @@ import 'package:edumate/features/home/widgets/double_texted_row_widget.dart';
 import 'package:flutter/material.dart';
 
 class PeaplePage extends StatelessWidget {
-  const PeaplePage({super.key});
+  const PeaplePage({super.key, required this.subjectid});
+  final String subjectid;
 
   @override
   Widget build(BuildContext context) {

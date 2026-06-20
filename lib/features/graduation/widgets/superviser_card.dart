@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 enum SupervisorStatus { active, busy, offline }
 
 class SupervisorCard extends StatelessWidget {
-  final String imageUrl;
   final String name;
   final String department;
   final String facultyId;
@@ -12,7 +11,6 @@ class SupervisorCard extends StatelessWidget {
 
   const SupervisorCard({
     super.key,
-    required this.imageUrl,
     required this.name,
     required this.department,
     required this.facultyId,
@@ -63,7 +61,7 @@ class SupervisorCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              CircleAvatar(radius: 28, backgroundImage: NetworkImage(imageUrl)),
+              CircleAvatar(radius: 28, child: const Icon(Icons.person)),
               Positioned(
                 bottom: 0,
                 right: 0,
@@ -89,6 +87,7 @@ class SupervisorCard extends StatelessWidget {
               children: [
                 Text(
                   name,
+                  maxLines: 1,
                   style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -107,21 +106,25 @@ class SupervisorCard extends StatelessWidget {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFEAF2FE),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        'ID: $facultyId',
-                        style: const TextStyle(
-                          color: Color(0xFF3B82F6),
-                          fontWeight: FontWeight.w600,
-                          fontSize: 12,
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFEAF2FE),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          'ID: $facultyId',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Color(0xFF3B82F6),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
                     ),

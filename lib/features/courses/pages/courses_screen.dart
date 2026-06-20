@@ -12,9 +12,10 @@ class CoursesScreen extends StatefulWidget {
 
 class _CoursesScreenState extends State<CoursesScreen> {
   int selected = 0;
-  final List<String> categories = ['All',
-   //'Lectures', 'Labs',
-   ];
+  final List<String> categories = [
+    'All',
+    //'Lectures', 'Labs',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +49,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
             //     ),
             //   ),
             // ),
-
             SubjectList(selected: selected),
           ],
         ),

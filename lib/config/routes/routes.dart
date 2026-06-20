@@ -11,10 +11,14 @@ import 'package:edumate/features/auth/presentation/pages/login.dart';
 import 'package:edumate/features/auth/presentation/pages/reset_password.dart';
 import 'package:edumate/features/auth/presentation/pages/signup.dart';
 import 'package:edumate/features/auth/presentation/pages/verification_page.dart';
+import 'package:edumate/features/courses/cubits/getcourses/getcourses_cubit.dart';
+import 'package:edumate/features/courses/data/models/subItemtosubdetailModel.dart';
 import 'package:edumate/features/courses/pages/assignment_details_page.dart';
 import 'package:edumate/features/courses/pages/comments_page.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
 import 'package:edumate/features/courses/pages/subject_page.dart';
+import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
+import 'package:edumate/features/graduation/cubits/instructor_cubit/instructor_cubit.dart';
 import 'package:edumate/features/graduation/pages/create_team_screen.dart';
 import 'package:edumate/features/graduation/pages/team_details_screen.dart';
 import 'package:edumate/features/home/pages/daily_schedule_page.dart';
@@ -22,6 +26,9 @@ import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:edumate/features/home/pages/notification_page.dart';
 import 'package:edumate/features/in/presentation/pages/intro.dart';
 import 'package:edumate/features/in/presentation/pages/splash.dart';
+import 'package:edumate/features/navigation/cubits/addchat/addchat_cubit.dart';
+import 'package:edumate/features/navigation/cubits/askai/askai_cubit.dart';
+import 'package:edumate/features/navigation/cubits/getallchats/getallchats_cubit.dart';
 import 'package:edumate/features/navigation/pages/ai_page.dart';
 import 'package:edumate/features/navigation/pages/nav_main_screen.dart';
 import 'package:edumate/features/profile/data/cubits/profile/profile_cubit.dart';
@@ -74,7 +81,7 @@ class GoRoutes {
       initialLocation:
           // createteamscreenpath,
           splashscreenPath,
-          // introPath,
+      // introPath,
       // loginPath,
       //subjectpagePath,
       // aipagePath,
@@ -146,9 +153,13 @@ class GoRoutes {
                   BlocProvider(
                     create: (_) => sl<ProfileCubit>()..fetchUserProfile(),
                   ),
+                  BlocProvider(create: (_) => sl<AttendanceCubit>()),
+                  BlocProvider(create: (_) => sl<DoctorCubit>()..getdoctors()),
                   BlocProvider(
-                    create:
-                        (_) => sl<AttendanceCubit>(),
+                    create: (_) => sl<InstructorCubit>()..getinstructors(),
+                  ),
+                  BlocProvider(
+                    create: (_) => sl<GetcoursesCubit>()..getCourses(),
                   ),
                 ],
                 child: NavMainScreen(),
@@ -177,17 +188,32 @@ class GoRoutes {
         GoRoute(
           path: aipagePath,
           name: aipage,
-          builder: (context, state) => AIPage(),
+          builder:
+              (context, state) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(create: (_) => sl<AddChatCubit>()..addChat()),
+                  BlocProvider(
+                    create: (_) => sl<GetAllChatsCubit>()..getAllChats(),
+                  ),
+                  BlocProvider(create: (_) => sl<AskAICubit>()),
+                ],
+                child: const AIPage(),
+              ),
         ),
         GoRoute(
           path: subjectpagePath,
           name: subjectpage,
-          builder: (context, state) => SubjectPage(),
+          //todo get the subjectid when you
+          builder:
+              (context, state) => SubjectPage(
+                subitemtosubdetailmodel: state.extra as Subitemtosubdetailmodel,
+              ),
         ),
         GoRoute(
           path: commentpagePath,
           name: commentpage,
-          builder: (context, state) => CommentsPage(),
+          builder:
+              (context, state) => CommentsPage(msgid: state.extra as String),
         ),
         GoRoute(
           path: assignmentdetailspagePath,

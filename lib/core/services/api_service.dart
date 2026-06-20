@@ -15,6 +15,17 @@ class ApiService {
     return response.data;
   }
 
+  Future<List<dynamic>> getList({required String url, String? token}) async {
+    final response = await dio.get(
+      url,
+      options: Options(
+        headers: token != null ? {'Authorization': 'Bearer $token'} : {},
+      ),
+    );
+
+    return response.data as List<dynamic>;
+  }
+
   Future<Response> post({
     required String url,
     required Map<String, dynamic> body,

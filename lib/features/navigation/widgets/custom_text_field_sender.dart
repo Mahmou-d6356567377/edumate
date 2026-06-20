@@ -6,9 +6,11 @@ class CustomTextFieldAndSender extends StatelessWidget {
   const CustomTextFieldAndSender({
     super.key,
     required TextEditingController controller,
+    this.onSend,
   }) : _controller = controller;
 
   final TextEditingController _controller;
+  final VoidCallback? onSend;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class CustomTextFieldAndSender extends StatelessWidget {
         children: [
           Expanded(child: CustomBorderlessTextField(controller: _controller)),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: onSend,
             style: ElevatedButton.styleFrom(
               shape: CircleBorder(),
               padding: EdgeInsets.all(12),

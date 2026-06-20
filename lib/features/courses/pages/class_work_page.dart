@@ -6,7 +6,8 @@ import 'package:edumate/features/home/widgets/double_texted_row_widget.dart';
 import 'package:flutter/material.dart';
 
 class ClassWorkPage extends StatelessWidget {
-  const ClassWorkPage({super.key});
+  const ClassWorkPage({super.key, required this.subjectid});
+  final String subjectid;
 
   @override
   Widget build(BuildContext context) {

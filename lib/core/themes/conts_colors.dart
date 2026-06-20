@@ -9,6 +9,7 @@ class ConstsColors {
   static const int kblack = 0xff000000;
   static const int koffwhite = 0xFFF7F9FD;
   static const int klightblue = 0xffd7e3fc;
+  static const int klightblue2 = 0xffDBEAFECC;
   static const int kwaterblue = 0xffeef3fd;
   static const int kblue = 0xff3572ef;
   static const int kgreen = 0xff34c759;

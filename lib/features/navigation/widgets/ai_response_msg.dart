@@ -6,9 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AiResponseMsgWidget extends StatelessWidget {
-  const AiResponseMsgWidget({super.key, required this.width});
+  const AiResponseMsgWidget({
+    super.key,
+    required this.width,
+    required this.response,
+  });
 
   final double width;
+  final String response;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -48,7 +54,7 @@ class AiResponseMsgWidget extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                'dssssssssssssssssssssssssssssdsssssssse44444444444wtttkjjjjjjjjjjjjjjsssssssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
+                response,
                 style:
                     Theme.of(context).brightness == Brightness.light
                         ? Fonts.normalblackstyle18

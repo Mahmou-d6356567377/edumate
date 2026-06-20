@@ -78,8 +78,8 @@ class ConstContainerDecorations {
     return BoxDecoration(
       shape: BoxShape.rectangle,
       borderRadius: BorderRadius.circular(20),
-      color: Color(ConstsColors.klightblue),
-      border: Border.all(color: Color(ConstsColors.kblue)),
+      color: Color(ConstsColors.kwaterblue),
+      border: Border.all(color: Color(ConstsColors.klightblue2)),
     );
   }
 

@@ -1,9 +1,12 @@
-
 import 'package:edumate/features/profile/widgets/state_card.dart';
 import 'package:flutter/material.dart';
 
 class AcademicSection extends StatelessWidget {
-  const AcademicSection({super.key, required this.finishedhours, required this.gpa});
+  const AcademicSection({
+    super.key,
+    required this.finishedhours,
+    required this.gpa,
+  });
 
   final int finishedhours;
   final num gpa;

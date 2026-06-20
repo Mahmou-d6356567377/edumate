@@ -2,12 +2,14 @@ import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:edumate/core/themes/fonts.dart';
+import 'package:edumate/features/courses/data/models/comment_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 class CommentListTile extends StatelessWidget {
-  const CommentListTile({super.key});
-
+  const CommentListTile({super.key, required this.commentModel});
+  final CommentModel commentModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +31,7 @@ class CommentListTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Essam mossad',
+              commentModel.name!,
               style:
                   Theme.of(context).brightness == Brightness.light
                       ? Fonts.boldblackstyle18
@@ -37,10 +39,17 @@ class CommentListTile extends StatelessWidget {
             ),
             const SizedBox(width: 5),
             SvgPicture.asset(Constants.approvalmark, width: 20, height: 20),
+            const Spacer(),
+            Text(
+              DateFormat('MMM d, yyyy').format(commentModel.sentAt!),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: Color(ConstsColors.kdarkgray),
+              ),
+            ),
           ],
         ),
         subtitle: Text(
-          'Please make sure to bring your laptops for the next lab session as we will be starting the Hadoop configuration.',
+          commentModel.commentText!,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
             color: Color(ConstsColors.kdarkgray),
           ),

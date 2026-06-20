@@ -6,6 +6,7 @@ abstract class ProfileState {}
 class ProfileInitial extends ProfileState {}
 
 class ProfileLoading extends ProfileState {}
+
 class ProfileSuccess extends ProfileState {
   final Userprofilemodel userProfile;
 
@@ -17,5 +18,3 @@ class ProfileFailure extends ProfileState {
 
   ProfileFailure(this.errorMessage);
 }
-
-

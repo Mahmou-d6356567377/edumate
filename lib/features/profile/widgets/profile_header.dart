@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key, required this.name, required this.id, required this.level});
+  const ProfileHeader({
+    super.key,
+    required this.name,
+    required this.id,
+    required this.level,
+  });
   final String name;
   final String id;
   final String level;
@@ -32,7 +37,7 @@ class ProfileHeader extends StatelessWidget {
         const SizedBox(height: 10),
         Text(name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 4),
-         Text('ID: #$id', style: TextStyle(color: Colors.grey)),
+        Text('ID: #$id', style: TextStyle(color: Colors.grey)),
         const SizedBox(height: 6),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -40,7 +45,7 @@ class ProfileHeader extends StatelessWidget {
             color: Colors.green.withOpacity(0.1),
             borderRadius: BorderRadius.circular(20),
           ),
-          child:  Text(
+          child: Text(
             'level $level Student',
             style: TextStyle(color: Colors.green),
           ),

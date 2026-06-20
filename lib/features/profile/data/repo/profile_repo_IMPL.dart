@@ -21,15 +21,21 @@ class UserProfileRepoImpl implements ProfileRepo {
         url: '${VidConsts.apiBaseURL}/api/Auth/me',
         token: token,
       );
-      print('Profile ::::::::::::::::::response: $response , token: $token' );
+      print('Profile ::::::::::::::::::response: $response , token: $token');
       final userProfile = Userprofilemodel.fromJson(response);
+      await secureStorage.write(
+        key: VidConsts.name,
+        value: userProfile.fullName,
+      );
       return Right(userProfile);
     } on DioException catch (e) {
       final responseData = e.response?.data;
       final detail = responseData is Map ? responseData['detail'] : null;
       final message = detail ?? 'Server Error';
       final statusCode = e.response?.statusCode;
-      print('Profile ::::::::::::::::::message: $message, statusCode: $statusCode  error: $e' );
+      print(
+        'Profile ::::::::::::::::::message: $message, statusCode: $statusCode  error: $e',
+      );
       return Left(ServerFailure(message.toString(), statusCode));
     } catch (e) {
       return Left(ServerFailure(e.toString(), 500));
