@@ -1,10 +1,12 @@
-import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/fonts.dart';
+import 'package:edumate/core/utils/course_dummy_data.dart';
 import 'package:flutter/material.dart';
 
 class NotificationItemWidget extends StatelessWidget {
-  const NotificationItemWidget({super.key});
+  const NotificationItemWidget({super.key, required this.notification});
+
+  final NotificationModel notification;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class NotificationItemWidget extends StatelessWidget {
             radius: 40,
             backgroundImage: AssetImage(Constants.classpic),
           ),
-          SizedBox(width: 15),
+          const SizedBox(width: 15),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,17 +30,20 @@ class NotificationItemWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('New announcement', style:  Theme.of(context).brightness == Brightness.light? Fonts.boldblackstyle18: Fonts.boldwhitestyle18,),
-
-                    Text('2 hrs ago', style: Fonts.normalgreystyle16),
+                    Text(
+                      notification.title,
+                      style: Theme.of(context).brightness == Brightness.light
+                          ? Fonts.boldblackstyle18
+                          : Fonts.boldwhitestyle18,
+                    ),
+                    Text(notification.time, style: Fonts.normalgreystyle16),
                   ],
                 ),
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Advanced Mathematics',
+                        notification.courseName,
                         style: Fonts.normalbluestyle14.copyWith(
                           fontWeight: FontWeight.w900,
                           fontSize: 15,
@@ -47,10 +52,11 @@ class NotificationItemWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Text(
-                  'Final project submission link is now live.',
+                  notification.body,
                   style: Fonts.normalgreystyle16,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

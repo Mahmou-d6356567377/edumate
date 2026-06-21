@@ -1,4 +1,5 @@
 import 'package:edumate/core/themes/fonts.dart';
+import 'package:edumate/core/utils/course_dummy_data.dart';
 import 'package:edumate/features/home/custom_app_bar.dart';
 import 'package:edumate/features/home/widgets/notification_item_widget.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +42,10 @@ class NotificationPage extends StatelessWidget {
                     ),
                   ),
                   SliverList.builder(
-                    itemBuilder: (context, index) => NotificationItemWidget(),
-                    itemCount: 10,
+                    itemCount: dummyNotifications.length,
+                    itemBuilder: (context, index) => NotificationItemWidget(
+                      notification: dummyNotifications[index],
+                    ),
                   ),
                 ],
               ),

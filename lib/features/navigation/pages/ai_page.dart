@@ -20,7 +20,6 @@ class AIPage extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-
       appBar: AppBar(title: const Text('EduMate chats')),
       drawer: Drawer(
         backgroundColor: const Color(0xFFf7f9fd),
@@ -46,12 +45,11 @@ class AIPage extends StatelessWidget {
               const CustomNewChat(),
               Text(
                 'Chats',
-                style: Theme.of(
-                  context,
-                ).textTheme.labelLarge!.copyWith(color: Colors.grey),
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(color: Colors.grey),
               ),
-
-              // ✅ GetAllChats state
               BlocBuilder<GetAllChatsCubit, GetAllChatsState>(
                 builder: (context, state) {
                   if (state is GetAllChatsLoading) {
@@ -64,13 +62,12 @@ class AIPage extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: GestureDetector(
-                              onTap: () {
-                                // TODO: navigate to specific chat
-                              },
+                              onTap: () {},
                               child: Text(
-                                state.chats[index].name ??
-                                    'Chat ${index + 1}', // 👈 use your model field
-                                style: Theme.of(context).textTheme.bodyLarge!
+                                state.chats[index].name ?? 'Chat ${index + 1}',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
                                     .copyWith(color: Colors.black),
                               ),
                             ),
@@ -91,7 +88,6 @@ class AIPage extends StatelessWidget {
           ),
         ),
       ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -120,36 +116,52 @@ class AIPage extends StatelessWidget {
                         ),
                       );
                     }
+
                     if (state is AskAIFailure) {
                       return Center(child: Text(state.message));
                     }
 
-                    return const SizedBox();
+                    // Empty state
+                    return const Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.auto_awesome_rounded,
+                              size: 36, color: Colors.grey),
+                          SizedBox(height: 12),
+                          Text(
+                            'Ask me anything about\nyour lectures & assignments',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                              height: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                 ),
               ),
-
               BlocBuilder<AddChatCubit, AddChatState>(
                 builder: (context, state) {
-                  final chatId = state is AddChatSuccess ? state.chatId : null;
+                  final chatId =
+                      state is AddChatSuccess ? state.chatId : null;
 
                   return CustomTextFieldAndSender(
                     controller: aicontroller,
-                    onSend:
-                        chatId == null
-                            ? null
-                            : () {
-                              final question = aicontroller.text.trim();
-
-                              if (question.isEmpty) return;
-
-                              context.read<AskAICubit>().askAI(
-                                chatId: chatId,
-                                message: question,
-                              );
-
-                              aicontroller.clear();
-                            },
+                    onSend: chatId == null
+                        ? null
+                        : () {
+                            final question = aicontroller.text.trim();
+                            if (question.isEmpty) return;
+                            context.read<AskAICubit>().askAI(
+                                  chatId: chatId,
+                                  message: question,
+                                );
+                            aicontroller.clear();
+                          },
                   );
                 },
               ),

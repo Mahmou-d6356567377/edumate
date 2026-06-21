@@ -1,3 +1,4 @@
+import 'package:edumate/features/courses/widgets/themed_container.dart';
 import 'package:flutter/material.dart';
 
 enum SupervisorStatus { active, busy, offline }
@@ -42,20 +43,7 @@ class SupervisorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+    return ThemedContainer(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -88,10 +76,13 @@ class SupervisorCard extends StatelessWidget {
                 Text(
                   name,
                   maxLines: 1,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color:
+                        Theme.of(context).brightness == Brightness.light
+                            ? Colors.black87
+                            : Colors.white,
                   ),
                 ),
                 const SizedBox(height: 4),

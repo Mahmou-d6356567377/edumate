@@ -1,4 +1,6 @@
+
 import 'package:edumate/core/consts/const_variebles.dart';
+import 'package:edumate/core/utils/course_dummy_data.dart';
 import 'package:edumate/features/courses/widgets/class_work_search_bar.dart';
 import 'package:edumate/features/courses/widgets/material_asseignment_widget.dart';
 import 'package:edumate/features/courses/widgets/recent_file_list_tile.dart';
@@ -11,8 +13,10 @@ class ClassWorkPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    TextEditingController controller = TextEditingController();
+    final double height = MediaQuery.of(context).size.height;
+    final TextEditingController controller = TextEditingController();
+    final files = CourseDummyData.recentFiles;
+
     return Padding(
       padding: ConstVariebles.edgeInsets,
       child: CustomScrollView(
@@ -20,7 +24,9 @@ class ClassWorkPage extends StatelessWidget {
           SliverToBoxAdapter(
             child: CustomSearchBar(height: height, controller: controller),
           ),
-          SliverToBoxAdapter(child: MaterialAsseignmentwidgets(height: height)),
+          SliverToBoxAdapter(
+            child: MaterialAsseignmentwidgets(height: height),
+          ),
           SliverToBoxAdapter(
             child: DoubleTextedRowWidget(
               title1: 'Recent Files',
@@ -28,25 +34,26 @@ class ClassWorkPage extends StatelessWidget {
               onTap2: () {
                 showBottomSheet(
                   context: context,
-                  builder:
-                      (context) => Column(
-                        children: [
-                          Expanded(
-                            child: ListView.builder(
-                              itemBuilder:
-                                  (context, index) => RecentFileListTile(),
-                              itemCount: 10,
-                            ),
-                          ),
-                        ],
+                  builder: (context) => Column(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: files.length,
+                          itemBuilder: (context, index) =>
+                              RecentFileListTile(file: files[index]),
+                        ),
                       ),
+                    ],
+                  ),
                 );
               },
             ),
           ),
+          // Show only the 5 most recent files
           SliverList.builder(
-            itemBuilder: (context, index) => RecentFileListTile(),
-            itemCount: 5,
+            itemCount: files.length,
+            itemBuilder: (context, index) =>
+                RecentFileListTile(file: files[index]),
           ),
         ],
       ),
