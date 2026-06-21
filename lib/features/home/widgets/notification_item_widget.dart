@@ -13,7 +13,6 @@ class NotificationItemWidget extends StatelessWidget {
       height: 130,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
-      decoration: ConstContainerDecorations.darkmodeshadow(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -29,7 +28,7 @@ class NotificationItemWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('New announcement', style: Fonts.boldblackstyle18),
+                    Text('New announcement', style:  Theme.of(context).brightness == Brightness.light? Fonts.boldblackstyle18: Fonts.boldwhitestyle18,),
 
                     Text('2 hrs ago', style: Fonts.normalgreystyle16),
                   ],
