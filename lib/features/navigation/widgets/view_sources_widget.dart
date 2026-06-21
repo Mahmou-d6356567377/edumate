@@ -19,10 +19,7 @@ class ViewSourcesWidget extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              title: Text(
-                'Sources',
-                style: Fonts.boldblackstyle18,
-              ),
+              title: Text('Sources', style: Fonts.boldblackstyle18),
               content: SizedBox(
                 width: double.maxFinite,
                 child: ListView.builder(
@@ -35,7 +32,10 @@ class ViewSourcesWidget extends StatelessWidget {
                         width: 30,
                         height: 30,
                       ),
-                      title: Text(sources[index], style: Fonts.normalblackstyle18),
+                      title: Text(
+                        sources[index],
+                        style: Fonts.normalblackstyle18,
+                      ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
                         color: Color(ConstsColors.kblue),

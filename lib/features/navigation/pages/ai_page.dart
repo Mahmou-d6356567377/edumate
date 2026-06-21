@@ -119,7 +119,8 @@ class AIPage extends StatelessWidget {
                           ],
                         ),
                       );
-                    }if (state is AskAIFailure) {
+                    }
+                    if (state is AskAIFailure) {
                       return Center(child: Text(state.message));
                     }
 

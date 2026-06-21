@@ -19,6 +19,7 @@ import 'package:edumate/features/courses/cubits/streampeople/streampeople_cubit.
 import 'package:edumate/features/courses/data/repo/course_repo.dart';
 import 'package:edumate/features/courses/data/repo/course_repo_IMPL.dart';
 import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
+import 'package:edumate/features/graduation/cubits/getgraduationteams/getgraduationteams_cubit.dart';
 import 'package:edumate/features/graduation/cubits/instructor_cubit/instructor_cubit.dart';
 import 'package:edumate/features/graduation/data/repos/graduation_repo.dart';
 import 'package:edumate/features/graduation/data/repos/graduation_repo_IMPL.dart';
@@ -128,5 +129,9 @@ void setupServiceLocator() {
   );
   sl.registerFactory<StreampeopleCubit>(
     () => StreampeopleCubit(courseRepo: sl()),
+  );
+
+  sl.registerFactory<GetgraduationteamsCubit>(
+    () => GetgraduationteamsCubit(graduationRepo: sl()),
   );
 }

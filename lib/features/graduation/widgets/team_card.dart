@@ -18,6 +18,7 @@ class TeamCard extends StatelessWidget {
   final int total;
   final bool isRequested;
   final bool disabled;
+  final bool isMyTeam; // 👈 new: hides the join button entirely
 
   const TeamCard({
     super.key,
@@ -28,10 +29,16 @@ class TeamCard extends StatelessWidget {
     required this.total,
     required this.isRequested,
     this.disabled = false,
+    this.isMyTeam = false,
   });
+
+  bool get isFull => members >= total;
 
   @override
   Widget build(BuildContext context) {
+    // A team is unjoinable if it's full, already requested, or explicitly disabled
+    final bool joinDisabled = isFull || isRequested || disabled;
+
     return Opacity(
       opacity: disabled ? 0.5 : 1,
       child: Container(
@@ -48,7 +55,7 @@ class TeamCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                StatusBadge(status: status),
+                StatusBadge(status: isFull ? 'FULL' : status),
                 Text('$members/$total members'),
               ],
             ),
@@ -73,55 +80,75 @@ class TeamCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const AvatarStack(),
-                Row(
-                  children: [
-                    TextButton(
-                      onPressed:
-                          disabled
-                              ? null
-                              : () {
-                                GoRouter.of(
-                                  context,
-                                ).pushNamed(GoRoutes.teamDetails);
-                              },
-                      child: Text(
-                        'Details',
-                        style: Fonts.boldwhitestyle16.copyWith(
-                          color: Color(ConstsColors.kblue),
+                Flexible(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        onPressed:
+                            disabled
+                                ? null
+                                : () {
+                                  GoRouter.of(
+                                    context,
+                                  ).pushNamed(GoRoutes.teamDetails);
+                                },
+                        child: Text(
+                          'Details',
+                          style: Fonts.boldwhitestyle16.copyWith(
+                            color: Color(ConstsColors.kblue),
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            isRequested
-                                ? Color(ConstsColors.klightgreen2)
-                                : Color(ConstsColors.kblue),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      onPressed:
-                          disabled
-                              ? null
-                              : () {
-                                TopBanner.show(
-                                  context,
-                                  'Application recorded successfully',
-                                );
-                                showRequestSentDialog(
-                                  context,
-                                  onBackToTeams: () {
-                                    // e.g. Navigator.pop or refresh the team list
+
+                      // 👇 only show the join/request button if this is NOT my team
+                      if (!isMyTeam)
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                joinDisabled
+                                    ? (isFull
+                                        ? Colors.grey.shade400
+                                        : Color(ConstsColors.klightgreen2))
+                                    : Color(ConstsColors.kblue),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
+                            minimumSize: Size.zero,
+                          ),
+                          onPressed:
+                              joinDisabled
+                                  ? null
+                                  : () {
+                                    TopBanner.show(
+                                      context,
+                                      'Application recorded successfully',
+                                    );
+                                    showRequestSentDialog(
+                                      context,
+                                      onBackToTeams: () {},
+                                    );
                                   },
-                                );
-                              },
-                      child: Text(
-                        isRequested ? 'Request sent' : 'Request to join',
-                        style: Fonts.boldwhitestyle16,
-                      ),
-                    ),
-                  ],
+                          child: Text(
+                            isFull
+                                ? 'Full'
+                                : (isRequested ? 'Sent' : 'Request'),
+                            style: Fonts.boldwhitestyle16,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -132,6 +159,7 @@ class TeamCard extends StatelessWidget {
   }
 }
 
+// showRequestSentDialog unchanged
 void showRequestSentDialog(
   BuildContext context, {
   VoidCallback? onBackToTeams,

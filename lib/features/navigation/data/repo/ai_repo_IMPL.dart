@@ -46,7 +46,8 @@ class AiRepoImpl implements AiRepo {
       return Left(ServerFailure(e.toString(), 500));
     }
   }
-@override
+
+  @override
   Future<Either<Failure, List<AiChatsItemModel>>> getallAIChats() async {
     try {
       final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
@@ -80,7 +81,7 @@ class AiRepoImpl implements AiRepo {
     }
   }
 
-@override
+  @override
   Future<Either<Failure, AiAskresponseModel>> askAI2({
     required String chatId,
     required String message,
@@ -91,9 +92,9 @@ class AiRepoImpl implements AiRepo {
         url: '${VidConsts.apiBaseURL}/api/ChatBot/ask/$chatId',
         body: {'token': token, 'query': message},
       );
-  final reply = AiAskresponseModel.fromJson(
-      response.data as Map<String, dynamic>,
-    );
+      final reply = AiAskresponseModel.fromJson(
+        response.data as Map<String, dynamic>,
+      );
 
       return Right(reply);
     } on DioException catch (e) {
@@ -106,9 +107,7 @@ class AiRepoImpl implements AiRepo {
       return Left(ServerFailure(e.toString(), 400));
     }
   }
-  
-  
-  
+
   // Future<Either<Failure, AiAskresponseModel>> askAI({
   //   required String chatId,
   //   required String message,

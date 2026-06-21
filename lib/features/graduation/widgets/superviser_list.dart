@@ -1,3 +1,4 @@
+import 'package:edumate/features/courses/widgets/subject_card_shimmer.dart';
 import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
 import 'package:edumate/features/graduation/cubits/instructor_cubit/instructor_cubit.dart';
 import 'package:edumate/features/graduation/widgets/superviser_card.dart';
@@ -49,17 +50,23 @@ class SuperviserList extends StatelessWidget {
 
             if (state is DoctorSuccess) {
               return SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  final doctor = state.doctors[index];
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    if (state.doctors.isEmpty)
+                      return const SubjectCardShimmer();
 
-                  return SupervisorCard(
-                    name: doctor.fullName ?? '',
-                    department: doctor.email ?? '',
-                    facultyId: doctor.instuctorId.toString(),
-                    status: SupervisorStatus.active,
-                    onChatTap: () {},
-                  );
-                }, childCount: state.doctors.length),
+                    final doctor = state.doctors[index];
+                    return SupervisorCard(
+                      name: doctor.fullName ?? '',
+                      department: doctor.email ?? '',
+                      facultyId: doctor.instuctorId.toString(),
+                      status: SupervisorStatus.active,
+                      onChatTap: () {},
+                    );
+                  },
+                  childCount:
+                      state.doctors.isNotEmpty ? state.doctors.length : 3,
+                ),
               );
             }
 
@@ -105,17 +112,25 @@ class SuperviserList extends StatelessWidget {
 
             if (state is InstructorSuccess) {
               return SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  final instructor = state.instructors[index];
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    if (state.instructors.isEmpty)
+                      return const SubjectCardShimmer();
 
-                  return SupervisorCard(
-                    name: instructor.fullName ?? '',
-                    department: instructor.email ?? '',
-                    facultyId: instructor.instuctorId.toString(),
-                    status: SupervisorStatus.active,
-                    onChatTap: () {},
-                  );
-                }, childCount: state.instructors.length),
+                    final instructor = state.instructors[index];
+                    return SupervisorCard(
+                      name: instructor.fullName ?? '',
+                      department: instructor.email ?? '',
+                      facultyId: instructor.instuctorId.toString(),
+                      status: SupervisorStatus.active,
+                      onChatTap: () {},
+                    );
+                  },
+                  childCount:
+                      state.instructors.isNotEmpty
+                          ? state.instructors.length
+                          : 3,
+                ),
               );
             }
 

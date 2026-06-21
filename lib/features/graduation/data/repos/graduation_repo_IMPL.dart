@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:edumate/config/env/vid.dart';
 import 'package:edumate/core/failure/failures.dart';
 import 'package:edumate/core/services/api_service.dart';
+import 'package:edumate/features/courses/data/models/people_model/people_model.dart';
+import 'package:edumate/features/graduation/data/models/graduation_team_model/graduation_team_model.dart';
 import 'package:edumate/features/graduation/data/models/instructor_model.dart';
 import 'package:edumate/features/graduation/data/repos/graduation_repo.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -13,6 +15,7 @@ class GraduationRepoImpl implements GraduationRepo {
 
   GraduationRepoImpl(this.apiService, this.secureStorage);
 
+  @override
   Future<Either<Failure, List<InstructorModel>>> getinstructors() async {
     try {
       final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
@@ -41,6 +44,7 @@ class GraduationRepoImpl implements GraduationRepo {
     }
   }
 
+  @override
   Future<Either<Failure, List<InstructorModel>>> getalldoctors() async {
     try {
       final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
@@ -62,6 +66,34 @@ class GraduationRepoImpl implements GraduationRepo {
       final statusCode = e.response?.statusCode;
       print(
         'Profile ::::::::::::::::::message: $message, statusCode: $statusCode  error: $e',
+      );
+      return Left(ServerFailure(message.toString(), statusCode));
+    } catch (e) {
+      return Left(ServerFailure(e.toString(), 500));
+    }
+  }
+
+  @override
+  Future<Either<Failure, GraduationTeamModel>> getGraduationTeams() async {
+    try {
+      final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
+      final response = await apiService.get(
+        url: '${VidConsts.apiBaseURL}/api/project-teams',
+        token: token,
+      );
+      print(
+        'get graduation teams ::::::::::::::::::response: $response , token: $token',
+      );
+
+      final people = GraduationTeamModel.fromJson(response);
+      return Right(people);
+    } on DioException catch (e) {
+      final responseData = e.response?.data;
+      final detail = responseData is Map ? responseData['detail'] : null;
+      final message = detail ?? 'Server Error';
+      final statusCode = e.response?.statusCode;
+      print(
+        'course people ::::::::::::::::::message: $message, statusCode: $statusCode  error: $e',
       );
       return Left(ServerFailure(message.toString(), statusCode));
     } catch (e) {

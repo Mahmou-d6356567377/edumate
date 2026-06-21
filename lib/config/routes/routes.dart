@@ -18,6 +18,7 @@ import 'package:edumate/features/courses/pages/comments_page.dart';
 import 'package:edumate/features/courses/pages/courses_screen.dart';
 import 'package:edumate/features/courses/pages/subject_page.dart';
 import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
+import 'package:edumate/features/graduation/cubits/getgraduationteams/getgraduationteams_cubit.dart';
 import 'package:edumate/features/graduation/cubits/instructor_cubit/instructor_cubit.dart';
 import 'package:edumate/features/graduation/pages/create_team_screen.dart';
 import 'package:edumate/features/graduation/pages/team_details_screen.dart';
@@ -79,10 +80,11 @@ class GoRoutes {
   static GoRouter getRouter(bool isLoggedIn, String uid) {
     return GoRouter(
       initialLocation:
+          // isLoggedIn ? homescreenPath : splashscreenPath,
           // createteamscreenpath,
-          // splashscreenPath,
+          splashscreenPath,
       // introPath,
-      loginPath,
+      // loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
@@ -160,6 +162,11 @@ class GoRoutes {
                   ),
                   BlocProvider(
                     create: (_) => sl<GetcoursesCubit>()..getCourses(),
+                  ),
+                  BlocProvider(
+                    create:
+                        (_) =>
+                            sl<GetgraduationteamsCubit>()..getgraduationteams(),
                   ),
                 ],
                 child: NavMainScreen(),
