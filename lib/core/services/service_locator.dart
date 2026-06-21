@@ -123,6 +123,10 @@ void setupServiceLocator() {
     () => GetcommentsCubit(courseRepo: sl()),
   );
   sl.registerFactory<AddcommentCubit>(() => AddcommentCubit(courseRepo: sl()));
-  sl.registerFactory<GetstreammessegesCubit>(() => GetstreammessegesCubit(courseRepo: sl()));
-  sl.registerFactory<StreampeopleCubit>(() => StreampeopleCubit(courseRepo: sl()));
+  sl.registerFactory<GetstreammessegesCubit>(
+    () => GetstreammessegesCubit(courseRepo: sl()),
+  );
+  sl.registerFactory<StreampeopleCubit>(
+    () => StreampeopleCubit(courseRepo: sl()),
+  );
 }

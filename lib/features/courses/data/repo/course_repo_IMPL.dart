@@ -146,33 +146,35 @@ class CourseRepoImpl implements CourseRepo {
       return Left(ServerFailure(e.toString(), 400));
     }
   }
-  
-@override
-Future<Either<Failure, PeopleModel>> getCoursePeople({
-  required String courseId,
-}) async {
-  try {
-    final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
-    final response = await apiService.get(
-      url: '${VidConsts.apiBaseURL}/api/Stream/people/$courseId?PageNumber=1&PageSize=1975',
-      token: token,
-    );
-    print('get course people ::::::::::::::::::response: $response , token: $token');
 
-    final people = PeopleModel.fromJson(response);
-    return Right(people);
-  } on DioException catch (e) {
-    final responseData = e.response?.data;
-    final detail = responseData is Map ? responseData['detail'] : null;
-    final message = detail ?? 'Server Error';
-    final statusCode = e.response?.statusCode;
-    print(
-      'course people ::::::::::::::::::message: $message, statusCode: $statusCode  error: $e',
-    );
-    return Left(ServerFailure(message.toString(), statusCode));
-  } catch (e) {
-    return Left(ServerFailure(e.toString(), 500));
+  @override
+  Future<Either<Failure, PeopleModel>> getCoursePeople({
+    required String courseId,
+  }) async {
+    try {
+      final token = await secureStorage.read(key: VidConsts.tokenaccesskey);
+      final response = await apiService.get(
+        url:
+            '${VidConsts.apiBaseURL}/api/Stream/people/$courseId?PageNumber=1&PageSize=1975',
+        token: token,
+      );
+      print(
+        'get course people ::::::::::::::::::response: $response , token: $token',
+      );
+
+      final people = PeopleModel.fromJson(response);
+      return Right(people);
+    } on DioException catch (e) {
+      final responseData = e.response?.data;
+      final detail = responseData is Map ? responseData['detail'] : null;
+      final message = detail ?? 'Server Error';
+      final statusCode = e.response?.statusCode;
+      print(
+        'course people ::::::::::::::::::message: $message, statusCode: $statusCode  error: $e',
+      );
+      return Left(ServerFailure(message.toString(), statusCode));
+    } catch (e) {
+      return Left(ServerFailure(e.toString(), 500));
+    }
   }
-}
-
 }

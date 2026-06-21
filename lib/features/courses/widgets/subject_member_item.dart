@@ -2,11 +2,7 @@ import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:flutter/material.dart';
 
 class SubjectMemberItem extends StatelessWidget {
-  const SubjectMemberItem({
-    super.key,
-    required this.name,
-    required this.role,
-  });
+  const SubjectMemberItem({super.key, required this.name, required this.role});
 
   final String name;
   final String role;

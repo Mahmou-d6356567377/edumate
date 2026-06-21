@@ -7,10 +7,9 @@ class AskAIInitial extends AskAIState {}
 class AskAILoading extends AskAIState {}
 
 class AskAISuccess extends AskAIState {
-  final String response;
-  final String question;
+  final AiAskresponseModel response;
 
-  AskAISuccess(this.response, this.question);
+  AskAISuccess(this.response);
 }
 
 class AskAIFailure extends AskAIState {

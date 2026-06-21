@@ -1,6 +1,7 @@
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/conts_colors.dart';
 import 'package:edumate/core/themes/fonts.dart';
+import 'package:edumate/features/navigation/data/models/ai_askresponse_model.dart';
 import 'package:edumate/features/navigation/widgets/view_sources_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,7 +14,7 @@ class AiResponseMsgWidget extends StatelessWidget {
   });
 
   final double width;
-  final String response;
+  final AiAskresponseModel response;
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +55,14 @@ class AiResponseMsgWidget extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                response,
+                response.answer!,
                 style:
                     Theme.of(context).brightness == Brightness.light
                         ? Fonts.normalblackstyle18
                         : Fonts.normalwhitestyle18,
               ),
               SizedBox(height: 15),
-              ViewSourcesWidget(),
+              ViewSourcesWidget(sources: response.sources!),
             ],
           ),
         ),

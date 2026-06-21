@@ -80,9 +80,9 @@ class GoRoutes {
     return GoRouter(
       initialLocation:
           // createteamscreenpath,
-          splashscreenPath,
+          // splashscreenPath,
       // introPath,
-      // loginPath,
+      loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,

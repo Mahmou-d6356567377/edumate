@@ -110,7 +110,7 @@ class AIPage extends StatelessWidget {
                           children: [
                             MyMsgPromptWidget(
                               width: width,
-                              title: state.question,
+                              title: state.response.question!,
                             ),
                             AiResponseMsgWidget(
                               width: width,
@@ -119,6 +119,8 @@ class AIPage extends StatelessWidget {
                           ],
                         ),
                       );
+                    }if (state is AskAIFailure) {
+                      return Center(child: Text(state.message));
                     }
 
                     return const SizedBox();

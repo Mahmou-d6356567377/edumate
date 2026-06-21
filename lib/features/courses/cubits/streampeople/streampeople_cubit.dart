@@ -7,14 +7,13 @@ part 'streampeople_state.dart';
 
 class StreampeopleCubit extends Cubit<StreampeopleState> {
   StreampeopleCubit({required this.courseRepo}) : super(StreampeopleInitial());
- final CourseRepo courseRepo;
+  final CourseRepo courseRepo;
   Future<void> getStreamPeople({required String courseId}) async {
     emit(StreampeopleLoading());
     final result = await courseRepo.getCoursePeople(courseId: courseId);
     result.fold(
       (failure) => emit(StreampeopleFailure(failure.message)),
-      (people) => emit(StreampeopleSuccess(users:people)),
+      (people) => emit(StreampeopleSuccess(users: people)),
     );
   }
-  
 }

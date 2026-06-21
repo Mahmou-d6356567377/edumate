@@ -13,8 +13,9 @@ class PeaplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          sl<StreampeopleCubit>()..getStreamPeople(courseId: subjectid),
+      create:
+          (context) =>
+              sl<StreampeopleCubit>()..getStreamPeople(courseId: subjectid),
       child: BlocBuilder<StreampeopleCubit, StreampeopleState>(
         builder: (context, state) {
           if (state is StreampeopleLoading) {
@@ -41,10 +42,11 @@ class PeaplePage extends StatelessWidget {
                   ),
                   SliverList.builder(
                     itemCount: instructors.length,
-                    itemBuilder: (context, index) => SubjectMemberItem(
-                      name: instructors[index].name ?? 'Unknown',
-                      role: instructors[index].role ?? 'Instructor',
-                    ),
+                    itemBuilder:
+                        (context, index) => SubjectMemberItem(
+                          name: instructors[index].name ?? 'Unknown',
+                          role: instructors[index].role ?? 'Instructor',
+                        ),
                   ),
                   SliverToBoxAdapter(
                     child: DoubleTextedRowWidget(
@@ -54,10 +56,11 @@ class PeaplePage extends StatelessWidget {
                   ),
                   SliverList.builder(
                     itemCount: students.length,
-                    itemBuilder: (context, index) => SubjectMemberItem(
-                      name: students[index].name ?? 'Unknown',
-                      role: 'Student',
-                    ),
+                    itemBuilder:
+                        (context, index) => SubjectMemberItem(
+                          name: students[index].name ?? 'Unknown',
+                          role: 'Student',
+                        ),
                   ),
                 ],
               ),

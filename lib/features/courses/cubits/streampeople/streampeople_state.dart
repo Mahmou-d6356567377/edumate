@@ -8,7 +8,7 @@ class StreampeopleInitial extends StreampeopleState {}
 class StreampeopleLoading extends StreampeopleState {}
 
 class StreampeopleSuccess extends StreampeopleState {
-  final PeopleModel users;  // ✅ not a List
+  final PeopleModel users; // ✅ not a List
   StreampeopleSuccess({required this.users});
 }
 
