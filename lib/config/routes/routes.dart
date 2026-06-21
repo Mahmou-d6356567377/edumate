@@ -19,9 +19,11 @@ import 'package:edumate/features/courses/pages/courses_screen.dart';
 import 'package:edumate/features/courses/pages/subject_page.dart';
 import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
 import 'package:edumate/features/graduation/cubits/getgraduationteams/getgraduationteams_cubit.dart';
+import 'package:edumate/features/graduation/cubits/getteamdetails/getteamdetails_cubit.dart';
 import 'package:edumate/features/graduation/cubits/instructor_cubit/instructor_cubit.dart';
 import 'package:edumate/features/graduation/pages/create_team_screen.dart';
 import 'package:edumate/features/graduation/pages/team_details_screen.dart';
+import 'package:edumate/features/home/cubits/timeline/timeline_cubit.dart';
 import 'package:edumate/features/home/pages/daily_schedule_page.dart';
 import 'package:edumate/features/home/pages/home_screen.dart';
 import 'package:edumate/features/home/pages/notification_page.dart';
@@ -83,8 +85,8 @@ class GoRoutes {
           // isLoggedIn ? homescreenPath : splashscreenPath,
           // createteamscreenpath,
           splashscreenPath,
-      // introPath,
-      // loginPath,
+          // introPath,
+          // loginPath,
       //subjectpagePath,
       // aipagePath,
       debugLogDiagnostics: true,
@@ -230,7 +232,14 @@ class GoRoutes {
         GoRoute(
           path: teamDetailsPath,
           name: teamDetails,
-          builder: (context, state) => TeamDetailsScreen(),
+          builder:
+              (context, state) => BlocProvider(
+                create:
+                    (context) =>
+                        sl<GetteamdetailsCubit>()
+                          ..getteamdetails(id: state.extra as String),
+                child: TeamDetailsScreen(),
+              ),
         ),
         GoRoute(
           path: createteamscreenpath,

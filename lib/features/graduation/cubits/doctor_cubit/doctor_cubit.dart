@@ -11,7 +11,7 @@ class DoctorCubit extends Cubit<DoctorState> {
 
   Future<void> getdoctors() async {
     emit(DoctorLoading());
-    final result = await graduationRepo.getinstructors();
+    final result = await graduationRepo.getalldoctors();
     result.fold(
       (failure) => emit(DoctorFailure(message: failure.message)),
       (instructors) => emit(DoctorSuccess(doctors: instructors)),

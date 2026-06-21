@@ -10,8 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreenHeader extends ConsumerWidget {
-  const HomeScreenHeader({super.key, required this.username});
-  final String username;
+  const HomeScreenHeader({super.key, });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

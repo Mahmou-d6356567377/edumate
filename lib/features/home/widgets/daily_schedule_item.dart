@@ -1,19 +1,29 @@
+import 'package:edumate/config/env/vid.dart';
 import 'package:edumate/config/routes/routes.dart';
 import 'package:edumate/core/consts/const_container_decorations.dart';
 import 'package:edumate/core/consts/constants.dart';
 import 'package:edumate/core/themes/fonts.dart';
+import 'package:edumate/features/courses/data/models/subItemtosubdetailModel.dart';
+import 'package:edumate/features/home/data/models/time_line_model/time_line_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class DailyScheduleItem extends StatelessWidget {
-  const DailyScheduleItem({super.key});
-
+  const DailyScheduleItem({super.key, required this.timeLineModel});
+  final TimeLineModel timeLineModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(GoRoutes.subjectpagePath);
+        GoRouter.of(context).push(
+          GoRoutes.subjectpagePath,
+          extra: Subitemtosubdetailmodel(
+            subId:timeLineModel.sessionId!,
+            subname: timeLineModel.courseName!,
+            subpic: timeLineModel.imageUrl!,
+          ),
+        );
       },
       child: Container(
         width: MediaQuery.sizeOf(context).width,
@@ -29,8 +39,8 @@ class DailyScheduleItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                Constants.classpic,
+              child: Image.network(
+                '${VidConsts.apiBaseURL}${timeLineModel.imageUrl}',
                 width: 72,
                 height: 72,
                 fit: BoxFit.cover,
@@ -42,7 +52,7 @@ class DailyScheduleItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Cyber Security',
+                    timeLineModel.courseName??'Unknown',
                     style:
                         Theme.of(context).brightness == Brightness.light
                             ? Fonts.boldblackstyle16
@@ -54,7 +64,7 @@ class DailyScheduleItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Chapter 2: Intro to spark',
+                          timeLineModel.instructorName??'Unknown',
                           style: Fonts.normalgreystyle14,
                         ),
                         Icon(
@@ -71,10 +81,10 @@ class DailyScheduleItem extends StatelessWidget {
                       SvgPicture.asset(Constants.clock),
 
                       Text(
-                        ' 10:00 AM - 11:00 AM ',
+                        ' ${timeLineModel.startTime} - ${timeLineModel.endTime} ',
                         style: Fonts.normalgreystyle12,
                       ),
-                      Text('Amphitheatre2', style: Fonts.normalbluestyle12),
+                      Text('${timeLineModel.location}', style: Fonts.normalbluestyle12),
                     ],
                   ),
                 ],

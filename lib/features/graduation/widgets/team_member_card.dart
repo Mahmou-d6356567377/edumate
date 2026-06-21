@@ -4,19 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TeamMemberCard extends StatelessWidget {
-  final String imageUrl;
   final String name;
   final String role;
-  final bool isLeader;
+  final String uid;
   final bool isadmin;
   final VoidCallback? onChatTap;
 
   const TeamMemberCard({
     super.key,
-    required this.imageUrl,
     required this.name,
     required this.role,
-    this.isLeader = false,
+    required this.uid,
     this.isadmin = false,
     this.onChatTap,
   });
@@ -30,8 +28,13 @@ class TeamMemberCard extends StatelessWidget {
           Stack(
             clipBehavior: Clip.none,
             children: [
-              CircleAvatar(radius: 26, backgroundImage: NetworkImage(imageUrl)),
-              if (isLeader)
+              CircleAvatar(
+                radius: 26,
+                backgroundImage: NetworkImage(
+                  'https://i.pravatar.cc/150?img=12',
+                ),
+              ),
+              if (role == 'Leader')
                 Positioned(
                   top: -4,
                   right: -4,

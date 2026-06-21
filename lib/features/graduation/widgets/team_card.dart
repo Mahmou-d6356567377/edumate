@@ -12,13 +12,14 @@ import 'package:go_router/go_router.dart';
 
 class TeamCard extends StatelessWidget {
   final String status;
+  final String id;
   final String title;
   final String subtitle;
   final int members;
   final int total;
   final bool isRequested;
   final bool disabled;
-  final bool isMyTeam; // 👈 new: hides the join button entirely
+  final bool isMyTeam;
 
   const TeamCard({
     super.key,
@@ -28,6 +29,7 @@ class TeamCard extends StatelessWidget {
     required this.members,
     required this.total,
     required this.isRequested,
+    required this.id,
     this.disabled = false,
     this.isMyTeam = false,
   });
@@ -96,7 +98,7 @@ class TeamCard extends StatelessWidget {
                                 : () {
                                   GoRouter.of(
                                     context,
-                                  ).pushNamed(GoRoutes.teamDetails);
+                                  ).pushNamed(GoRoutes.teamDetails, extra: id);
                                 },
                         child: Text(
                           'Details',
@@ -107,7 +109,6 @@ class TeamCard extends StatelessWidget {
                         ),
                       ),
 
-                      // 👇 only show the join/request button if this is NOT my team
                       if (!isMyTeam)
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(

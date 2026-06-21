@@ -20,9 +20,13 @@ import 'package:edumate/features/courses/data/repo/course_repo.dart';
 import 'package:edumate/features/courses/data/repo/course_repo_IMPL.dart';
 import 'package:edumate/features/graduation/cubits/doctor_cubit/doctor_cubit.dart';
 import 'package:edumate/features/graduation/cubits/getgraduationteams/getgraduationteams_cubit.dart';
+import 'package:edumate/features/graduation/cubits/getteamdetails/getteamdetails_cubit.dart';
 import 'package:edumate/features/graduation/cubits/instructor_cubit/instructor_cubit.dart';
 import 'package:edumate/features/graduation/data/repos/graduation_repo.dart';
 import 'package:edumate/features/graduation/data/repos/graduation_repo_IMPL.dart';
+import 'package:edumate/features/home/cubits/timeline/timeline_cubit.dart';
+import 'package:edumate/features/home/data/repo/home_repo.dart';
+import 'package:edumate/features/home/data/repo/home_repo_IMPL.dart';
 import 'package:edumate/features/navigation/cubits/addchat/addchat_cubit.dart';
 import 'package:edumate/features/navigation/cubits/askai/askai_cubit.dart';
 import 'package:edumate/features/navigation/cubits/getallchats/getallchats_cubit.dart';
@@ -134,4 +138,15 @@ void setupServiceLocator() {
   sl.registerFactory<GetgraduationteamsCubit>(
     () => GetgraduationteamsCubit(graduationRepo: sl()),
   );
+  sl.registerFactory<GetteamdetailsCubit>(
+    () => GetteamdetailsCubit(graduationRepo: sl()),
+  );
+
+  sl.registerLazySingleton<HomeRepo>(
+    () => HomeRepoImpl(
+      apiService: sl<ApiService>(),
+      secureStorage: sl<FlutterSecureStorage>(),
+    ),
+  );
+  sl.registerFactory<TimelineCubit>(() => TimelineCubit(homeRepo: sl()));
 }

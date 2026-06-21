@@ -53,7 +53,13 @@ class SuperviserList extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     if (state.doctors.isEmpty)
-                      return const SubjectCardShimmer();
+                      return  SupervisorCard(
+                      name: state.doctors[index].fullName ?? '',
+                      department: state.doctors[index].email ??  'ma2322424S@gmail.com',
+                      facultyId: state.doctors[index].instuctorId.toString(),
+                      status: SupervisorStatus.active,
+                      onChatTap: () {},
+                    );
 
                     final doctor = state.doctors[index];
                     return SupervisorCard(
@@ -65,7 +71,7 @@ class SuperviserList extends StatelessWidget {
                     );
                   },
                   childCount:
-                      state.doctors.isNotEmpty ? state.doctors.length : 3,
+                       state.doctors.length ,
                 ),
               );
             }

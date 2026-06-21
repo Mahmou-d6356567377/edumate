@@ -32,8 +32,9 @@ class TeamsList extends StatelessWidget {
                 ),
                 TeamCard(
                   status: 'MY TEAM',
-                  title: myTeam.name ?? '',
-                  subtitle: myTeam.description ?? '',
+                  id: myTeam.id ?? 'No ID Provided',
+                  title: myTeam.name ?? 'No Name Provided',
+                  subtitle: myTeam.description ?? 'No Description Provided',
                   members: myTeam.numberOfMembers ?? 0,
                   total: myTeam.maxMembers ?? 0,
                   isRequested: false,
@@ -66,8 +67,9 @@ class TeamsList extends StatelessWidget {
                 ...discoverTeams.map(
                   (team) => TeamCard(
                     status: 'OPEN',
-                    title: team.name ?? '',
-                    subtitle: team.description ?? '',
+                    id: team.id ?? 'No ID Provided',
+                    title: team.name ?? 'No Name Provided',
+                    subtitle: team.description ?? 'No Description Provided',
                     members: team.numberOfMembers ?? 0,
                     total: team.maxMembers ?? 0,
                     isRequested: false,

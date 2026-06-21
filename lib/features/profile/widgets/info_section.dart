@@ -1,3 +1,4 @@
+import 'package:edumate/features/courses/widgets/themed_container.dart';
 import 'package:flutter/material.dart';
 
 class InfoSection extends StatelessWidget {
@@ -13,11 +14,7 @@ class InfoSection extends StatelessWidget {
       children: [
         Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 10),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-          ),
+        ThemedContainer(
           child: Column(children: children),
         ),
       ],

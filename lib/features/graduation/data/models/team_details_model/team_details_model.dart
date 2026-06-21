@@ -1,3 +1,4 @@
+import 'instructor.dart';
 import 'member.dart';
 
 class TeamDetailsModel {
@@ -7,7 +8,7 @@ class TeamDetailsModel {
   int? maxMembers;
   int? membersCount;
   String? status;
-  List<dynamic>? instructors;
+  List<Instructor>? instructors;
   List<Member>? members;
 
   TeamDetailsModel({
@@ -29,7 +30,10 @@ class TeamDetailsModel {
       maxMembers: json['maxMembers'] as int?,
       membersCount: json['membersCount'] as int?,
       status: json['status'] as String?,
-      instructors: json['instructors'] as List<dynamic>?,
+      instructors:
+          (json['instructors'] as List<dynamic>?)
+              ?.map((e) => Instructor.fromJson(e as Map<String, dynamic>))
+              .toList(),
       members:
           (json['members'] as List<dynamic>?)
               ?.map((e) => Member.fromJson(e as Map<String, dynamic>))
@@ -44,7 +48,7 @@ class TeamDetailsModel {
     'maxMembers': maxMembers,
     'membersCount': membersCount,
     'status': status,
-    'instructors': instructors,
+    'instructors': instructors?.map((e) => e.toJson()).toList(),
     'members': members?.map((e) => e.toJson()).toList(),
   };
 }

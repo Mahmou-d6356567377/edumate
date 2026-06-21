@@ -5,7 +5,9 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
 class HomeCalendar extends StatefulWidget {
-  const HomeCalendar({super.key});
+  const HomeCalendar({super.key, required this.onDaySelected});
+
+  final ValueChanged<DateTime> onDaySelected; // 👈 new
 
   @override
   State<HomeCalendar> createState() => _HomeCalendarState();
@@ -15,6 +17,16 @@ class _HomeCalendarState extends State<HomeCalendar> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
+
+  @override
+  void initState() {
+    super.initState();
+    // fire once for "today" on first load
+    _selectedDay = _focusedDay;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.onDaySelected(_selectedDay!);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +39,6 @@ class _HomeCalendarState extends State<HomeCalendar> {
         lastDay: DateTime.utc(2030, 3, 14),
         focusedDay: _focusedDay,
 
-        // ✅ Header
         headerStyle: HeaderStyle(
           titleTextStyle: Fonts.headingStyle.copyWith(
             color: isDark ? Colors.white : Colors.black,
@@ -56,7 +67,6 @@ class _HomeCalendarState extends State<HomeCalendar> {
           ),
         ),
 
-        // ✅ Calendar style
         calendarStyle: CalendarStyle(
           defaultTextStyle: Fonts.boldblackstyle16.copyWith(
             color: isDark ? Colors.white : Colors.black,
@@ -80,11 +90,9 @@ class _HomeCalendarState extends State<HomeCalendar> {
         rowHeight: 55,
         daysOfWeekHeight: 35,
 
-        // ✅ Day-of-week row
         calendarBuilders: CalendarBuilders(
           dowBuilder: (context, day) {
             final text = DateFormat.E().format(day);
-
             final referenceDay = _selectedDay ?? _focusedDay;
             final isSelectedWeekday = day.weekday == referenceDay.weekday;
 
@@ -92,8 +100,6 @@ class _HomeCalendarState extends State<HomeCalendar> {
               margin: const EdgeInsets.symmetric(horizontal: 4),
               padding: const EdgeInsets.symmetric(vertical: 6),
               alignment: Alignment.center,
-              // 🔑 Removed white background — let the parent's
-              // dark surface show through instead
               child: Text(
                 text,
                 style:
@@ -116,6 +122,7 @@ class _HomeCalendarState extends State<HomeCalendar> {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay;
           });
+          widget.onDaySelected(selectedDay); // 👈 notify parent
         },
 
         calendarFormat: _calendarFormat,
